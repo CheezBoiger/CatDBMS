@@ -99,14 +99,14 @@ namespace tools
 	{
 		template<template<typename> typename T, typename V>
 		static void merge_sort_helper(typename T<V>* unsorted_array, int start, int size,
-																	typename T<V>* temp, sort_type sort_t)
+								typename T<V>* temp, sort_type sort_t)
 		{
 
 		}
 
 		template<template<typename> typename T, typename V>
 		static void topdown_merge(typename T<V>* unsorted_array, int start, int middle, int size,
-																	typename T<V>* temp, sort_type sort_t)
+								typename T<V>* temp, sort_type sort_t)
 		{
 
 		}
@@ -128,14 +128,14 @@ namespace tools
 	{
 		template<template<typename> typename T, typename V>
 		static void merge_sort_helper(typename T<V*>* unsorted_array, int start, int size, 
-															typename T<V*>* temp, sort_type sort_t)
+								typename T<V*>* temp, sort_type sort_t)
 		{
 
 		}
 
 		template<template<typename> typename T, typename V>
 		static void topdown_merge(typename T<V*>* unsorted_array, int start, int middle, int size,
-															typename T<V*>* temp, sort_type sort_t)
+								typename T<V*>* temp, sort_type sort_t)
 		{
 
 		}
