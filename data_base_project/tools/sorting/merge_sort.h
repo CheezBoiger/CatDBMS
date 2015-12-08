@@ -168,7 +168,7 @@ namespace tools
 	{
 		template<template<typename> typename T, typename V>
 		static void merge_sort_helper(typename T<V>* unsorted_array, int start, int size,
-																	V* temp, sort_type sort_t)
+										V* temp, sort_type sort_t)
 		{
 			if (size - start < 2)
 				return;
@@ -183,7 +183,7 @@ namespace tools
 
 		template<template<typename> typename T, typename V>
 		static void topdown_merge(typename T<V>* unsorted_array, int start, int middle, int size,
-																	V* temp, sort_type sort_t)
+										V* temp, sort_type sort_t)
 		{
 			int i0 = start;
 			int i1 = middle;
@@ -231,7 +231,7 @@ namespace tools
 	{
 		template<template<typename> typename T, typename V>
 		static void merge_sort_helper(typename T<V*>* unsorted_array, int start, int size, 
-															V** temp, sort_type sort_t)
+										V** temp, sort_type sort_t)
 		{
 			if (size - start < 2)
 				return;
@@ -246,7 +246,7 @@ namespace tools
 
 		template<template<typename> typename T, typename V>
 		static void topdown_merge(typename T<V*>* unsorted_array, int start, int middle, int size,
-															V** temp, sort_type sort_t)
+										V** temp, sort_type sort_t)
 		{
 			int i0 = start;
 			int i1 = middle;
