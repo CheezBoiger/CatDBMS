@@ -31,10 +31,12 @@ namespace Errors
 		error_internal,
 		error_container_corrupt = 0xFAE1,
 		error_container_no_permission,
+		error_file_no_permission,
 		error_container_not_secured,
 		error_null_value,
 		error_array_out_of_bounds,
 		error_empty_structure,
+		error_user_has_no_permission,
 	};
 
 	typedef struct

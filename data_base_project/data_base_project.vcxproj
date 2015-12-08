@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClCompile Include="architecture\error.cpp" />
     <ClCompile Include="container.cpp" />
+    <ClCompile Include="lib\file.cpp" />
     <ClCompile Include="lib\object.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

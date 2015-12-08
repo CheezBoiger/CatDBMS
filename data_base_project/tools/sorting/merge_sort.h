@@ -13,10 +13,10 @@ namespace tools
 	template<typename V>
 	static void merge_sort(V* unsorted_array, int start, int size, sort_type sort_t)
 	{
-		using namespace Internals;
+		using namespace Internal;
 		V* temp(new V[size]);
 		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
-		copy_array(temp, start, size, unsorted_array);
+		//copy_array(temp, start, size, unsorted_array);
 
 		delete[] temp;
 	}
@@ -44,21 +44,21 @@ namespace tools
 			int i0 = start;
 			int i1 = middle;
 
-			if (sort_t == SORT_LOWEST_FIRST)
+			if (sort_t == SORT_HIGHEST_FIRST)
 			{
 				for (int j = start; j < size; ++j)
 				{
-					if (i0 < middle && (i1 >= size || unsorted_array[i0] <= unsorted_array[i1]))
+					if (i0 < middle && (i1 >= size || unsorted_array[i0] >= unsorted_array[i1]))
 						temp[j] = unsorted_array[i0++];
 					else
 						temp[j] = unsorted_array[i1++];
 				}
 			}
-			else if (sort_t == SORT_HIGHEST_FIRST)
+			else if (sort_t == SORT_LOWEST_FIRST)
 			{ 
 				for (int j = start; j < size; ++j)
 				{
-					if (i0 < middle && (i1 >= size || unsorted_array[i0] >= unsorted_array[i1]))
+					if (i0 < middle && (i1 >= size || unsorted_array[i0] <= unsorted_array[i1]))
 						temp[j] = unsorted_array[i0++];
 					else
 						temp[j] = unsorted_array[i1++];
@@ -77,73 +77,196 @@ namespace tools
 	template<typename V>
 	static void merge_sort(V** unsorted_array, int start, int size, sort_type sort_t)
 	{
+		using namespace Internal;
+		V** temp(new V*[size]);
 
+		for (size_t i = 0; i < size; ++i)
+			temp[i] = NULL;
+
+		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
+		//copy_array(temp, start, size, unsorted_array);
+
+		delete[] temp;
 	}
 	
-	namespace Internals
+	namespace Internal
 	{
+		
 		template<typename V>
 		static void merge_sort_helper(V** unsorted_array, int start, int size, V** temp, sort_type sort_t)
 		{
+			if (size - start < 2)
+				return;
 
+			int middle = (size + start) / 2;
+
+			merge_sort_helper(unsorted_array, start, middle, temp, sort_t);
+			merge_sort_helper(unsorted_array, middle, size, temp, sort_t);
+			topdown_merge(unsorted_array, start, middle, size, temp, sort_t);
+			copy_array(temp, start, size, unsorted_array);
 		}
+		
+		// Implement this sucker!! I am serious mang.
+		template<typename V>
+		static void topdown_merge(V** unsorted_array, int start, int middle, int size, V** temp, sort_type sort_t)
+		{
+			int i0 = start;
+			int i1 = middle;
+
+			if (sort_t == SORT_HIGHEST_FIRST)
+			{
+				for (int j = start; j < size; ++j)
+				{
+					if (i0 < middle && (i1 >= size || *(unsorted_array[i0]) >= *(unsorted_array[i1])))
+						temp[j] = unsorted_array[i0++];
+					else
+						temp[j] = unsorted_array[i1++];
+				}
+			}
+			else if (sort_t == SORT_LOWEST_FIRST)
+			{
+				for (int j = start; j < size; ++j)
+				{
+					if (i0 < middle && (i1 >= size || *(unsorted_array[i0]) <= *(unsorted_array[i1])))
+						temp[j] = unsorted_array[i0++];
+					else
+						temp[j] = unsorted_array[i1++];
+				}
+			}
+		}
+		
+		template<typename V>
+		static void copy_array(V** temp, int start, int size, V** array1)
+		{
+
+			for (size_t i = start; i < size; ++i)
+				array1[i] = temp[i];
+		} 
 	} /* Internals namespace */
 
 	template<template<typename> typename T, typename V>
 	static void merge_sort(typename T<V>* unsorted_array, int start, int size, sort_type sort_t)
 	{
+		using namespace Internal;
+
+		V* temp(new V[size]);
+
+		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
+		//copy_array(temp, start, size, unsorted_array);
+		delete[] temp;
 
 	}
 
-	namespace Internals
+	namespace Internal
 	{
 		template<template<typename> typename T, typename V>
 		static void merge_sort_helper(typename T<V>* unsorted_array, int start, int size,
-																	typename T<V>* temp, sort_type sort_t)
+																	V* temp, sort_type sort_t)
 		{
+			if (size - start < 2)
+				return;
 
+			int middle = (size + start) / 2;
+
+			merge_sort_helper(unsorted_array, start, middle, temp, sort_t);
+			merge_sort_helper(unsorted_array, middle, size, temp, sort_t);
+			topdown_merge(unsorted_array, start, middle, size, temp, sort_t);
+			copy_array(temp, start, size, unsorted_array);
 		}
 
 		template<template<typename> typename T, typename V>
 		static void topdown_merge(typename T<V>* unsorted_array, int start, int middle, int size,
-																	typename T<V>* temp, sort_type sort_t)
+																	V* temp, sort_type sort_t)
 		{
+			int i0 = start;
+			int i1 = middle;
 
+			if (sort_t == SORT_HIGHEST_FIRST)
+			{
+				for (int j = start; j < size; ++j)
+				{
+					if (i0 < middle && (i1 >= size || unsorted_array[i0] >= unsorted_array[i1]))
+						temp[j] = unsorted_array[i0++];
+					else
+						temp[j] = unsorted_array[i1++];
+				}
+			}
+			else if (sort_t == SORT_LOWEST_FIRST)
+			{
+				for (int j = start; j < size; ++j)
+				{
+					if (i0 < middle && (i1 >= size || unsorted_array[i0] <= unsorted_array[i1]))
+						temp[j] = unsorted_array[i0++];
+					else
+						temp[j] = unsorted_array[i1++];
+				}
+			}
 		}
 
 		template<template<typename> typename T, typename V>
-		static void copy_array(typename T<V>* temp, int start, int size, typename T<V>* array1)
+		static void copy_array(V* temp, int start, int size, typename T<V>& array1)
 		{
-
+			for (size_t i = start; i < size; ++i)
+				array1[i] = temp[i];
 		}
 	} /* Internals namespace */
 
 	template<template<typename> typename T, typename V>
 	static void merge_sort(typename T<V*>* unsorted_array, int start, int size, sort_type sort_t)
 	{
-
+		using namespace Internal;
+		V** temp(new V*[size]);
+		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
+		delete[] temp;
 	}
 
-	namespace Internals
+	namespace Internal
 	{
 		template<template<typename> typename T, typename V>
 		static void merge_sort_helper(typename T<V*>* unsorted_array, int start, int size, 
-															typename T<V*>* temp, sort_type sort_t)
+															V** temp, sort_type sort_t)
 		{
+			if (size - start < 2)
+				return;
 
+			int middle = (size + start) / 2;
+
+			merge_sort_helper(unsorted_array, start, middle, temp, sort_t);
+			merge_sort_helper(unsorted_array, middle, size, temp, sort_t);
+			topdown_merge(unsorted_array, start, middle, size, temp, sort_t);
+
+			copy_array(temp, start, size, *unsorted_array);
 		}
 
 		template<template<typename> typename T, typename V>
 		static void topdown_merge(typename T<V*>* unsorted_array, int start, int middle, int size,
-															typename T<V*>* temp, sort_type sort_t)
+															V** temp, sort_type sort_t)
 		{
+			int i0 = start;
+			int i1 = middle;
 
-		}
+			T<V*>& unsorted = *unsorted_array;
 
-		template<template<typename> typename T, typename V>
-		static void copy_array(typename T<V*>* temp, int start, int size, typename T<V>* array1)
-		{
-
+			if (sort_t == SORT_HIGHEST_FIRST)
+			{
+				for (int j = start; j < size; ++j)
+				{
+					if (i0 < middle && (i1 >= size || *(unsorted[i0]) >= *(unsorted[i1])))
+						temp[j] = unsorted[i0++];
+					else
+						temp[j] = unsorted[i1++];
+				}
+			}
+			else if (sort_t == SORT_LOWEST_FIRST)
+			{
+				for (int j = start; j < size; ++j)
+				{
+					if (i0 < middle && (i1 >= size || *(unsorted[i0]) <= *(unsorted[i1])))
+						temp[j] = unsorted[i0++];
+					else
+						temp[j] = unsorted[i1++];
+				}
+			}
 		}
 	} /* Internals namespace */
 } /* tools namespace */

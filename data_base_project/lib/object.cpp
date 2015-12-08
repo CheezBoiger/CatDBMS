@@ -8,7 +8,13 @@ namespace catdb
 	{
 	}
 
-	Object::Object(Object &obj) : security_id(obj.security_id), id(obj.id), sec_level(obj.sec_level),
+	Object::Object(void) : id(0), security_id(0), objectname("object"), sec_level(SECURE_DEFAULT),
+		owner("no name"), type(O_TYPE_OBJECT), allow_read(true), allow_write(true),
+		allow_exe(true) 
+	{
+	}
+
+	Object::Object(const Object &obj) : security_id(obj.security_id), id(obj.id), sec_level(obj.sec_level),
 		type(obj.type), allow_read(obj.allow_read), allow_write(obj.allow_write), allow_exe(obj.allow_exe),
 		objectname(obj.objectname), owner(obj.owner)
 	{

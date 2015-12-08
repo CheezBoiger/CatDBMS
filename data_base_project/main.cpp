@@ -15,6 +15,22 @@ n get_me_a_cup_of_coffee(n cat)
 	return cat;
 }
 
+int binary_search(int* numbers, int min, int max, int search_num)
+{
+	while (min <= max)
+	{
+		int mid = (min + max) / 2;
+		if (numbers[mid] == search_num)
+			return mid;
+		else if (numbers[mid] > search_num)
+			max = mid - 1;
+		else if (numbers[mid] < search_num)
+			min = mid + 1;
+	}
+
+	return -1;
+}
+
 inline void test(void)
 {
 	using namespace std;
@@ -27,11 +43,11 @@ inline void test(void)
 	string filename = "object";
 	string& ref = filename;
 	string owner = "Robert Hendrix";
-	catdb::File<std::string> file(ref, owner);
-	catdb::File<std::string> file1;
+	catdb::File file(ref, owner);
+	catdb::File file1;
 	catdb::Object *cat[10];
 	cat[0] = &file;
-	catdb::File<int> obj();
+	catdb::File obj();
 	int j = reinterpret_cast<int>(&obj);
 	std::cout << "j: " << j << std::endl;
 
@@ -53,16 +69,16 @@ void cat(catdb::Object* take)
 
 int main(int c, char **args)
 {
-	uint8_t in[] = { 0x6b, 0xc1, 0xbe, 0xe2, 0x2e, 0x40, 0x9f, 0x96, 0xe9, 0x3d, 0x7e, 0x11, 0x73, 0x93, 0x17, 0x2a };
+	int num[] = {1,2,3,4,5,6,7,8,9,10,11,12,13};
 
-	for (size_t i = 0; i < 16; ++i)
-		std::cout << (char)in[i] << " ";
-	std::cout << std::endl;
+	std::cout << binary_search(num, 0, 12, 18) << std::endl;
 
-	catdb::File<std::string>* file1(new catdb::File<std::string>("Benson", "ben"));
-	catdb::Object* file2(new catdb::File<std::string>("Alex", "alex"));
-	catdb::Object* file3(new catdb::File<std::string>("Morgan", "morgan"));
-	catdb::Object* file4(new catdb::File<std::string>("Benson", "ben"));
+	catdb::File* file1(new catdb::File("Benson", "ben"));
+	catdb::File* file2(new catdb::File("Alex", "alex"));
+	catdb::File* file3(new catdb::File("Morgan", "morgan"));
+	catdb::File* file4(new catdb::File("Zin", "zin"));
+	catdb::File* file5(new catdb::File("Hillary", "hill"));
+	catdb::File* file6(new catdb::File("Billy", "bill"));
 	using catdb::Object;
 	
 	Object* ar[2];
@@ -70,25 +86,30 @@ int main(int c, char **args)
 	ar[1] = file2;
 
 	catdb::Container cont;
+	catdb::Container g = cont;
 	cont.sort_container(tools::merge_sort, tools::SORT_HIGHEST_FIRST);
-
 	cat(file1);
 	tools::s_list<catdb::Object*> lis;
+	catdb::File fil("cat", "dog");
 	lis.insert(file1);
 	lis.insert(file2);
-	lis.remove(file3);
-//	lis.insert(file3);
+	//lis.remove(file3);
+	lis.insert(file3);
+	lis.insert(file4);
+	lis.insert(file5);
+	lis.insert(file6);
 
 
 	std::cout << "lis unsorted" << std::endl;
 	for (size_t i = 0; i < lis.get_size(); ++i)
 		std::cout << lis[i]->get_filename() << std::endl;
 
-	lis.get(19);
+	//lis.get(19);
 	
 	//std::cout << lis[1] << std::endl;
 	//lis.~s_list();
-	tools::insertion_sort(&lis, 0, 1, tools::SORT_LOWEST_FIRST);
+	tools::merge_sort(&lis, 0, lis.get_size(), tools::SORT_LOWEST_FIRST);
+	tools::merge_sort(&lis, 0, lis.get_size(), tools::SORT_HIGHEST_FIRST);
 	std::cout << "lis sorted" << std::endl;
 	for (size_t i = 0; i < lis.get_size(); ++i)
 		std::cout << lis[i]->get_filename() << std::endl;
@@ -99,6 +120,7 @@ int main(int c, char **args)
 
 	//tools::insertion_sort(ar, 0, 2, tools::SORT_HIGHEST_FIRST);
 	tools::merge_sort(ar, 0, 2, tools::SORT_HIGHEST_FIRST);
+	tools::merge_sort(ar, 0, 2, tools::SORT_LOWEST_FIRST);
 
 	std::cout << "Sorted\n" << std::endl;
 	for (size_t i = 0; i < 2; ++i)

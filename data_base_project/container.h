@@ -27,16 +27,17 @@ namespace catdb
 
 		// TODO(Garcia): Implement check_security and update mang.
 		// this is to be fixed 
-		bool check_security(User user) { return false; }
+		bool check_security(User& user) { return false; }
 
 		void update(void) { }
 
 	public:
-		Container(void) : size(0), list(new tools::s_list<catdb::Object*>()) { }
+		Container(void);
 		~Container(void) { }
 
 		int32_t get_size(void) { return size; }
-
+		
+		/* TODO(Garcia): Still need to implement these functions in the cpp file. */
 		/* Allows the container to be sorted with a specified sorting algorithm. */
 		void sort_container(type_sort_function sorting_function, tools::sort_type sort_t);
 		void inspect_object(std::string objectname);

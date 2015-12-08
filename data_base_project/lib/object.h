@@ -38,6 +38,7 @@ namespace catdb
 	class Object
 	{
 	private:
+
 		int32_t id;
 		int32_t security_id;
 
@@ -56,7 +57,7 @@ namespace catdb
 
 		virtual void update(void) = 0;
 
-		virtual bool check_security(User user) = 0;
+		virtual bool check_security(User& user) = 0;
 
 		friend bool operator==(Object &obj1, Object &obj2);
 		friend bool operator<=(Object &obj1, Object &obj2);
@@ -67,12 +68,8 @@ namespace catdb
 
 	public:
 		virtual ~Object(void) { }
-		Object(Object &obj);
-		Object(void) : id(0), security_id(0), objectname("object"), sec_level(SECURE_DEFAULT),
-			owner("no name"), type(O_TYPE_OBJECT), allow_read(true), allow_write(true),
-			allow_exe(true) { }
-
-		Object(Object &&obj) = delete;
+		Object(const Object &obj);
+		Object(void);
 
 		Object(std::string objname, std::string objowner, bool read, bool write, bool exe, int32_t id,
 			int32_t sec_id, security_levels level, object_type type);
