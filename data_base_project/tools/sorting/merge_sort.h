@@ -145,6 +145,13 @@ namespace tools
 	} /* Internals namespace */
 
 	template<template<typename> typename T, typename V>
+	static void merge_sort(typename T<V> unsorted_array, int start, int size, sort_type sort_t)
+	{
+
+	}
+
+	// WARNING: THIS FUNCTION WILL ONLY BE FUNCTIONAL IF YOUR CLASS HAS OVERLOADED THE [] OPERATOR.
+	template<template<typename> typename T, typename V>
 	static void merge_sort(typename T<V>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
@@ -185,20 +192,20 @@ namespace tools
 			{
 				for (int j = start; j < size; ++j)
 				{
-					if (i0 < middle && (i1 >= size || unsorted_array[i0] >= unsorted_array[i1]))
-						temp[j] = unsorted_array[i0++];
+					if (i0 < middle && (i1 >= size || (*unsorted_array)[i0] >= (*unsorted_array)[i1]))
+						temp[j] = (*unsorted_array)[i0++];
 					else
-						temp[j] = unsorted_array[i1++];
+						temp[j] = (*unsorted_array)[i1++];
 				}
 			}
 			else if (sort_t == SORT_LOWEST_FIRST)
 			{
 				for (int j = start; j < size; ++j)
 				{
-					if (i0 < middle && (i1 >= size || unsorted_array[i0] <= unsorted_array[i1]))
-						temp[j] = unsorted_array[i0++];
+					if (i0 < middle && (i1 >= size || (*unsorted_array)[i0] <= (*unsorted_array)[i1]))
+						temp[j] = (*unsorted_array)[i0++];
 					else
-						temp[j] = unsorted_array[i1++];
+						temp[j] = (*unsorted_array)[i1++];
 				}
 			}
 		}

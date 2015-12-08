@@ -33,7 +33,7 @@ namespace catdb
 
 	public:
 		Container(void);
-		~Container(void) { }
+		~Container(void);
 
 		int32_t get_size(void) { return size; }
 		
@@ -42,7 +42,7 @@ namespace catdb
 		void sort_container(type_sort_function sorting_function, tools::sort_type sort_t);
 		void inspect_object(std::string objectname);
 
-		bool insert_new_object(std::string objectname, std::string ownername);
+		bool insert_new_file(std::string objectname, std::string ownername);
 		bool insert_object(Object* object);
 		bool remove_object_name(std::string objectname);
 		bool remove_owner_objects(std::string ownername);
