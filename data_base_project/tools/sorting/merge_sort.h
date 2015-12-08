@@ -161,11 +161,7 @@ namespace tools
 	{
 		template<template<typename> typename T, typename V>
 		static void merge_sort_helper(typename T<V>* unsorted_array, int start, int size,
-<<<<<<< HEAD
 																	V* temp, sort_type sort_t)
-=======
-								typename T<V>* temp, sort_type sort_t)
->>>>>>> f03c13be60f331afcbd5202c8b2c1da855eeae34
 		{
 			if (size - start < 2)
 				return;
@@ -175,16 +171,12 @@ namespace tools
 			merge_sort_helper(unsorted_array, start, middle, temp, sort_t);
 			merge_sort_helper(unsorted_array, middle, size, temp, sort_t);
 			topdown_merge(unsorted_array, start, middle, size, temp, sort_t);
-			copy_array(temp, start, size, unsorted_array);
+			copy_array(temp, start, size, *unsorted_array);
 		}
 
 		template<template<typename> typename T, typename V>
 		static void topdown_merge(typename T<V>* unsorted_array, int start, int middle, int size,
-<<<<<<< HEAD
 																	V* temp, sort_type sort_t)
-=======
-								typename T<V>* temp, sort_type sort_t)
->>>>>>> f03c13be60f331afcbd5202c8b2c1da855eeae34
 		{
 			int i0 = start;
 			int i1 = middle;
@@ -232,28 +224,16 @@ namespace tools
 	{
 		template<template<typename> typename T, typename V>
 		static void merge_sort_helper(typename T<V*>* unsorted_array, int start, int size, 
-<<<<<<< HEAD
 															V** temp, sort_type sort_t)
-=======
-								typename T<V*>* temp, sort_type sort_t)
->>>>>>> f03c13be60f331afcbd5202c8b2c1da855eeae34
 		{
 			if (size - start < 2)
 				return;
 
 			int middle = (size + start) / 2;
 
-<<<<<<< HEAD
 			merge_sort_helper(unsorted_array, start, middle, temp, sort_t);
 			merge_sort_helper(unsorted_array, middle, size, temp, sort_t);
 			topdown_merge(unsorted_array, start, middle, size, temp, sort_t);
-=======
-		template<template<typename> typename T, typename V>
-		static void topdown_merge(typename T<V*>* unsorted_array, int start, int middle, int size,
-								typename T<V*>* temp, sort_type sort_t)
-		{
->>>>>>> f03c13be60f331afcbd5202c8b2c1da855eeae34
-
 			copy_array(temp, start, size, *unsorted_array);
 		}
 
