@@ -102,6 +102,46 @@ namespace tools
 		}
 	}
 
+	template<template<typename> typename T, typename V>
+	static void insertion_sort(typename T<V>& unsorted_array, int start, int size, sort_type sort_t)
+	{
+		Errors::err_info err;
+
+		if (size < 0 || start < 0 || start >= size)
+		{
+			err = Errors::get_error_msg(Errors::error_array_out_of_bounds);
+			_DISPLAY_ERROR(err);
+			return;
+		}
+
+		if (sort_t == SORT_HIGHEST_FIRST)
+		{
+			for (size_t i = start + 1; i < size; ++i)
+			{
+				for (size_t j = i; j > 0; --j)
+				{
+					if (unsorted_array[j] > unsorted_array[j - 1])
+						swap(unsorted_array, j, j - 1);
+					else
+						break;
+				}
+			}
+		}
+		else if (sort_t == SORT_LOWEST_FIRST)
+		{
+			for (size_t i = start + 1; i < size; ++i)
+			{
+				for (size_t j = i; j > 0; --j)
+				{
+					if (unsorted_array[j] < unsorted_array[j - 1])
+						swap(unsorted_array, j, j - 1);
+					else
+						break;
+				}
+			}
+		}
+	}
+
 	// ONLY WORKS IF YOUR TEMPLATE CLASS HAS OVERLOADED THE [] OPERATOR.
 	template<template<typename> typename T, typename V>
 	static void insertion_sort(typename T<V>* unsorted_array, int start, int size, sort_type sort_t)
