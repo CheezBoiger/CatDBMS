@@ -1,6 +1,6 @@
 # CatDBMS IS UNDER CONSTRUCTION!!
 As you may know, this is not a working, functional database management system yet, I plan on developing it and finishing by 
-the end of July 2016. This means, I have tons of work to do on this data base, so please if you have any recommendations, 
+the end of December 2017. This means, I have tons of work to do on this data base, so please if you have any recommendations, 
 comments, insults, or anything, please get in contact with me, I would very much appreciate it. Collaboration work on this
 management system would be awesome.
 
