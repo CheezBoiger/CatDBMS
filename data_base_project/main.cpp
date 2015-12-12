@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include "container.h"
+#include "tools/data_structures/doubly_linked_list.h"
 #include "tools/sorting/merge_sort.h"
 
 template<typename n>
@@ -67,67 +68,58 @@ void cat(catdb::Object* take)
 
 }
 
+void tests(void)
+{
+	catdb::Container container;
+
+	catdb::File* file1(new catdb::File("Mark", "mark"));
+	catdb::File noal("Jason", "jason");
+	catdb::File* file2 = &noal;
+	container.insert_new_file("Alex", "alex");
+	container.insert_new_file("Abe", "abe");
+	container.insert_new_file("Zen", "zen");
+	container.insert_new_file("Bobby", "bobby");
+	container.insert_new_file("Harold", "harold");
+	container.insert_new_file("Carol", "carol");
+//	container.insert_object(file2);
+	container.insert_object(file1);
+
+	container.sort_container(tools::merge_sort, tools::SORT_HIGHEST_FIRST);
+	container.remove_object_name("Mark");
+	std::cout << container.display_list() << std::endl;
+	std::cout << "size: " << container.get_size() << std::endl;
+}
+
+#include <random>
+#include <ctime>
+
+#define SIZE   1000
+
 int main(int c, char **args)
 {
-	int num[] = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+	srand(0);
+	tests();
+	/*
+	tools::s_list<int> test_list;
+	for (size_t i = 0; i < SIZE; ++i)
+		test_list.insert(rand());
+	tools::merge_sort(test_list, 0, SIZE, tools::SORT_HIGHEST_FIRST);
 
-	std::cout << binary_search(num, 0, 12, 18) << std::endl;
-
-	catdb::File* file1(new catdb::File("Benson", "ben"));
-	catdb::File* file2(new catdb::File("Alex", "alex"));
-	catdb::File* file3(new catdb::File("Morgan", "morgan"));
-	catdb::File* file4(new catdb::File("Zin", "zin"));
-	catdb::File* file5(new catdb::File("Hillary", "hill"));
-	catdb::File* file6(new catdb::File("Billy", "bill"));
-	using catdb::Object;
+	for (size_t i = 0; i < SIZE; ++i)
+		std::cout << test_list[i] << std::endl;
+	*/
+	tools::doubly_linked_list<int> testing;
 	
-	Object* ar[2];
-	ar[0] = file1;
-	ar[1] = file2;
+	for (size_t i = 0; i <= SIZE; ++i)
+		testing.insert(rand());
+	std::cout << "Done adding now sorting..." << std::endl;
 
-	catdb::Container cont;
-	catdb::Container g = cont;
-	cont.sort_container(tools::merge_sort, tools::SORT_HIGHEST_FIRST);
-	cat(file1);
-	tools::s_list<catdb::Object*> lis;
-	catdb::File fil("cat", "dog");
-	lis.insert(file1);
-	lis.insert(file2);
-	//lis.remove(file3);
-	lis.insert(file3);
-	lis.insert(file4);
-	lis.insert(file5);
-	lis.insert(file6);
+	tools::merge_sort(&testing, 0, testing.get_size(), tools::SORT_HIGHEST_FIRST);
+	for (size_t i = 0; i < testing.get_size(); ++i)
+		std::cout << testing[i] << std::endl;
 
-
-	std::cout << "lis unsorted" << std::endl;
-	for (size_t i = 0; i < lis.get_size(); ++i)
-		std::cout << lis[i]->get_filename() << std::endl;
-
-	//lis.get(19);
-	
-	//std::cout << lis[1] << std::endl;
-	//lis.~s_list();
-	tools::merge_sort(&lis, 0, lis.get_size(), tools::SORT_LOWEST_FIRST);
-	tools::merge_sort(&lis, 0, lis.get_size(), tools::SORT_HIGHEST_FIRST);
-	std::cout << "lis sorted" << std::endl;
-	for (size_t i = 0; i < lis.get_size(); ++i)
-		std::cout << lis[i]->get_filename() << std::endl;
-
-	std::cout << "Unsorted\n" << std::endl;
-	for (size_t i = 0; i < 2; ++i)
-		std::cout << ar[i]->get_filename() << std::endl;
-
-	//tools::insertion_sort(ar, 0, 2, tools::SORT_HIGHEST_FIRST);
-	tools::merge_sort(ar, 0, 2, tools::SORT_HIGHEST_FIRST);
-	tools::merge_sort(ar, 0, 2, tools::SORT_LOWEST_FIRST);
-
-	std::cout << "Sorted\n" << std::endl;
-	for (size_t i = 0; i < 2; ++i)
-		std::cout << ar[i]->get_filename() << std::endl;
-
-	using namespace std;
-	//cout << "file2 < file1: " << _interpret_bool(*file2 < *file1) << endl;
+	testing.~doubly_linked_list();
+//	std::cout << testing[5] << std::endl;
 
 	std::cin.ignore();
 }

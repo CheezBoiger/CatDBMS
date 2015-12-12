@@ -13,7 +13,6 @@
 #define _ERROR_CODE(code, string)   {code, string}
 #define _DISPLAY_ERROR(a) std::cout << "Code error " << a.code_number << \
 										": " << a.error_msg << std::endl;
-
 namespace Errors
 {
 	// Enum of possible internal errors that may occur within the structure of the 

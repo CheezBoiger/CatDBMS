@@ -1,5 +1,6 @@
 #include "container.h"
 #include "lib/file.h"
+#include "architecture/directory_handler.h"
 
 namespace catdb
 {
@@ -20,9 +21,10 @@ namespace catdb
 			delete list;
 	}
 
-	bool Container::insert_new_file(std::string objectname, std::string ownername)
+	bool Container::insert_new_file(std::string objectname, std::string ownername, bool read,
+			bool write, bool exe, int32_t id, int32_t sec_id, security_levels level)
 	{
-		Object* new_obj(new catdb::File(objectname, ownername));
+		Object* new_obj(new catdb::File(objectname, ownername, read, write, exe, id, sec_id, level));
 		list->insert(new_obj);
 
 		size = list->get_size();
@@ -37,7 +39,7 @@ namespace catdb
 //		Object* new_obj(object);
 
 		list->insert(object);
-
+		size = list->get_size();
 		return true;
 	}
 
@@ -49,9 +51,12 @@ namespace catdb
 			if (obj->get_filename() == objectname)
 			{
 				list->remove(obj);
+				--size;
 				return true;
 			}
 		}
+
+		_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_find_file))
 		return false;
 	}
 

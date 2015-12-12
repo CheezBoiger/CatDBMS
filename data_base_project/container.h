@@ -41,8 +41,10 @@ namespace catdb
 		/* Allows the container to be sorted with a specified sorting algorithm. */
 		void sort_container(type_sort_function sorting_function, tools::sort_type sort_t);
 		void inspect_object(std::string objectname);
+		void setup_container_folder(User& user);
 
-		bool insert_new_file(std::string objectname, std::string ownername);
+		bool insert_new_file(std::string objectname, std::string ownername, bool read = true,
+			bool write = true, bool exe = true, int32_t id = 0, int32_t sec_id=0, security_levels level=SECURE_DEFAULT);
 		bool insert_object(Object* object);
 		bool remove_object_name(std::string objectname);
 		bool remove_owner_objects(std::string ownername);

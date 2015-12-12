@@ -14,6 +14,10 @@
  #define _INLINE_  __forceinline
  #define _CDECL_   __cdecl 
 #elif defined(_DB_CAT_UNIX)
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+
  #define _INLINE_ inline
  #define _CDECL_
 #elif defined(_DB_CAT_LINUX)

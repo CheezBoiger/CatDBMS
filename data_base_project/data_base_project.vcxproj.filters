@@ -84,6 +84,12 @@
     <ClInclude Include="tools\sorting\bubble_sort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tools\data_structures\doubly_linked_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="architecture\directory_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

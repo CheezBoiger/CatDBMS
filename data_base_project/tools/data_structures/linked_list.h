@@ -99,8 +99,9 @@ namespace tools
 		}
 
 		// Removes a data piece from the linked list. 
-		void remove(V data)
+		bool remove(V data)
 		{
+			bool result = false;
 			Errors::err_info error_info;
 			s_node* rem_node = NULL;
 
@@ -143,24 +144,23 @@ namespace tools
 					delete rem_node;
 					rem_node = NULL;
 					size--;
+					result = true;
 				}
 				else
 				{
 					// Cannot find the data that was to be deleted.
-					error_info = get_error_msg(Errors::error_find_file);
-					_DISPLAY_ERROR(error_info);
+					_DISPLAY_ERROR(get_error_msg(Errors::error_find_file));
 				}
 			}
 			else
 			{
 				// The structure is empty. Nothing to delete.
-				error_info = get_error_msg(Errors::error_empty_structure);
-				_DISPLAY_ERROR(error_info);
+				_DISPLAY_ERROR(get_error_msg(Errors::error_empty_structure));
 			}
-
+			return result;
 		}
 
-		const V* get(int index)
+		V* get(int index)
 		{
 			Errors::err_info error_info;
 
@@ -202,7 +202,7 @@ namespace tools
 			{
 				Errors::err_info err = Errors::get_error_msg(Errors::error_array_out_of_bounds);
 				_DISPLAY_ERROR(err); std::cin.ignore();
-				exit(-1);
+				exit(EXIT_FAILURE);
 			}
 
 			s_node* traverse = root;
