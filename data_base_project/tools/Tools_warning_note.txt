@@ -1,6 +1,6 @@
 Warning Note:
 These data structures and sorting functions DO NOT provide any try catch blocks for any possible errors that may 
-occur in your program. This means, if there are problems that may result in one of the data structures or sorting
+occur in your program. This means, if there are problems in one of the data structures or sorting
 functions that result in the exiting of the program, keep in mind that there is no stack unwinding! Any files currently
 open, or objects loaded in automatic storage time will not be cleaned up, which could mean file will not be stored properly 
 or may not have saved any new information!
