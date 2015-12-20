@@ -4,11 +4,11 @@
 #pragma once
 #include "lib/object.h"
 #include "tools/sorting/sort_helpers.h"
-#include "tools/data_structures/linked_list.h"
+#include "tools/data_structures/doubly_linked_list.h"
 
 /* sorting algorithms used for the purpose of determining how the programmer wants to sort
 	 this container. */
-typedef void(*type_sort_function) (tools::s_list<catdb::Object*>*, int32_t, int32_t, tools::sort_type);
+typedef void(*type_sort_function) (tools::List<catdb::Object*>*, int32_t, int32_t, tools::sort_type);
 
 namespace catdb 
 {
@@ -18,7 +18,7 @@ namespace catdb
 	class Container : public catdb::Object
 	{
 	private:
-		tools::s_list<catdb::Object*>* list;
+		tools::List<catdb::Object*>* list;
 
 		int32_t size;
 
@@ -33,15 +33,20 @@ namespace catdb
 
 	public:
 		Container(void);
+		Container(std::string container_name);
 		~Container(void);
 
 		int32_t get_size(void) { return size; }
+
+		inline std::string get_container_name(void) { return container_title; }
 		
 		/* TODO(Garcia): Still need to implement these functions in the cpp file. */
 		/* Allows the container to be sorted with a specified sorting algorithm. */
 		void sort_container(type_sort_function sorting_function, tools::sort_type sort_t);
 		void inspect_object(std::string objectname);
 		void setup_container_folder(User& user);
+		void combine_containers(Container* container);
+		void remove_similarities(Container* contiainer);
 
 		bool insert_new_file(std::string objectname, std::string ownername, bool read = true,
 			bool write = true, bool exe = true, int32_t id = 0, int32_t sec_id=0, security_levels level=SECURE_DEFAULT);
@@ -49,14 +54,16 @@ namespace catdb
 		bool remove_object_name(std::string objectname);
 		bool remove_owner_objects(std::string ownername);
 
-		Container* subset(Container* container);
-		Container* combine_containers(Container* container);
-		Container* remove_similarities(Container* contiainer);
+		inline bool is_empty(void) const { return size == 0; }
+
+		bool subset(Container* container);
+
+		Container* intersection(Container* container);
 
 		std::string display_list(void);
 
-
 	};
+
 }
 
 #endif /* _CONTAINER_H_ */

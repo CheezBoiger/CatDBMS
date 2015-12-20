@@ -3,7 +3,6 @@
 #pragma once
 
 #include "object.h"
-#include <fstream>
 
 #define _security_string(a) case a: return a
 #define _security_string_default(a) default: return a

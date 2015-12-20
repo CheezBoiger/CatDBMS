@@ -9,6 +9,7 @@
 #include "container.h"
 #include "tools/data_structures/doubly_linked_list.h"
 #include "tools/sorting/merge_sort.h"
+#include "tools/sorting/quick_sort.h"
 
 template<typename n>
 n get_me_a_cup_of_coffee(n cat)
@@ -70,35 +71,38 @@ void cat(catdb::Object* take)
 
 void tests(void)
 {
-	catdb::Container container;
+	catdb::Container test;
+	test.insert_new_file("Jerry", "jerry");
+	test.insert_new_file("Freddy", "freddy");
+	test.insert_new_file("Victor", "victor");
+	test.insert_new_file("Kevin", "kevin");
+	test.insert_new_file("Alex", "alex");
+	test.insert_new_file("Gared", "gared");
+	test.insert_new_file("Fred", "fred");
 
-	catdb::File* file1(new catdb::File("Mark", "mark"));
-	catdb::File noal("Jason", "jason");
-	catdb::File* file2 = &noal;
-	container.insert_new_file("Alex", "alex");
-	container.insert_new_file("Abe", "abe");
-	container.insert_new_file("Zen", "zen");
-	container.insert_new_file("Bobby", "bobby");
-	container.insert_new_file("Harold", "harold");
-	container.insert_new_file("Carol", "carol");
-//	container.insert_object(file2);
-	container.insert_object(file1);
+//	test.sort_container(tools::quick_sort, tools::SORT_HIGHEST_FIRST);
+	test.remove_object_name("Victor");
+	test.sort_container(tools::insertion_sort, tools::SORT_HIGHEST_FIRST);
+	std::cout << test.display_list() << std::endl;
 
-	container.sort_container(tools::merge_sort, tools::SORT_HIGHEST_FIRST);
-	container.remove_object_name("Mark");
-	std::cout << container.display_list() << std::endl;
-	std::cout << "size: " << container.get_size() << std::endl;
+
 }
 
 #include <random>
 #include <ctime>
 
-#define SIZE   1000
+#define SIZE   100
+
+struct
+{
+	int cat;
+} cats;
 
 int main(int c, char **args)
 {
+	cats.cat = 5;
 	srand(0);
-	tests();
+	//tests();
 	/*
 	tools::s_list<int> test_list;
 	for (size_t i = 0; i < SIZE; ++i)
@@ -108,17 +112,30 @@ int main(int c, char **args)
 	for (size_t i = 0; i < SIZE; ++i)
 		std::cout << test_list[i] << std::endl;
 	*/
+	/*
 	tools::doubly_linked_list<int> testing;
-	
 	for (size_t i = 0; i <= SIZE; ++i)
 		testing.insert(rand());
 	std::cout << "Done adding now sorting..." << std::endl;
 
+	clock_t start = clock();
 	tools::merge_sort(&testing, 0, testing.get_size(), tools::SORT_HIGHEST_FIRST);
-	for (size_t i = 0; i < testing.get_size(); ++i)
-		std::cout << testing[i] << std::endl;
+	clock_t end = clock();
+	std::cout << "took : " << end - start / (double) CLOCKS_PER_SEC << " milliseconds" << std::endl;
+	*/
+	catdb::Object* lists[5];
+	lists[0] = new catdb::File("Jill", "jill");
+	lists[1] = new catdb::File("Tommy", "tommy");
+	lists[2] = new catdb::File("Alex", "alex");
+	lists[3] = new catdb::File("Fred", "fred");
+	lists[4] = new catdb::File("Bill","bill");
+	tools::merge_sort(lists, 0, 5, tools::SORT_HIGHEST_FIRST);
+	for (size_t i = 0; i < 5; ++i)
+		std::cout << lists[i]->get_filename() << std::endl;
+	//	for (size_t i = 0; i < testing.get_size(); ++i)
+//		std::cout << testing[i] << std::endl;
 
-	testing.~doubly_linked_list();
+//	testing.~doubly_linked_list();
 //	std::cout << testing[5] << std::endl;
 
 	std::cin.ignore();

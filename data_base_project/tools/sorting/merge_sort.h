@@ -9,7 +9,7 @@ namespace tools
 {
 
 	// Merge sort currently works for array type structures. We will be implementing them in 
-	// in other stuff later on.
+	// other stuff later on.
 	template<typename V>
 	static void merge_sort(V* unsorted_array, int start, int size, sort_type sort_t)
 	{
@@ -21,6 +21,55 @@ namespace tools
 		delete[] temp;
 	}
 
+	template<typename V>
+	static void merge_sort(V** unsorted_array, int start, int size, sort_type sort_t)
+	{
+		using namespace Internal;
+		V** temp(new V*[size]);
+
+		for (size_t i = 0; i < size; ++i)
+			temp[i] = NULL;
+
+		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
+		//copy_array(temp, start, size, unsorted_array);
+
+		delete[] temp;
+	}
+
+	template<template<typename> typename T, typename V>
+	static void merge_sort(typename T<V>& unsorted_array, int start, int size, sort_type sort_t)
+	{
+		using namespace Internal;
+
+		V* temp(new V[size]);
+		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
+		delete[] temp;
+	}
+
+	// WARNING: THIS FUNCTION WILL ONLY BE FUNCTIONAL IF YOUR CLASS HAS OVERLOADED THE [] OPERATOR.
+	template<template<typename> typename T, typename V>
+	static void merge_sort(typename T<V>* unsorted_array, int start, int size, sort_type sort_t)
+	{
+		using namespace Internal;
+
+		V* temp(new V[size]);
+
+		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
+		//copy_array(temp, start, size, unsorted_array);
+		delete[] temp;
+
+	}
+
+	template<template<typename> typename T, typename V>
+	static void merge_sort(typename T<V*>* unsorted_array, int start, int size, sort_type sort_t)
+	{
+		using namespace Internal;
+		V** temp(new V*[size]);
+		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
+		delete[] temp;
+	}
+
+	// INTERNAL FUNCTIONS NAMESPACE,
 	// NO TOUCHY TOUCHY DA INTERNAL STUFFY
 	namespace Internal
 	{
@@ -72,25 +121,6 @@ namespace tools
 			for (int k = start; k < size; ++k)
 				array1[k] = temp[k];
 		}
-	} /* Internals namespace */
-
-	template<typename V>
-	static void merge_sort(V** unsorted_array, int start, int size, sort_type sort_t)
-	{
-		using namespace Internal;
-		V** temp(new V*[size]);
-
-		for (size_t i = 0; i < size; ++i)
-			temp[i] = NULL;
-
-		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
-		//copy_array(temp, start, size, unsorted_array);
-
-		delete[] temp;
-	}
-	
-	namespace Internal
-	{
 		
 		template<typename V>
 		static void merge_sort_helper(V** unsorted_array, int start, int size, V** temp, sort_type sort_t)
@@ -106,7 +136,6 @@ namespace tools
 			copy_array(temp, start, size, unsorted_array);
 		}
 		
-		// Implement this sucker!! I am serious mang.
 		template<typename V>
 		static void topdown_merge(V** unsorted_array, int start, int middle, int size, V** temp, sort_type sort_t)
 		{
@@ -142,20 +171,7 @@ namespace tools
 			for (size_t i = start; i < size; ++i)
 				array1[i] = temp[i];
 		} 
-	} /* Internals namespace */
 
-	template<template<typename> typename T, typename V>
-	static void merge_sort(typename T<V>& unsorted_array, int start, int size, sort_type sort_t)
-	{
-		using namespace Internal;
-
-		V* temp(new V[size]);
-		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
-		delete[] temp;
-	}
-
-	namespace Internal
-	{
 		template<template<typename> typename T, typename V>
 		static void merge_sort_helper(typename T<V>& unsorted_array, int start, int size, V* temp, sort_type sort_t)
 		{
@@ -197,24 +213,7 @@ namespace tools
 				}
 			}
 		}
-	}
 
-	// WARNING: THIS FUNCTION WILL ONLY BE FUNCTIONAL IF YOUR CLASS HAS OVERLOADED THE [] OPERATOR.
-	template<template<typename> typename T, typename V>
-	static void merge_sort(typename T<V>* unsorted_array, int start, int size, sort_type sort_t)
-	{
-		using namespace Internal;
-
-		V* temp(new V[size]);
-
-		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
-		//copy_array(temp, start, size, unsorted_array);
-		delete[] temp;
-
-	}
-
-	namespace Internal
-	{
 		template<template<typename> typename T, typename V>
 		static void merge_sort_helper(typename T<V>* unsorted_array, int start, int size,
 										V* temp, sort_type sort_t)
@@ -265,19 +264,7 @@ namespace tools
 			for (size_t i = start; i < size; ++i)
 				array1[i] = temp[i];
 		}
-	} /* Internals namespace */
 
-	template<template<typename> typename T, typename V>
-	static void merge_sort(typename T<V*>* unsorted_array, int start, int size, sort_type sort_t)
-	{
-		using namespace Internal;
-		V** temp(new V*[size]);
-		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
-		delete[] temp;
-	}
-
-	namespace Internal
-	{
 		template<template<typename> typename T, typename V>
 		static void merge_sort_helper(typename T<V*>* unsorted_array, int start, int size, 
 										V** temp, sort_type sort_t)

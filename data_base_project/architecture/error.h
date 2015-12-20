@@ -10,9 +10,29 @@
 #define _ERROR_HIGH             0x03
 #define _ERROR_CRITICAL         0x04
 
+
+/* Debug services */
+#if !defined(_DEBUG)
+ #define _DEBUG                    0
+#endif /* _DEBUG */
+
 #define _ERROR_CODE(code, string)   {code, string}
-#define _DISPLAY_ERROR(a) std::cout << "Code error " << a.code_number << \
+
+/* For debug preferences */
+#if _DEBUG 
+ /* Only available if _DEBUG is on 1*/
+ #define _DISPLAY_ERROR(a) std::cout << "Code error " << a.code_number << \
 										": " << a.error_msg << std::endl;
+#else
+ /* This will only work if and only if _DEBUG is 1 */
+ #define _DISPLAY_ERROR(a)
+#endif /* _DEBUG */
+
+#define _FATAL_EXIT_PROGRAM(funct, class_t) std::cout << "Fatal error in function: " << #funct              \
+										<< "\nclass type: " << #class_t                                     \
+										<< "\n\nProgram must exit. Press any key to continue" << std::endl; \
+										std::cin.ignore(); std::exit(EXIT_FAILURE);
+
 namespace Errors
 {
 	// Enum of possible internal errors that may occur within the structure of the 

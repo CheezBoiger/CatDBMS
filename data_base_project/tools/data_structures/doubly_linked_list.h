@@ -3,6 +3,7 @@
 #pragma once
 
 #include "../../architecture/error.h"
+#include "cat_list_interface.h"
 
 #define MINIMUM_ARRAY_BOUNDARY        0
 
@@ -11,7 +12,7 @@ namespace tools
 
 	// The ol' fashioned doubly linked list yall.
 	template<typename V>
-	class doubly_linked_list
+	class doubly_linked_list : public List<V>
 	{
 	private:
 
@@ -40,7 +41,11 @@ namespace tools
 				cursor = root->next;
 			
 			root = root->next;
-			root->prev = NULL;
+			
+			if(root != NULL)
+				root->prev = NULL;
+			else
+				tail = root = cursor = NULL;
 
 			return rem_node;
 		}
@@ -93,7 +98,7 @@ namespace tools
 
 		doubly_linked_list(void) : size(0), root(NULL), tail(NULL), cursor(NULL) { }
 		
-		~doubly_linked_list(void)
+		virtual ~doubly_linked_list(void)
 		{
 			d_node* previous;
 			d_node* traverse = root;
@@ -189,18 +194,58 @@ namespace tools
 			return false;
 		}
 
-		inline int32_t get_size(void) const { return size; }
+		inline int32_t get_size(void) { return size; }
 
-		inline bool is_empty(void) const { return size == 0; }
+		inline bool is_empty(void) { return size == 0; }
+
+		const V* front(void) 
+		{
+			if (root == NULL)
+			{
+				_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_null_value));
+				return NULL;
+			}
+
+			return &root->data; 
+		}
+		
+		const V* back(void)
+		{
+			if (tail == NULL)
+			{
+				_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_null_value));
+				return NULL;
+			}
+
+
+			return &tail->data; 
+		}
+		const V* get_current(void)
+		{ 
+			if (cursor == NULL)
+			{
+				_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_null_value));
+				return NULL;
+			}
+
+			return &cursor->data;
+		}
 
 		// Operator overload for this template class!!
 		V& operator[](const int32_t i)
 		{
 			if (i >= size || i < MINIMUM_ARRAY_BOUNDARY)
 			{
-				_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_array_out_of_bounds));
-				std::cin.ignore();
-				exit(EXIT_FAILURE);
+				if (is_empty())
+				{
+					_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_empty_structure));
+				}
+				else
+				{
+					_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_array_out_of_bounds));
+				}
+
+				_FATAL_EXIT_PROGRAM(operator[], doubly_linked_list);
 			}
 
 			V* result = NULL;

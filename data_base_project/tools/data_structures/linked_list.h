@@ -3,6 +3,7 @@
 #pragma once
 
 #include "../../architecture/error.h"
+#include "cat_list_interface.h"
 
 #define MINIMUM_ARRAY_BOUNDARY 0
 
@@ -15,7 +16,7 @@ namespace tools
 	// Some of it's features, like insertion, hold a O(1) time complexity, while 
 	// removal and lookup are O(n). 
 	template<class V>
-	class s_list
+	class s_list : public List<V>
 	{
 	private:
 		struct s_node
@@ -62,7 +63,7 @@ namespace tools
 
 
 		//TODO(Garcia): there may need to be some fixes, like checking for memory leaks.
-		~s_list(void)
+		virtual ~s_list(void)
 		{
 			s_node* prev_node;
 			s_node* traverse = root;
@@ -200,9 +201,16 @@ namespace tools
 
 			if (index >= size || index < MINIMUM_ARRAY_BOUNDARY)
 			{
-				Errors::err_info err = Errors::get_error_msg(Errors::error_array_out_of_bounds);
-				_DISPLAY_ERROR(err); std::cin.ignore();
-				exit(EXIT_FAILURE);
+				if (is_empty())
+				{
+					_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_empty_structure));
+				}
+				else
+				{
+					_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_array_out_of_bounds));
+				}
+
+				_FATAL_EXIT_PROGRAM(operator[], s_list);
 			}
 
 			s_node* traverse = root;

@@ -4,9 +4,14 @@
 
 namespace catdb
 {
-	Container::Container(void) : size(0), list(new tools::s_list<catdb::Object*>()), container_title("no_name"),
+	Container::Container(void) : size(0), list(new tools::doubly_linked_list<catdb::Object*>()), container_title("no_name"),
 		Object()
 	{
+	}
+
+	Container::Container(std::string container_name) : Container()
+	{
+		container_title = container_name;
 	}
 
 	Container::~Container(void)
@@ -58,6 +63,37 @@ namespace catdb
 
 		_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_find_file))
 		return false;
+	}
+
+	bool Container::remove_owner_objects(std::string objectname)
+	{
+		return false;
+	}
+
+	// This function will generate a new subset of this container, and the specified
+	// one in formal parameter. Keep in mind this will generate a dynamically allocated
+	// Container object on the heap. Returns NULL if the container in parameter is NULL.
+	bool Container::subset(Container* container)
+	{
+		if (container == NULL)
+			return NULL;
+
+		// TODO(Garcia): Implement subset container.
+
+
+		return false;
+	}
+
+	Container* Container::intersection(Container* container)
+	{
+		if (container == NULL)
+			return NULL;
+
+		Container* result = new Container();
+
+
+
+		return result;
 	}
 
 	std::string Container::display_list(void)

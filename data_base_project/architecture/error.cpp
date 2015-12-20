@@ -17,7 +17,7 @@ namespace Errors
 		_ERROR_CODE(error_container_no_permission, "User has accessed container without proper permission!"),
 		_ERROR_CODE(error_file_no_permission, "User has accessed file without proper permission!"),
 		_ERROR_CODE(error_container_not_secured, "Container was not properly secured."),
-		_ERROR_CODE(error_null_value, "Inserted value is null. Can not operate on non existant data."),
+		_ERROR_CODE(error_null_value, "Value is null. Can not operate on non existant data."),
 		_ERROR_CODE(error_array_out_of_bounds, "Array out of bounds. Attempt to access out of the bounds of array is fatal."),
 		_ERROR_CODE(error_empty_structure, "This structure is empty."),
 		_ERROR_CODE(error_user_has_no_permission, "User has no permission.")
