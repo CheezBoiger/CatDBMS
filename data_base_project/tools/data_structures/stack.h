@@ -7,8 +7,8 @@
 
 #define MAX_STACK_SIZE                     512
 
-namespace tools
-{
+namespace tools {
+namespace data_structures {
 
 	template<typename V>
 	class Stack
@@ -28,7 +28,7 @@ namespace tools
 	};
 
 
-	template<typename V, int32_t length=MAX_STACK_SIZE>
+	template<typename V, int32_t length = MAX_STACK_SIZE>
 	class stack : public Stack<V>
 	{
 	private:
@@ -60,7 +60,7 @@ namespace tools
 		}
 
 	};
-
+} /* data_structures namespace */
 } /* tools namespace */
 
 #endif /* _STACK_H_ */

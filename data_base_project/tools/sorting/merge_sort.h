@@ -5,8 +5,8 @@
 #include "sort_helpers.h"
 #include "../../architecture/error.h"
 
-namespace tools
-{
+namespace tools {
+namespace sorting {
 
 	// Merge sort currently works for array type structures. We will be implementing them in 
 	// other stuff later on.
@@ -36,8 +36,8 @@ namespace tools
 		delete[] temp;
 	}
 
-	template<template<typename> typename T, typename V>
-	static void merge_sort(typename T<V>& unsorted_array, int start, int size, sort_type sort_t)
+	template<template<typename> class T, typename V>
+	static void merge_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 
@@ -47,8 +47,8 @@ namespace tools
 	}
 
 	// WARNING: THIS FUNCTION WILL ONLY BE FUNCTIONAL IF YOUR CLASS HAS OVERLOADED THE [] OPERATOR.
-	template<template<typename> typename T, typename V>
-	static void merge_sort(typename T<V>* unsorted_array, int start, int size, sort_type sort_t)
+	template<template<typename> class T, typename V>
+	static void merge_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 
@@ -60,8 +60,8 @@ namespace tools
 
 	}
 
-	template<template<typename> typename T, typename V>
-	static void merge_sort(typename T<V*>* unsorted_array, int start, int size, sort_type sort_t)
+	template<template<typename> class T, typename V>
+	static void merge_sort(T<V*>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 		V** temp(new V*[size]);
@@ -93,7 +93,7 @@ namespace tools
 			int i0 = start;
 			int i1 = middle;
 
-			if (sort_t == SORT_HIGHEST_FIRST)
+			if (sort_t == SORT_BIG_ENDIAN)
 			{
 				for (int j = start; j < size; ++j)
 				{
@@ -103,8 +103,8 @@ namespace tools
 						temp[j] = unsorted_array[i1++];
 				}
 			}
-			else if (sort_t == SORT_LOWEST_FIRST)
-			{ 
+			else if (sort_t == SORT_LITTLE_ENDIAN)
+			{
 				for (int j = start; j < size; ++j)
 				{
 					if (i0 < middle && (i1 >= size || unsorted_array[i0] <= unsorted_array[i1]))
@@ -121,7 +121,7 @@ namespace tools
 			for (int k = start; k < size; ++k)
 				array1[k] = temp[k];
 		}
-		
+
 		template<typename V>
 		static void merge_sort_helper(V** unsorted_array, int start, int size, V** temp, sort_type sort_t)
 		{
@@ -135,14 +135,14 @@ namespace tools
 			topdown_merge(unsorted_array, start, middle, size, temp, sort_t);
 			copy_array(temp, start, size, unsorted_array);
 		}
-		
+
 		template<typename V>
 		static void topdown_merge(V** unsorted_array, int start, int middle, int size, V** temp, sort_type sort_t)
 		{
 			int i0 = start;
 			int i1 = middle;
 
-			if (sort_t == SORT_HIGHEST_FIRST)
+			if (sort_t == SORT_BIG_ENDIAN)
 			{
 				for (int j = start; j < size; ++j)
 				{
@@ -152,7 +152,7 @@ namespace tools
 						temp[j] = unsorted_array[i1++];
 				}
 			}
-			else if (sort_t == SORT_LOWEST_FIRST)
+			else if (sort_t == SORT_LITTLE_ENDIAN)
 			{
 				for (int j = start; j < size; ++j)
 				{
@@ -163,17 +163,17 @@ namespace tools
 				}
 			}
 		}
-		
+
 		template<typename V>
 		static void copy_array(V** temp, int start, int size, V** array1)
 		{
 
 			for (size_t i = start; i < size; ++i)
 				array1[i] = temp[i];
-		} 
+		}
 
-		template<template<typename> typename T, typename V>
-		static void merge_sort_helper(typename T<V>& unsorted_array, int start, int size, V* temp, sort_type sort_t)
+		template<template<typename> class T, typename V>
+		static void merge_sort_helper(T<V>& unsorted_array, int start, int size, V* temp, sort_type sort_t)
 		{
 			if (size - start < 2)
 				return;
@@ -186,13 +186,13 @@ namespace tools
 			copy_array(temp, start, size, unsorted_array);
 		}
 
-		template<template<typename> typename T, typename V>
-		static void topdown_merge(typename T<V>& unsorted_array, int start, int middle, int size, V* temp, sort_type sort_t)
+		template<template<typename> class T, typename V>
+		static void topdown_merge(T<V>& unsorted_array, int start, int middle, int size, V* temp, sort_type sort_t)
 		{
 			int i0 = start;
 			int i1 = middle;
 
-			if (sort_t == SORT_HIGHEST_FIRST)
+			if (sort_t == SORT_BIG_ENDIAN)
 			{
 				for (int j = start; j < size; ++j)
 				{
@@ -202,7 +202,7 @@ namespace tools
 						temp[j] = unsorted_array[i1++];
 				}
 			}
-			else if (sort_t == SORT_LOWEST_FIRST)
+			else if (sort_t == SORT_LITTLE_ENDIAN)
 			{
 				for (int j = start; j < size; ++j)
 				{
@@ -214,9 +214,9 @@ namespace tools
 			}
 		}
 
-		template<template<typename> typename T, typename V>
-		static void merge_sort_helper(typename T<V>* unsorted_array, int start, int size,
-										V* temp, sort_type sort_t)
+		template<template<typename> class T, typename V>
+		static void merge_sort_helper(T<V>* unsorted_array, int start, int size,
+			V* temp, sort_type sort_t)
 		{
 			if (size - start < 2)
 				return;
@@ -229,14 +229,14 @@ namespace tools
 			copy_array(temp, start, size, *unsorted_array);
 		}
 
-		template<template<typename> typename T, typename V>
-		static void topdown_merge(typename T<V>* unsorted_array, int start, int middle, int size,
-										V* temp, sort_type sort_t)
+		template<template<typename> class T, typename V>
+		static void topdown_merge(T<V>* unsorted_array, int start, int middle, int size,
+			V* temp, sort_type sort_t)
 		{
 			int i0 = start;
 			int i1 = middle;
 
-			if (sort_t == SORT_HIGHEST_FIRST)
+			if (sort_t == SORT_BIG_ENDIAN)
 			{
 				for (int j = start; j < size; ++j)
 				{
@@ -246,7 +246,7 @@ namespace tools
 						temp[j] = (*unsorted_array)[i1++];
 				}
 			}
-			else if (sort_t == SORT_LOWEST_FIRST)
+			else if (sort_t == SORT_LITTLE_ENDIAN)
 			{
 				for (int j = start; j < size; ++j)
 				{
@@ -258,16 +258,16 @@ namespace tools
 			}
 		}
 
-		template<template<typename> typename T, typename V>
-		static void copy_array(V* temp, int start, int size, typename T<V>& array1)
+		template<template<typename> class T, typename V>
+		static void copy_array(V* temp, int start, int size, T<V>& array1)
 		{
 			for (size_t i = start; i < size; ++i)
 				array1[i] = temp[i];
 		}
 
-		template<template<typename> typename T, typename V>
-		static void merge_sort_helper(typename T<V*>* unsorted_array, int start, int size, 
-										V** temp, sort_type sort_t)
+		template<template<typename> class T, typename V>
+		static void merge_sort_helper(T<V*>* unsorted_array, int start, int size,
+			V** temp, sort_type sort_t)
 		{
 			if (size - start < 2)
 				return;
@@ -280,16 +280,16 @@ namespace tools
 			copy_array(temp, start, size, *unsorted_array);
 		}
 
-		template<template<typename> typename T, typename V>
-		static void topdown_merge(typename T<V*>* unsorted_array, int start, int middle, int size,
-										V** temp, sort_type sort_t)
+		template<template<typename> class T, typename V>
+		static void topdown_merge(T<V*>* unsorted_array, int start, int middle, int size,
+			V** temp, sort_type sort_t)
 		{
 			int i0 = start;
 			int i1 = middle;
 
 			T<V*>& unsorted = *unsorted_array;
 
-			if (sort_t == SORT_HIGHEST_FIRST)
+			if (sort_t == SORT_BIG_ENDIAN)
 			{
 				for (int j = start; j < size; ++j)
 				{
@@ -299,7 +299,7 @@ namespace tools
 						temp[j] = unsorted[i1++];
 				}
 			}
-			else if (sort_t == SORT_LOWEST_FIRST)
+			else if (sort_t == SORT_LITTLE_ENDIAN)
 			{
 				for (int j = start; j < size; ++j)
 				{
@@ -311,5 +311,6 @@ namespace tools
 			}
 		}
 	} /* Internals namespace */
+} /* sorting namespace */
 } /* tools namespace */
 #endif /* _MERGE_SORT_H_ */

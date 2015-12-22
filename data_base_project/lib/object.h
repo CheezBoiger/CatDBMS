@@ -85,5 +85,4 @@ namespace catdb
 
 	};
 } /* catdb namespace */
-
 #endif /* _OBJECT_H_ */

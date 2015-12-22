@@ -6,8 +6,8 @@
 #include "sort_helpers.h"
 #include "../../architecture/error.h"
 
-namespace tools
-{
+namespace tools {
+namespace sorting {
 	// Insertion Sort for any array with default primitive, or object, values.
 	template<class T>
 	static void insertion_sort(T* unsorted_array, int start, int size, sort_type sort_t)
@@ -27,7 +27,7 @@ namespace tools
 			return;
 		}
 
-		if (sort_t == SORT_HIGHEST_FIRST)
+		if (sort_t == SORT_BIG_ENDIAN)
 		{
 			for (size_t i = start + 1; i < size; ++i)
 			{
@@ -40,7 +40,7 @@ namespace tools
 				}
 			}
 		}
-		else if (sort_t == SORT_LOWEST_FIRST)
+		else if (sort_t == SORT_LITTLE_ENDIAN)
 		{
 			for (size_t i = start + 1; i < size; ++i)
 			{
@@ -74,7 +74,7 @@ namespace tools
 			return;
 		}
 
-		if (sort_t == SORT_HIGHEST_FIRST)
+		if (sort_t == SORT_BIG_ENDIAN)
 		{
 			for (size_t i = start + 1; i < size; ++i)
 			{
@@ -87,7 +87,7 @@ namespace tools
 				}
 			}
 		}
-		else if (sort_t == SORT_LOWEST_FIRST)
+		else if (sort_t == SORT_LITTLE_ENDIAN)
 		{
 			for (size_t i = start + 1; i < size; ++i)
 			{
@@ -102,8 +102,8 @@ namespace tools
 		}
 	}
 
-	template<template<typename> typename T, typename V>
-	static void insertion_sort(typename T<V>& unsorted_array, int start, int size, sort_type sort_t)
+	template<template<typename> class T, typename V>
+	static void insertion_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
 	{
 		Errors::err_info err;
 
@@ -114,7 +114,7 @@ namespace tools
 			return;
 		}
 
-		if (sort_t == SORT_HIGHEST_FIRST)
+		if (sort_t == SORT_BIG_ENDIAN)
 		{
 			for (size_t i = start + 1; i < size; ++i)
 			{
@@ -127,7 +127,7 @@ namespace tools
 				}
 			}
 		}
-		else if (sort_t == SORT_LOWEST_FIRST)
+		else if (sort_t == SORT_LITTLE_ENDIAN)
 		{
 			for (size_t i = start + 1; i < size; ++i)
 			{
@@ -143,8 +143,8 @@ namespace tools
 	}
 
 	// ONLY WORKS IF YOUR TEMPLATE CLASS HAS OVERLOADED THE [] OPERATOR.
-	template<template<typename> typename T, typename V>
-	static void insertion_sort(typename T<V>* unsorted_array, int start, int size, sort_type sort_t)
+	template<template<typename> class T, typename V>
+	static void insertion_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		Errors::err_info err;
 
@@ -164,7 +164,7 @@ namespace tools
 		// dereference the shat outta' this generic class!!
 		T<V>& arra = *unsorted_array;
 
-		if (sort_t == SORT_HIGHEST_FIRST)
+		if (sort_t == SORT_BIG_ENDIAN)
 		{
 			for (size_t i = start + 1; i < size; ++i)
 			{
@@ -177,7 +177,7 @@ namespace tools
 				}
 			}
 		}
-		else if (sort_t == SORT_LOWEST_FIRST)
+		else if (sort_t == SORT_LITTLE_ENDIAN)
 		{
 			for (size_t i = start + 1; i < size; ++i)
 			{
@@ -191,11 +191,11 @@ namespace tools
 			}
 		}
 	}
-#if 1
+
 	// Handles sorting with template objects holding abstract objects. WARNING, THIS FUNCTION ONLY WORKS IF YOU HAVE OVERLOADED THE 
 	// [] OPERATOR IN YOUR TEMPLATED CLASS.
-	template<template<typename> typename T, typename V>
-	static void insertion_sort(typename T<V*>* unsorted_array, int start, int size, sort_type sort_t)
+	template<template<typename> class T, typename V>
+	static void insertion_sort(T<V*>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		Errors::err_info err;
 
@@ -215,7 +215,7 @@ namespace tools
 		// dereference the shat outta' this generic class!!
 		T<V*>& arra = *unsorted_array;
 
-		if (sort_t == SORT_HIGHEST_FIRST)
+		if (sort_t == SORT_BIG_ENDIAN)
 		{
 			for (size_t i = start + 1; i < size; ++i)
 			{
@@ -228,7 +228,7 @@ namespace tools
 				}
 			}
 		}
-		else if (sort_t == SORT_LOWEST_FIRST)
+		else if (sort_t == SORT_LITTLE_ENDIAN)
 		{
 			for (size_t i = start + 1; i < size; ++i)
 			{
@@ -242,8 +242,7 @@ namespace tools
 			}
 		}
 	}
-#endif
-	
+} /* sorting namespace */
 } /* tools namespace */
 
 #endif /* _INSERTION_SORT_H_ */

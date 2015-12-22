@@ -3,8 +3,9 @@
 
 #pragma once
 
-namespace tools
-{
+namespace tools {
+namespace data_structures {
+
 	template<typename T>
 	class Heap
 	{
@@ -15,7 +16,7 @@ namespace tools
 	public:
 
 	};
-
+} /* data_structures namespace */
 } /* tools namespace */
 
 #endif /* _HEAP_H_ */

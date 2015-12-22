@@ -6,11 +6,11 @@
 
 #if defined(_DB_CAT_WINDOWS)
 
-#define create_folder(filename, mode) CreateDirectory(#filename, mode);
+ #define create_folder(filename, mode) CreateDirectory(filename, mode);
 
-#elif defined(_DB_CAT_LINUX)
+#elif defined(_DB_CAT_LINUX) || defined(_DB_CAT_UNIX)
 
-#define create_folder(filename, mode) mkdir(#filename, mode);
+ #define create_folder(filename, mode) mkdir(filename, mode);
 
 #endif /* _DB_CAT_WINDOWS */
 

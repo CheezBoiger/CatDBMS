@@ -17,22 +17,6 @@ n get_me_a_cup_of_coffee(n cat)
 	return cat;
 }
 
-int binary_search(int* numbers, int min, int max, int search_num)
-{
-	while (min <= max)
-	{
-		int mid = (min + max) / 2;
-		if (numbers[mid] == search_num)
-			return mid;
-		else if (numbers[mid] > search_num)
-			max = mid - 1;
-		else if (numbers[mid] < search_num)
-			min = mid + 1;
-	}
-
-	return -1;
-}
-
 inline void test(void)
 {
 	using namespace std;
@@ -64,26 +48,45 @@ inline void test(void)
 	std::cout << "Error code " << e.code_number << ": " << e.error_msg << std::endl;
 }
 
-void cat(catdb::Object* take)
-{
-
-}
-
 void tests(void)
 {
-	catdb::Container test;
-	test.insert_new_file("Jerry", "jerry");
-	test.insert_new_file("Freddy", "freddy");
-	test.insert_new_file("Victor", "victor");
-	test.insert_new_file("Kevin", "kevin");
-	test.insert_new_file("Alex", "alex");
-	test.insert_new_file("Gared", "gared");
-	test.insert_new_file("Fred", "fred");
-
+	tools::data_structures::doubly_linked_list<catdb::Object*> test;
+	
+	catdb::File jerry("Jerry", "jerry");
+	catdb::File freddy("Freddy", "freddy");
+	catdb::File victor("Victor", "victor");
+	catdb::File kevin("Kevin", "kevin");
+	catdb::File alex("Alex", "alex");
+	catdb::File gared("Gared", "gared");
+	catdb::File ben("Ben", "ben");
+	catdb::File fred("Fred", "fred");
+	
+	/*
+	std::string jerry("Jerry");
+	std::string freddy("Freddy");
+	std::string victor("Victor");
+	std::string kevin("Kevin");
+	std::string alex("Alex");
+	std::string gared("Gared");
+	std::string ben("Ben");
+	std::string fred("Fred");
+	*/
 //	test.sort_container(tools::quick_sort, tools::SORT_HIGHEST_FIRST);
-	test.remove_object_name("Victor");
-	test.sort_container(tools::insertion_sort, tools::SORT_HIGHEST_FIRST);
-	std::cout << test.display_list() << std::endl;
+
+	test.insert(&jerry);
+	test.insert(&freddy);
+	test.insert(&victor);
+	test.insert(&kevin);
+	test.insert(&ben);
+	test.insert(&alex);
+	test.insert(&gared);
+	test.insert(&fred);
+
+	tools::sorting::quick_sort(&test, 0, test.get_size(), tools::sorting::SORT_LITTLE_ENDIAN);
+	tools::sorting::quick_sort(&test, 0, test.get_size(), tools::sorting::SORT_BIG_ENDIAN);
+
+	for (size_t i = 0; i < test.get_size(); ++i)
+		std::cout << test[i]->get_filename() << std::endl;
 
 
 }
@@ -93,18 +96,15 @@ void tests(void)
 
 #define SIZE   100
 
-struct
-{
-	int cat;
-} cats;
+#include "tools/remote/binary_search.h"
+#include "tools/sorting/bubble_sort.h"
 
 int main(int c, char **args)
 {
-	cats.cat = 5;
 	srand(0);
-	//tests();
+	tests();
 	/*
-	tools::s_list<int> test_list;
+	tools::data_structures::s_list<int> test_list;
 	for (size_t i = 0; i < SIZE; ++i)
 		test_list.insert(rand());
 	tools::merge_sort(test_list, 0, SIZE, tools::SORT_HIGHEST_FIRST);
@@ -123,15 +123,25 @@ int main(int c, char **args)
 	clock_t end = clock();
 	std::cout << "took : " << end - start / (double) CLOCKS_PER_SEC << " milliseconds" << std::endl;
 	*/
+	/*
 	catdb::Object* lists[5];
 	lists[0] = new catdb::File("Jill", "jill");
 	lists[1] = new catdb::File("Tommy", "tommy");
 	lists[2] = new catdb::File("Alex", "alex");
 	lists[3] = new catdb::File("Fred", "fred");
-	lists[4] = new catdb::File("Bill","bill");
-	tools::merge_sort(lists, 0, 5, tools::SORT_HIGHEST_FIRST);
+	lists[4] = new catdb::File("Bill", "bill");
+	tools::bubble_sort(lists, 0, 5, tools::SORT_HIGHEST_FIRST);
 	for (size_t i = 0; i < 5; ++i)
 		std::cout << lists[i]->get_filename() << std::endl;
+
+	catdb::File fr("Jill", "jill");
+	std::cout << "Hi mate" << std::endl;
+	
+	std::cout << tools::remote::binary_search(lists, 0, 4, (catdb::Object*)&fr, tools::SORT_BIG_ENDIAN) << std::endl;
+
+	int numbers[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	std::cout << tools::remote::binary_search(numbers, 0, 10, 9, tools::SORT_LITTLE_ENDIAN) << std::endl;
+		*/
 	//	for (size_t i = 0; i < testing.get_size(); ++i)
 //		std::cout << testing[i] << std::endl;
 

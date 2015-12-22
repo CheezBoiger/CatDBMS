@@ -1,0 +1,59 @@
+﻿Build started 12/13/2015 6:22:28 PM.
+     1>Project "C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\data_base_project\data_base_project.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         D:\Alex Programs\VC\bin\CL.exe /c /ID:\Python\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt architecture\error.cpp container.cpp lib\file.cpp lib\object.cpp main.cpp
+         error.cpp
+         container.cpp
+     1>container.cpp(14): warning C4018: '<': signed/unsigned mismatch
+     1>container.cpp(36): warning C4390: ';': empty controlled statement found; is this the intent?
+     1>container.cpp(48): warning C4018: '<': signed/unsigned mismatch
+     1>container.cpp(67): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/linked_list.h(138): warning C4018: '<': signed/unsigned mismatch
+         c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/linked_list.h(103): note: while compiling class template member function 'bool tools::s_list<catdb::Object *>::remove(V)'
+                 with
+                 [
+                     V=catdb::Object *
+                 ]
+         container.cpp(53): note: see reference to function template instantiation 'bool tools::s_list<catdb::Object *>::remove(V)' being compiled
+                 with
+                 [
+                     V=catdb::Object *
+                 ]
+         container.cpp(7): note: see reference to class template instantiation 'tools::s_list<catdb::Object *>' being compiled
+     1>c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/linked_list.h(105): warning C4101: 'error_info': unreferenced local variable
+         file.cpp
+         object.cpp
+     1>lib\object.cpp(65): warning C4018: '<': signed/unsigned mismatch
+     1>lib\object.cpp(88): warning C4018: '<': signed/unsigned mismatch
+         main.cpp
+     1>c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(25): warning C4091: 'typedef ': ignored on left of 'tools::doubly_linked_list<V>::d_node' when no variable is declared
+         c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(276): note: see reference to class template instantiation 'tools::doubly_linked_list<V>' being compiled
+     1>c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(25): warning C4091: 'typedef ': ignored on left of 'tools::doubly_linked_list<std::string>::d_node' when no variable is declared
+         main.cpp(73): note: see reference to class template instantiation 'tools::doubly_linked_list<std::string>' being compiled
+     1>c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(177): warning C4018: '<': signed/unsigned mismatch
+         c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(146): note: while compiling class template member function 'bool tools::doubly_linked_list<std::string>::remove(V)'
+                 with
+                 [
+                     V=std::string
+                 ]
+         main.cpp(75): note: see reference to function template instantiation 'bool tools::doubly_linked_list<std::string>::remove(V)' being compiled
+                 with
+                 [
+                     V=std::string
+                 ]
+         main.cpp(73): note: see reference to class template instantiation 'tools::doubly_linked_list<std::string>' being compiled
+       Link:
+         D:\Alex Programs\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\Release\data_base_project.exe" /NOLOGO /LIBPATH:D:\Python\libs python34.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\Release\data_base_project.pdb" /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\Release\data_base_project.lib" /MACHINE:X86 /SAFESEH Release\error.obj
+         Release\container.obj
+         Release\file.obj
+         Release\object.obj
+         Release\main.obj
+         Generating code
+         All 257 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+         Finished generating code
+         data_base_project.vcxproj -> C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\Release\data_base_project.exe
+     1>Done Building Project "C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\data_base_project\data_base_project.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.24

@@ -10,17 +10,17 @@
 #error C++ compiler required!
 #endif /* __cplusplus */
 
-namespace tools
-{
+namespace tools {
+namespace data_structures {
 
-/*
-	THIS FILE IS UNDER CONSTRUCTION!! DO NOT ATTEMPT TO USE AS IT IS NOT FUNCTIONAL AT 
-	THE MOMENT!! 
+	/*
+		THIS FILE IS UNDER CONSTRUCTION!! DO NOT ATTEMPT TO USE AS IT IS NOT FUNCTIONAL AT
+		THE MOMENT!!
 
-	Hash Table template class used for storing information quickly and securely.
-	Time complexity is O(1) constant when inserting and removing. 
+		Hash Table template class used for storing information quickly and securely.
+		Time complexity is O(1) constant when inserting and removing.
 
-*/
+	*/
 	template<typename Key, typename Value>
 	class HashTable
 	{
@@ -55,6 +55,7 @@ namespace tools
 	}; /* HashTable */
 
 	template<> class HashTable<std::string, std::string>;
+} /* data_structures namespace */
 } /* tools namespace */
 
 

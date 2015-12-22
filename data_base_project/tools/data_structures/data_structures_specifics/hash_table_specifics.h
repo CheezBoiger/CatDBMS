@@ -4,8 +4,8 @@
 #include "../hash_table.h"
 #pragma once
 
-namespace tools
-{
+namespace tools {
+namespace data_structures {
 	template<typename K> class HashTable<K, char>;
 
 	template<>
@@ -27,6 +27,7 @@ namespace tools
 			return false;
 		}
 	};
+} /* data_structures namespace */
 } /* tools namespace */
 
 #endif /* _HASH_TABLE_SPECIFICS_H_ */

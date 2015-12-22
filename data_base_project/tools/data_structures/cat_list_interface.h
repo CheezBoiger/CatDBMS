@@ -4,15 +4,15 @@
 
 #include "../../lib/object.h"
 
-namespace tools
-{
+namespace tools {
+namespace data_structures {
 	/* This is  List template interface intended to conform any list-like
-	   data structure that plans to use the sorting algorithms in tools */
+		data structure that plans to use the sorting algorithms in tools */
 	template<typename V>
 	class List
 	{
 	public:
-		virtual ~List(void) { } 
+		virtual ~List(void) { }
 
 		virtual void insert(V value) = 0;
 
@@ -20,10 +20,11 @@ namespace tools
 
 		virtual V& operator[](const int32_t i) = 0;
 
-		virtual int32_t get_size(void) = 0;
+		virtual int32_t get_size(void) const = 0;
 
-		virtual bool is_empty(void) = 0;
+		virtual bool is_empty(void) const = 0;
 	};
-}
+} /* data_structures namespace */
+} /* tools namespace */
 
 #endif /* _CAT_LIST_INTERFACE_H_ */

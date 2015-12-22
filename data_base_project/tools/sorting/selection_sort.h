@@ -5,8 +5,8 @@
 #include "sort_helpers.h"
 #include "../../architecture/error.h"
 
-namespace tools
-{
+namespace tools {
+namespace sorting {
 	// Default function template for sorting an array holding basic values.
 	template<class T>
 	static void selection_sort(T* unsorted_array, int start, int size, sort_type sort_t)
@@ -26,7 +26,7 @@ namespace tools
 			return;
 		}
 
-		if (sort_t == SORT_HIGHEST_FIRST)
+		if (sort_t == SORT_BIG_ENDIAN)
 		{
 			for (size_t i = start; i < size - 1; ++i)
 			{
@@ -39,7 +39,7 @@ namespace tools
 				swap(unsorted_array, highest, i);
 			}
 		}
-		else if (sort_t == SORT_LOWEST_FIRST)
+		else if (sort_t == SORT_LITTLE_ENDIAN)
 		{
 			for (size_t i = start; i < size - 1; ++i)
 			{
@@ -73,7 +73,7 @@ namespace tools
 			return;
 		}
 
-		if (sort_t == SORT_HIGHEST_FIRST)
+		if (sort_t == SORT_BIG_ENDIAN)
 		{
 			for (size_t i = start; i < size - 1; ++i)
 			{
@@ -86,7 +86,7 @@ namespace tools
 				swap(unsorted_array, highest, i);
 			}
 		}
-		else if(sort_t == SORT_LOWEST_FIRST)
+		else if (sort_t == SORT_LITTLE_ENDIAN)
 		{
 			for (size_t i = start; i < size - 1; ++i)
 			{
@@ -101,8 +101,8 @@ namespace tools
 		}
 	}
 
-	template<template<typename> typename T, typename V>
-	static void selection_sort(typename T<V>& unsorted_array, int start, int size, sort_type sort_t)
+	template<template<typename> class T, typename V>
+	static void selection_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
 	{
 		Errors::err_info err;
 
@@ -113,7 +113,7 @@ namespace tools
 			return;
 		}
 
-		if (sort_t == SORT_HIGHEST_FIRST)
+		if (sort_t == SORT_BIG_ENDIAN)
 		{
 			for (size_t i = start; i < size - 1; ++i)
 			{
@@ -126,7 +126,7 @@ namespace tools
 				swap(unsorted_array, highest, i);
 			}
 		}
-		else if (sort_t == SORT_LOWEST_FIRST)
+		else if (sort_t == SORT_LITTLE_ENDIAN)
 		{
 			for (size_t i = start; i < size - 1; ++i)
 			{
@@ -141,8 +141,8 @@ namespace tools
 		}
 	}
 
-	template<template<typename> typename T, typename V>
-	static void selection_sort(typename T<V*>* unsorted_array, int start, int size, sort_type sort_t)
+	template<template<typename> class T, typename V>
+	static void selection_sort(T<V*>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		Errors::err_info err;
 
@@ -161,7 +161,7 @@ namespace tools
 
 		T<V*>& arra = *unsorted_array;
 
-		if (sort_t == SORT_HIGHEST_FIRST)
+		if (ssort_t == SORT_BIG_ENDIAN)
 		{
 			for (size_t i = start; i < size - 1; ++i)
 			{
@@ -174,7 +174,7 @@ namespace tools
 				swap(arra, highest, i);
 			}
 		}
-		else if (sort_t == SORT_LOWEST_FIRST)
+		else if (sort_t == SORT_LITTLE_ENDIAN)
 		{
 			for (size_t i = start; i < size - 1; ++i)
 			{
@@ -189,8 +189,8 @@ namespace tools
 		}
 	}
 
-	template<template<typename> typename T, typename V>
-	static void selection_sort(typename T<V>* unsorted_array, int start, int size, sort_type sort_t)
+	template<template<typename> class T, typename V>
+	static void selection_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		Errors::err_info err;
 
@@ -209,7 +209,7 @@ namespace tools
 
 		T<V>& arra = *unsorted_array;
 
-		if (sort_t == SORT_HIGHEST_FIRST)
+		if (sort_t == SORT_BIG_ENDIAN)
 		{
 			for (size_t i = start; i < size - 1; ++i)
 			{
@@ -222,7 +222,7 @@ namespace tools
 				swap(arra, highest, i);
 			}
 		}
-		else if (sort_t == SORT_LOWEST_FIRST)
+		else if (sort_t == SORT_LITTLE_ENDIAN)
 		{
 			for (size_t i = start; i < size - 1; ++i)
 			{
@@ -236,6 +236,7 @@ namespace tools
 			}
 		}
 	}
+} /* sorting namespace */
 } /* tools namespace */
 
 #endif /* _SELECTION_SORT_H_ */

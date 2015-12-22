@@ -66,5 +66,4 @@ namespace catdb
 	{
 
 	}
-
 } /* catdb namespace */

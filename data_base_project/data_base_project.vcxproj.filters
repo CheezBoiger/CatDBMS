@@ -90,6 +90,12 @@
     <ClInclude Include="architecture\directory_handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tools\data_structures\cat_list_interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\remote\binary_search.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -110,5 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="todoList.txt" />
+    <Text Include="tools\Tools_warning_note.txt" />
   </ItemGroup>
 </Project>

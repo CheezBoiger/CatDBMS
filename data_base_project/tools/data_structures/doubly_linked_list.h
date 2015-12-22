@@ -7,8 +7,8 @@
 
 #define MINIMUM_ARRAY_BOUNDARY        0
 
-namespace tools
-{
+namespace tools {
+namespace data_structures {
 
 	// The ol' fashioned doubly linked list yall.
 	template<typename V>
@@ -20,7 +20,7 @@ namespace tools
 		{
 			d_node* prev;
 			d_node* next;
-	
+
 			V data;
 			int32_t index;
 		};
@@ -36,13 +36,13 @@ namespace tools
 		d_node* handle_root_removal(void)
 		{
 			d_node* rem_node = root;
-			
+
 			if (cursor == root)
 				cursor = root->next;
-			
+
 			root = root->next;
-			
-			if(root != NULL)
+
+			if (root != NULL)
 				root->prev = NULL;
 			else
 				tail = root = cursor = NULL;
@@ -53,7 +53,7 @@ namespace tools
 		d_node* handle_tail_removal(void)
 		{
 			d_node* rem_node = tail;
-			
+
 			if (cursor == tail)
 				cursor = tail->prev;
 
@@ -97,7 +97,7 @@ namespace tools
 	public:
 
 		doubly_linked_list(void) : size(0), root(NULL), tail(NULL), cursor(NULL) { }
-		
+
 		virtual ~doubly_linked_list(void)
 		{
 			d_node* previous;
@@ -158,7 +158,7 @@ namespace tools
 				else
 				{
 					d_node* traverse = root;
-					
+
 					while (traverse != NULL)
 					{
 						if (traverse->data == data)
@@ -194,11 +194,11 @@ namespace tools
 			return false;
 		}
 
-		inline int32_t get_size(void) { return size; }
+		inline int32_t get_size(void) const { return size; }
 
-		inline bool is_empty(void) { return size == 0; }
+		inline bool is_empty(void) const { return size == 0; }
 
-		const V* front(void) 
+		const V* front(void)
 		{
 			if (root == NULL)
 			{
@@ -206,9 +206,9 @@ namespace tools
 				return NULL;
 			}
 
-			return &root->data; 
+			return &root->data;
 		}
-		
+
 		const V* back(void)
 		{
 			if (tail == NULL)
@@ -218,10 +218,10 @@ namespace tools
 			}
 
 
-			return &tail->data; 
+			return &tail->data;
 		}
 		const V* get_current(void)
-		{ 
+		{
 			if (cursor == NULL)
 			{
 				_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_null_value));
@@ -282,7 +282,7 @@ namespace tools
 			return *result;
 		}
 	};
-
+} /* data_structures namepace */
 } /* tools namespace */
 
 

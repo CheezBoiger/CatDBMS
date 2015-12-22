@@ -7,9 +7,9 @@
 
 #define MINIMUM_ARRAY_BOUNDARY 0
 
-namespace tools
-{
-	
+namespace tools {
+namespace data_structures {
+
 	// Generic Linked List Class intended to use if space is a factor.
 	// When implemented, nodes are linked to eachother, one way, and 
 	// provided to hold information. 
@@ -38,7 +38,7 @@ namespace tools
 		{
 			s_node* rem_node = root;
 
-			if(root != NULL)
+			if (root != NULL)
 				root = root->next;
 			return rem_node;
 		}
@@ -48,7 +48,7 @@ namespace tools
 		{
 			s_node* rem_node = tail;
 			s_node* traverse = root;
-			
+
 			while (traverse->next != tail)
 				traverse = traverse->next;
 			tail = traverse;
@@ -136,7 +136,7 @@ namespace tools
 				{
 					// reset all numbering for the indices!!
 					s_node* traverse = rem_node->next;
-					for (size_t i = rem_node->i; i < size-1; ++i)
+					for (size_t i = rem_node->i; i < size - 1; ++i)
 					{
 						traverse->i = i;
 						traverse = traverse->next;
@@ -190,7 +190,7 @@ namespace tools
 		}
 
 		bool is_empty(void) const { return size == 0 && root == NULL; }
-		
+
 		int32_t get_size(void) const { return size; }
 
 		// Access the linked list through means of array format.
@@ -229,7 +229,7 @@ namespace tools
 			return *result;
 		}
 	};
-
+} /* data_structures namespace */
 } /* tools namespace */
 
 #endif /* _LINKED_LIST_H_ */

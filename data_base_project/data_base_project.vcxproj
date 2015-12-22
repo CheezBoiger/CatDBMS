@@ -135,6 +135,7 @@
     <ClInclude Include="lib\object.h" />
     <ClInclude Include="lib\security\security.h" />
     <ClInclude Include="lib\user.h" />
+    <ClInclude Include="tools\data_structures\cat_list_interface.h" />
     <ClInclude Include="tools\data_structures\circlularly_linked_list.h" />
     <ClInclude Include="tools\data_structures\data_structures_specifics\hash_table_specifics.h" />
     <ClInclude Include="tools\data_structures\doubly_linked_list.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="tools\data_structures\heap.h" />
     <ClInclude Include="tools\data_structures\linked_list.h" />
     <ClInclude Include="tools\data_structures\stack.h" />
+    <ClInclude Include="tools\remote\binary_search.h" />
     <ClInclude Include="tools\sorting\bubble_sort.h" />
     <ClInclude Include="tools\sorting\counting_sort.h" />
     <ClInclude Include="tools\sorting\insertion_sort.h" />
@@ -160,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="todoList.txt" />
+    <Text Include="tools\Tools_warning_note.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

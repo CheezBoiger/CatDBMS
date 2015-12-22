@@ -4,7 +4,7 @@
 
 namespace catdb
 {
-	Container::Container(void) : size(0), list(new tools::doubly_linked_list<catdb::Object*>()), container_title("no_name"),
+	Container::Container(void) : size(0), list(new ::doubly_linked_list<catdb::Object*>()), container_title("no_name"),
 		Object()
 	{
 	}
@@ -106,7 +106,7 @@ namespace catdb
 		return table;
 	}
 
-	void Container::sort_container(type_sort_function sorting_function, tools::sort_type sort_t)
+	void Container::sort_container(type_sort_function sorting_function, sorting::sort_type sort_t)
 	{
 		sorting_function(list, 0, list->get_size(), sort_t);
 	}

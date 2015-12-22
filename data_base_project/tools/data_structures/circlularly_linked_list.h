@@ -4,13 +4,13 @@
 
 #include "../../architecture/error.h"
 
-namespace tools
-{
+namespace tools {
+namespace data_structures {
 	template<typename V>
 	class circularly_linked_list
 	{
 	private:
-		
+
 		struct c_node
 		{
 			c_node* previous;
@@ -31,11 +31,12 @@ namespace tools
 	public:
 		circularly_linked_list(void) : root(NULL), tail(NULL), cursor(NULL), size(0) { }
 
-		~circularly_linked_list(void) 
+		~circularly_linked_list(void)
 		{
 
 		}
 	};
+} /* data_structures namespace */
 } /* tools namespace */
 
 #endif /* _CIRCULARLY_LINKED_LIST_H_ */
