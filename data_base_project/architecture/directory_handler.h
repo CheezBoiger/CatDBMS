@@ -9,6 +9,7 @@
  #define create_folder(filename, mode) CreateDirectory(filename, mode);
 #elif defined(_DB_CAT_LINUX) || defined(_DB_CAT_UNIX)
  #define create_folder(filename, mode) mkdir(filename, mode);
+#define TEST 
 #endif /* _DB_CAT_WINDOWS */
 
 #endif /* _DIRECTORY_HANDLER_H_ */
