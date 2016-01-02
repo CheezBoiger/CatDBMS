@@ -47,8 +47,6 @@ namespace Database {
 
 	public:
 		Database(void) : table_name("No name") { }
-		
-		~Database(void) { }
 
 		virtual ~Database(void);
 
