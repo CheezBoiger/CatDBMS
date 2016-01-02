@@ -14,7 +14,7 @@ namespace Database {
 	class Table
 	{
 	public:
-		virtual ~Table(void) { coloumns.~vector(); }
+		virtual ~Table(void) { }
 
 		virtual bool merge(Table* table) = 0;
 
@@ -47,6 +47,8 @@ namespace Database {
 
 	public:
 		Database(void) : table_name("No name") { }
+		
+		~Database(void) { }
 
 		virtual ~Database(void);
 
