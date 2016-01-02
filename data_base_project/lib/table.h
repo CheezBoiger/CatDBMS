@@ -38,7 +38,7 @@ namespace Database {
 
 	};
 
-	class Database : protected Table
+	class Database : public Table
 	{
 	private:
 		std::string table_name;
