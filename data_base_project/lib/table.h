@@ -13,10 +13,6 @@ namespace Database {
 	/* Table interface intended to build an standard for catDBMS databases. */
 	class Table
 	{
-	private:
-
-		std::vector<Container> coloumns;
-
 	public:
 		virtual ~Table(void) { coloumns.~vector(); }
 
@@ -41,6 +37,8 @@ namespace Database {
 	class Database : public Table
 	{
 	private:
+		std::vector<Container> coloumns;
+
 		std::string table_name;
 
 		int32_t coloumn_dimension;
@@ -62,7 +60,10 @@ namespace Database {
 
 		bool add_coloumn(Container& container);
 
-		bool remove_coloumn(std::string coloumn_name);
+		bool remove_coloumn(std::string coloumn_name)
+		{
+			coloumns.at(1);
+		}
 
 		Table* instersection(Table* table);
 
