@@ -60,10 +60,7 @@ namespace Database {
 
 		bool add_coloumn(Container& container);
 
-		bool remove_coloumn(std::string coloumn_name)
-		{
-			coloumns.at(1);
-		}
+		bool remove_coloumn(std::string coloumn_name);
 
 		Table* instersection(Table* table);
 
