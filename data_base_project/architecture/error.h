@@ -2,8 +2,8 @@
 #define _ERROR_H_
 #pragma once
 
-#include "catdb_arch.h"
-#include "../header.h"
+#include "architecture/catdb_arch.h"
+#include "header.h"
 
 #define _ERROR_MINIMAL          0x01
 #define _ERROR_INTERMEDIATE     0x02

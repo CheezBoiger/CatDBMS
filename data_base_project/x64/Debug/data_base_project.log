@@ -1,0 +1,47 @@
+﻿  main.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(26): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<V>::d_node' when no variable is declared
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(284): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<V>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(37): warning C4311: 'reinterpret_cast': pointer truncation from 'catdb::File (__cdecl *)(void)' to 'int'
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(37): warning C4302: 'reinterpret_cast': truncation from 'catdb::File (__cdecl *)(void)' to 'int'
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(26): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<catdb::Object *>::d_node' when no variable is declared
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(53): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Object *>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(89): warning C4267: 'argument': conversion from 'size_t' to 'const int32_t', possible loss of data
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(180): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(147): note: while compiling class template member function 'bool tools::data_structures::doubly_linked_list<catdb::Object *>::remove(V)'
+          with
+          [
+              V=catdb::Object *
+          ]
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(53): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Object *>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(200): warning C4267: 'argument': conversion from 'size_t' to 'const int32_t', possible loss of data
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(144): note: see reference to function template instantiation 'int tools::sorting::Internal::partition<tools::data_structures::doubly_linked_list,catdb::Object>(tools::data_structures::doubly_linked_list<catdb::Object *> &,int,int,tools::sorting::sort_type)' being compiled
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(44): note: see reference to function template instantiation 'void tools::sorting::Internal::quick_sort_helper<tools::data_structures::doubly_linked_list,catdb::Object*>(tools::data_structures::doubly_linked_list<catdb::Object *> &,int,int,tools::sorting::sort_type)' being compiled
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(85): note: see reference to function template instantiation 'void tools::sorting::quick_sort<tools::data_structures::doubly_linked_list,catdb::Object>(tools::data_structures::doubly_linked_list<catdb::Object *> *,int,int,tools::sorting::sort_type)' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(202): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(211): warning C4267: 'argument': conversion from 'size_t' to 'const int32_t', possible loss of data
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(213): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  object.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\object.cpp(61): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\object.cpp(63): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\object.cpp(84): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\object.cpp(86): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  file.cpp
+  container.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(26): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<V>::d_node' when no variable is declared
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(284): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<V>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(26): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<catdb::Object *>::d_node' when no variable is declared
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\container.cpp(7): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Object *>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\container.cpp(21): warning C4267: 'argument': conversion from 'size_t' to 'const int32_t', possible loss of data
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\container.cpp(22): warning C4267: 'argument': conversion from 'size_t' to 'const int32_t', possible loss of data
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\container.cpp(55): warning C4267: 'argument': conversion from 'size_t' to 'const int32_t', possible loss of data
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\container.cpp(104): warning C4267: 'argument': conversion from 'size_t' to 'const int32_t', possible loss of data
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(180): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(147): note: while compiling class template member function 'bool tools::data_structures::doubly_linked_list<catdb::Object *>::remove(V)'
+          with
+          [
+              V=catdb::Object *
+          ]
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\container.cpp(7): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Object *>' being compiled
+  error.cpp
+  Generating Code...
+  data_base_project.vcxproj -> C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\x64\Debug\data_base_project.exe

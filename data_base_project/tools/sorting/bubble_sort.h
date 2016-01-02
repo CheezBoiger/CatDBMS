@@ -2,7 +2,7 @@
 #define _BUBBLESORT_H_
 
 #pragma once
-#include "sort_helpers.h"
+#include "tools/sorting/sort_helpers.h"
 using namespace tools::sorting;
 
 namespace tools {
@@ -66,6 +66,24 @@ namespace sorting {
 				}
 			}
 		} while (!finished);
+	}
+
+	template<template<typename> class T, typename V>
+	static void bubble_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
+	{
+
+	}
+
+	template<template<typename> class T, typename V>
+	static void bubble_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
+	{
+
+	}
+
+	template<template<typename> class T, typename V>
+	static void bubble_sort(T<V*>* unsorted_array, int start, int size, sort_type sort_t)
+	{
+
 	}
 } /* sorting namespace */
 } /* tools namespace */

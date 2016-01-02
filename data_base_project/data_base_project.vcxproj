@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Python\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project;D:\Python\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -126,14 +126,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="architecture\catdb_arch.h" />
+    <ClInclude Include="architecture\crypto.h" />
     <ClInclude Include="architecture\directory_handler.h" />
     <ClInclude Include="architecture\error.h" />
-    <ClInclude Include="container.h" />
+    <ClInclude Include="lib\container.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="architecture\internal\os_arch.h" />
-    <ClInclude Include="lib\file.h" />
+    <ClInclude Include="lib\element.h" />
     <ClInclude Include="lib\object.h" />
     <ClInclude Include="lib\security\security.h" />
+    <ClInclude Include="lib\table.h" />
     <ClInclude Include="lib\user.h" />
     <ClInclude Include="tools\data_structures\cat_list_interface.h" />
     <ClInclude Include="tools\data_structures\circlularly_linked_list.h" />
@@ -143,6 +145,7 @@
     <ClInclude Include="tools\data_structures\heap.h" />
     <ClInclude Include="tools\data_structures\linked_list.h" />
     <ClInclude Include="tools\data_structures\stack.h" />
+    <ClInclude Include="tools\data_types\String.h" />
     <ClInclude Include="tools\remote\binary_search.h" />
     <ClInclude Include="tools\sorting\bubble_sort.h" />
     <ClInclude Include="tools\sorting\counting_sort.h" />
@@ -155,9 +158,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="architecture\error.cpp" />
-    <ClCompile Include="container.cpp" />
-    <ClCompile Include="lib\file.cpp" />
+    <ClCompile Include="lib\container.cpp" />
+    <ClCompile Include="lib\element.cpp" />
     <ClCompile Include="lib\object.cpp" />
+    <ClCompile Include="lib\user.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

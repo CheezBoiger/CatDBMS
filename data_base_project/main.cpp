@@ -1,15 +1,16 @@
 #include "architecture/error.h"
 #include "tools/data_structures/linked_list.h"
-#include "tools/data_structures/data_structures_specifics/hash_table_specifics.h"
-#include "lib/file.h"
+#include "tools/data_structures/hash_table.h"
+#include "lib/element.h"
 #include "tools/sorting/insertion_sort.h"
 #include "tools/sorting/selection_sort.h"
 #include <string>
 #include <vector>
-#include "container.h"
+#include "lib/container.h"
 #include "tools/data_structures/doubly_linked_list.h"
 #include "tools/sorting/merge_sort.h"
 #include "tools/sorting/quick_sort.h"
+#include "lib/user.h"
 
 template<typename n>
 n get_me_a_cup_of_coffee(n cat)
@@ -29,11 +30,11 @@ inline void test(void)
 	string filename = "object";
 	string& ref = filename;
 	string owner = "Robert Hendrix";
-	catdb::File file(ref, owner);
-	catdb::File file1;
+	catdb::Element file(ref, owner);
+	catdb::Element file1;
 	catdb::Object *cat[10];
 	cat[0] = &file;
-	catdb::File obj();
+	catdb::Element obj();
 	int j = reinterpret_cast<int>(&obj);
 	std::cout << "j: " << j << std::endl;
 
@@ -50,17 +51,17 @@ inline void test(void)
 
 void tests(void)
 {
-	tools::data_structures::doubly_linked_list<catdb::Object*> test;
+	tools::data_structures::doubly_linked_list<catdb::Element> test;
+	catdb::Container cunt;
 	
-	catdb::File jerry("Jerry", "jerry");
-	catdb::File freddy("Freddy", "freddy");
-	catdb::File victor("Victor", "victor");
-	catdb::File kevin("Kevin", "kevin");
-	catdb::File alex("Alex", "alex");
-	catdb::File gared("Gared", "gared");
-	catdb::File ben("Ben", "ben");
-	catdb::File fred("Fred", "fred");
-	
+	catdb::Element jerry("Jerry", "jerry");
+	catdb::Element freddy("Freddy", "freddy");
+	catdb::Element victor("Victor", "victor");
+	catdb::Element kevin("Kevin", "kevin");
+	catdb::Element alex("Alex", "alex");
+	catdb::Element gared("Gared", "gared");
+	catdb::Element ben("Ben", "ben");
+	catdb::Element fred("Fred", "fred");
 	/*
 	std::string jerry("Jerry");
 	std::string freddy("Freddy");
@@ -72,7 +73,7 @@ void tests(void)
 	std::string fred("Fred");
 	*/
 //	test.sort_container(tools::quick_sort, tools::SORT_HIGHEST_FIRST);
-
+	/*
 	test.insert(&jerry);
 	test.insert(&freddy);
 	test.insert(&victor);
@@ -81,12 +82,23 @@ void tests(void)
 	test.insert(&alex);
 	test.insert(&gared);
 	test.insert(&fred);
+	*/
+	cunt.insert_element(jerry);
+	cunt.insert_element(freddy);
+	cunt.insert_element(victor);
+	cunt.insert_element(kevin);
+	cunt.insert_element(alex);
+	cunt.insert_element(gared);
+	cunt.insert_element(ben);
+	cunt.insert_element(fred);
+	(uint32_t)jerry;
+	cunt.sort_container(tools::sorting::quick_sort, tools::sorting::SORT_BIG_ENDIAN);
+	std::cout << cunt.display_list() << std::endl;
+	//tools::sorting::quick_sort(&test, 0, test.get_size(), tools::sorting::SORT_LITTLE_ENDIAN);
+	//tools::sorting::quick_sort(&test, 0, test.get_size(), tools::sorting::SORT_BIG_ENDIAN);
 
-	tools::sorting::quick_sort(&test, 0, test.get_size(), tools::sorting::SORT_LITTLE_ENDIAN);
-	tools::sorting::quick_sort(&test, 0, test.get_size(), tools::sorting::SORT_BIG_ENDIAN);
-
-	for (size_t i = 0; i < test.get_size(); ++i)
-		std::cout << test[i]->get_filename() << std::endl;
+	//for (size_t i = 0; i < test.get_size(); ++i)
+		//std::cout << test[i]->get_filename() << std::endl;
 
 
 }
@@ -103,6 +115,35 @@ int main(int c, char **args)
 {
 	srand(0);
 	tests();
+	tools::data_structures::HashTable<int, std::string> has(1000);
+	has.puts(5, "Harold");
+
+	std::cout << *has.gets(5) << std::endl;
+	catdb::Element* tee(new catdb::Element[5]);
+	//for (size_t i = 0; i < 5; ++i)
+	//	tee[i] = "Blankets";
+
+	for (size_t i = 0; i < 5; ++i)
+		std::cout << tee[i].get_filename() << std::endl;
+
+	catdb::Element te("Ben", "ben");
+	catdb::Object* steer = &te;
+	std::cout << steer->get_filename() << std::endl;
+	std::cout << (uint32_t)(*steer) << std::endl;
+
+	catdb::User user("Billy");
+	catdb::User userTop("Benson", SECURE_TOP_SECRET);
+	user.change_username("Freddy Jackson");
+	std::cout << user.get_username() << std::endl;
+	std::cout << user.change_password("k") << std::endl;
+	std::cout << "stored billy: " << _interpret_bool(catdb::store_user(user)) << std::endl;
+	std::string bill = "Billy";
+	catdb::User* temp = catdb::obtain_user(bill);
+	if (temp != NULL)
+		std::cout << "billy recovered: " << temp->get_username() << std::endl;
+	else
+		std::cout << "Billy was not recovered" << std::endl;
+	std::cout << "Hash table size: " << catdb::get_user_list_size() << std::endl;
 	/*
 	tools::data_structures::s_list<int> test_list;
 	for (size_t i = 0; i < SIZE; ++i)
@@ -117,7 +158,7 @@ int main(int c, char **args)
 	for (size_t i = 0; i <= SIZE; ++i)
 		testing.insert(rand());
 	std::cout << "Done adding now sorting..." << std::endl;
-
+	
 	clock_t start = clock();
 	tools::merge_sort(&testing, 0, testing.get_size(), tools::SORT_HIGHEST_FIRST);
 	clock_t end = clock();
@@ -147,6 +188,5 @@ int main(int c, char **args)
 
 //	testing.~doubly_linked_list();
 //	std::cout << testing[5] << std::endl;
-
 	std::cin.ignore();
 }

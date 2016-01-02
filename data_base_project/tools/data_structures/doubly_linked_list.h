@@ -15,24 +15,34 @@ namespace data_structures {
 	class doubly_linked_list : public List<V>
 	{
 	private:
-
+		
+		// struct to hold node pairs. 
 		typedef struct d_node
 		{
+			/* Previous node. */
 			d_node* prev;
+			/* Next node */
 			d_node* next;
 
+			/* Value data being held. */
 			V data;
+			/* The index number. */
 			int32_t index;
 		};
 
+		/* Root node, the first node (head) of the list. */
 		d_node* root;
+		/* The tail (last) node of the list. */
 		d_node* tail;
+		/* The cursor node, points to the current node in the list. */
 		d_node* cursor;
 
+		/* Size of the list, number of nodes in the list. */
 		int32_t size;
 
 	protected:
 
+		/* Handles the node removal cleanup before deleting. */
 		d_node* handle_root_removal(void)
 		{
 			d_node* rem_node = root;
@@ -50,6 +60,7 @@ namespace data_structures {
 			return rem_node;
 		}
 
+		/* Handls the tail removal cleanup before deleting. */
 		d_node* handle_tail_removal(void)
 		{
 			d_node* rem_node = tail;
@@ -63,6 +74,10 @@ namespace data_structures {
 			return rem_node;
 		}
 
+		/* Handles the cursor removal cleanup before deleting.
+		   Checks if cursor happens to be tail, or root, or both, 
+		   and fixes this problem.
+		 */
 		d_node* handle_cursor_removal(void)
 		{
 			d_node* rem_node = cursor;
@@ -96,8 +111,10 @@ namespace data_structures {
 
 	public:
 
+		/* Constructor for the list. */
 		doubly_linked_list(void) : size(0), root(NULL), tail(NULL), cursor(NULL) { }
 
+		/* The list destroyer. */
 		virtual ~doubly_linked_list(void)
 		{
 			d_node* previous;
@@ -143,6 +160,7 @@ namespace data_structures {
 
 		}
 
+		/* Removes the value from the list. If not found, the result returns false(0). */
 		bool remove(V data)
 		{
 			d_node* rem_node = NULL;
@@ -194,10 +212,13 @@ namespace data_structures {
 			return false;
 		}
 
+		/* Returns the size of the list. */
 		inline int32_t get_size(void) const { return size; }
 
+		/* Checks if the list is empty. True(1) if it is, false(0) otherwise.*/
 		inline bool is_empty(void) const { return size == 0; }
 
+		/* Grabs the front of the list. The root is returned. */
 		const V* front(void)
 		{
 			if (root == NULL)
@@ -209,6 +230,7 @@ namespace data_structures {
 			return &root->data;
 		}
 
+		/* Returns the back(tail) of the list. */
 		const V* back(void)
 		{
 			if (tail == NULL)
@@ -220,6 +242,8 @@ namespace data_structures {
 
 			return &tail->data;
 		}
+
+		/* Returns the current (cursor) node of the list. */
 		const V* get_current(void)
 		{
 			if (cursor == NULL)
@@ -232,6 +256,9 @@ namespace data_structures {
 		}
 
 		// Operator overload for this template class!!
+		// Value can be obtained from this overload, however, 
+		// if attempting to access outside the this data structure, there will 
+		// be a out of bounds error, resulting in premature exiting of the program.
 		V& operator[](const int32_t i)
 		{
 			if (i >= size || i < MINIMUM_ARRAY_BOUNDARY)

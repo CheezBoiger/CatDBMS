@@ -30,16 +30,7 @@
     <ClInclude Include="lib\object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lib\security\security.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\file.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="lib\user.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="container.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tools\data_structures\linked_list.h">
@@ -96,6 +87,24 @@
     <ClInclude Include="tools\remote\binary_search.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lib\element.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\security\security.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="architecture\crypto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\data_types\String.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\container.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -107,10 +116,13 @@
     <ClCompile Include="lib\object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="container.cpp">
+    <ClCompile Include="lib\element.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lib\file.cpp">
+    <ClCompile Include="lib\user.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\container.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

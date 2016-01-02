@@ -3,8 +3,9 @@
 
 #pragma once
 
-namespace security
-{
+
+namespace security {
+
 	enum security_levels
 	{
 		SECURE_DEFAULT      = 0x000000,
@@ -15,6 +16,4 @@ namespace security
 	};
 
 } /* catdb namespace */
-
-
 #endif /* _SECURITY_H_ */

@@ -5,13 +5,14 @@
 #include "lib/object.h"
 #include "tools/sorting/sort_helpers.h"
 #include "tools/data_structures/doubly_linked_list.h"
+#include "lib/element.h"
 
 using namespace tools;
 using namespace data_structures;
 
 /* sorting algorithms used for the purpose of determining how the programmer wants to sort
 	 this container. */
-typedef void(*type_sort_function) (::List<catdb::Object*>*, int32_t, int32_t, ::sorting::sort_type);
+typedef void(*type_sort_function) (::List<catdb::Element*>*, int32_t, int32_t, ::sorting::sort_type);
 
 namespace catdb 
 {
@@ -21,7 +22,7 @@ namespace catdb
 	class Container : public catdb::Object
 	{
 	private:
-		::List<catdb::Object*>* list;
+		::List<catdb::Element*>* list;
 
 		int32_t size;
 
@@ -46,16 +47,15 @@ namespace catdb
 		/* TODO(Garcia): Still need to implement these functions in the cpp file. */
 		/* Allows the container to be sorted with a specified sorting algorithm. */
 		void sort_container(type_sort_function sorting_function, sorting::sort_type sort_t);
-		void inspect_object(std::string objectname);
+		void inspect_element(std::string element_name);
 		void setup_container_folder(User& user);
 		void combine_containers(Container* container);
 		void remove_similarities(Container* contiainer);
 
-		bool insert_new_file(std::string objectname, std::string ownername, bool read = true,
-			bool write = true, bool exe = true, int32_t id = 0, int32_t sec_id=0, security_levels level=SECURE_DEFAULT);
-		bool insert_object(Object* object);
-		bool remove_object_name(std::string objectname);
-		bool remove_owner_objects(std::string ownername);
+		bool insert_new_element(std::string objectname, std::string ownername, int32_t id = 0, int32_t sec_id=0, security_levels level=SECURE_DEFAULT);
+		bool insert_element(Element& element);
+		bool remove_element_name(std::string objectname);
+		bool remove_owner_elements(std::string ownername);
 
 		inline bool is_empty(void) const { return size == 0; }
 

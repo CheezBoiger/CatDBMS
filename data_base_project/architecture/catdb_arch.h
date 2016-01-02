@@ -17,12 +17,13 @@
  #include <sys/types.h>
  #include <sys/stat.h>
  #include <unistd.h>
+ #include <fcntl.h>
 
  #define _INLINE_ inline
- #define _CDECL_
+ #define _CDECL_ __cdecl
 #elif defined(_DB_CAT_LINUX)
  #define _INLINE_ __always_inline
- #define _CDECL_ 
+ #define _CDECL_ __cdecl
 #else
  #error incompatibility with other compilers!!
 #endif /* _DB_CAT_WINDOWS */

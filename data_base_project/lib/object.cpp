@@ -1,23 +1,35 @@
-#include "object.h"
+#include "lib/object.h"
 
 namespace catdb
 {
-	Object::Object(std::string objname="object", std::string objowner="noname", bool read=true,
-		bool write=true, bool exe=true, int32_t id=0, int32_t sec_id=0, security_levels level=SECURE_DEFAULT, object_type type=O_TYPE_OBJECT) : id(id),
-		security_id(sec_id), sec_level(level), objectname(objname), owner(objowner), allow_read(read), allow_write(write), allow_exe(exe), type(type)
+	Object::Object(std::string objname="object", std::string objowner="noname", int32_t id=0, int32_t sec_id=0, security_levels level=SECURE_DEFAULT, object_type type=O_TYPE_OBJECT) : id(id),
+		security_id(sec_id), sec_level(level), objectname(objname), owner(objowner), type(type)
 	{
 	}
 
 	Object::Object(void) : id(0), security_id(0), objectname("object"), sec_level(SECURE_DEFAULT),
-		owner("no name"), type(O_TYPE_OBJECT), allow_read(true), allow_write(true),
-		allow_exe(true) 
+		owner("no name"), type(O_TYPE_OBJECT)
 	{
 	}
 
 	Object::Object(const Object &obj) : security_id(obj.security_id), id(obj.id), sec_level(obj.sec_level),
-		type(obj.type), allow_read(obj.allow_read), allow_write(obj.allow_write), allow_exe(obj.allow_exe),
-		objectname(obj.objectname), owner(obj.owner)
+		type(obj.type), objectname(obj.objectname), owner(obj.owner)
 	{
+	}
+
+	Object::Object(const Object* obj) : security_id(obj->security_id), id(obj->id), sec_level(obj->sec_level),
+		type(obj->type), objectname(obj->objectname), owner(obj->owner)
+	{
+	}
+
+	Object::operator uint32_t()
+	{
+		unsigned seed = 11;
+		uint32_t result = 0;
+		for (size_t i = 0; i < objectname.length(); ++i)
+			result += result ^ (objectname[i] * seed);
+
+		return result;
 	}
 
 	bool operator==(Object& obj1, Object& obj2)

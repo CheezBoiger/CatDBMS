@@ -2,8 +2,8 @@
 #define _SELECTION_SORT_H_
 #pragma once
 
-#include "sort_helpers.h"
-#include "../../architecture/error.h"
+#include "tools/sorting/sort_helpers.h"
+#include "architecture/error.h"
 
 namespace tools {
 namespace sorting {

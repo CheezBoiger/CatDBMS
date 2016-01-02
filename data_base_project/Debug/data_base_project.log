@@ -1,22 +1,57 @@
-﻿  main.cpp
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(26): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<V>::d_node' when no variable is declared
-  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(284): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<V>' being compiled
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(26): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<catdb::Object *>::d_node' when no variable is declared
-  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(53): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Object *>' being compiled
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(88): warning C4018: '<': signed/unsigned mismatch
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(178): warning C4018: '<': signed/unsigned mismatch
-  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(147): note: while compiling class template member function 'bool tools::data_structures::doubly_linked_list<catdb::Object *>::remove(V)'
+﻿  container.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<V>::d_node' when no variable is declared
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(311): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<V>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<catdb::Element *>::d_node' when no variable is declared
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\container.cpp(6): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Element *>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\container.cpp(18): warning C4018: '<': signed/unsigned mismatch
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\container.cpp(53): warning C4018: '<': signed/unsigned mismatch
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\container.cpp(103): warning C4018: '<': signed/unsigned mismatch
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(196): warning C4018: '<': signed/unsigned mismatch
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(165): note: while compiling class template member function 'bool tools::data_structures::doubly_linked_list<catdb::Element *>::remove(V)'
           with
           [
-              V=catdb::Object *
+              V=catdb::Element *
           ]
-  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(53): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Object *>' being compiled
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(198): warning C4018: '<': signed/unsigned mismatch
-  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(144): note: see reference to function template instantiation 'int tools::sorting::Internal::partition<tools::data_structures::doubly_linked_list,catdb::Object>(tools::data_structures::doubly_linked_list<catdb::Object *> &,int,int,tools::sorting::sort_type)' being compiled
-  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(44): note: see reference to function template instantiation 'void tools::sorting::Internal::quick_sort_helper<tools::data_structures::doubly_linked_list,catdb::Object*>(tools::data_structures::doubly_linked_list<catdb::Object *> &,int,int,tools::sorting::sort_type)' being compiled
-  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(85): note: see reference to function template instantiation 'void tools::sorting::quick_sort<tools::data_structures::doubly_linked_list,catdb::Object>(tools::data_structures::doubly_linked_list<catdb::Object *> *,int,int,tools::sorting::sort_type)' being compiled
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(209): warning C4018: '<': signed/unsigned mismatch
-  file.cpp
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\file.cpp(24): error C2144: syntax error: 'void' should be preceded by ';'
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\file.cpp(24): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\container.cpp(6): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Element *>' being compiled
   Generating Code...
+  Compiling...
+  main.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<V>::d_node' when no variable is declared
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(311): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<V>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<catdb::Element>::d_node' when no variable is declared
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(54): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Element>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\hash_table.h(85): warning C4018: '<': signed/unsigned mismatch
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\hash_table.h(81): note: while compiling class template member function 'bool tools::data_structures::HashTable<int,std::string>::puts(Key,Value)'
+          with
+          [
+              Key=int,
+              Value=std::string
+          ]
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(119): note: see reference to function template instantiation 'bool tools::data_structures::HashTable<int,std::string>::puts(Key,Value)' being compiled
+          with
+          [
+              Key=int,
+              Value=std::string
+          ]
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(118): note: see reference to class template instantiation 'tools::data_structures::HashTable<int,std::string>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\hash_table.h(87): warning C4018: '<': signed/unsigned mismatch
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\hash_table.h(71): warning C4018: '<': signed/unsigned mismatch
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\hash_table.h(70): note: while compiling class template member function 'tools::data_structures::HashTable<int,std::string>::~HashTable(void)'
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(118): note: see reference to function template instantiation 'tools::data_structures::HashTable<int,std::string>::~HashTable(void)' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\hash_table.h(62): warning C4018: '<': signed/unsigned mismatch
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\hash_table.h(59): note: while compiling class template member function 'tools::data_structures::HashTable<int,std::string>::HashTable(int32_t)'
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(118): note: see reference to function template instantiation 'tools::data_structures::HashTable<int,std::string>::HashTable(int32_t)' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(196): warning C4018: '<': signed/unsigned mismatch
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(165): note: while compiling class template member function 'bool tools::data_structures::doubly_linked_list<catdb::Element>::remove(V)'
+          with
+          [
+              V=catdb::Element
+          ]
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(54): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Element>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(198): warning C4018: '<': signed/unsigned mismatch
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(144): note: see reference to function template instantiation 'int tools::sorting::Internal::partition<tools::data_structures::List,catdb::Element>(tools::data_structures::List<catdb::Element *> &,int,int,tools::sorting::sort_type)' being compiled
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(44): note: see reference to function template instantiation 'void tools::sorting::Internal::quick_sort_helper<tools::data_structures::List,catdb::Element*>(tools::data_structures::List<catdb::Element *> &,int,int,tools::sorting::sort_type)' being compiled
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\main.cpp(95): note: see reference to function template instantiation 'void tools::sorting::quick_sort<tools::data_structures::List,catdb::Element>(tools::data_structures::List<catdb::Element *> *,int,int,tools::sorting::sort_type)' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(209): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  data_base_project.vcxproj -> C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\Debug\data_base_project.exe

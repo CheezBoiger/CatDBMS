@@ -18,16 +18,12 @@ namespace catdb
 
 		int32_t id;
 		int32_t security_id;
-
-		bool can_read;
-		bool can_write;
-		bool can_exe;
 	};
 
 	enum object_type
 	{
 		O_TYPE_OBJECT,
-		O_TYPE_FILE,
+		O_TYPE_ELEMENT,
 		O_TYPE_MODULE,
 	};
 
@@ -45,9 +41,6 @@ namespace catdb
 	protected:
 		security::security_levels sec_level;
 		object_type type;
-		bool allow_read;
-		bool allow_write;
-		bool allow_exe;
 
 		std::string objectname;
 		std::string owner;
@@ -69,20 +62,18 @@ namespace catdb
 	public:
 		virtual ~Object(void) { }
 		Object(const Object &obj);
+		Object(const Object* obj);
 		Object(void);
 
-		Object(std::string objname, std::string objowner, bool read, bool write, bool exe, int32_t id,
+		Object(std::string objname, std::string objowner, int32_t id,
 			int32_t sec_id, security_levels level, object_type type);
-
-		bool is_allowed_read(void) { return allow_read; }
-		bool is_allowed_write(void) { return allow_write; }
-		bool is_allowed_exe(void) { return allow_exe; }
 		
 		std::string get_filename(void) { return objectname; }
 		std::string get_owner_name(void) { return owner; }
 
 		object_type get_object_type(void) { return type; }
 
+		operator uint32_t(void);
 	};
 } /* catdb namespace */
 #endif /* _OBJECT_H_ */

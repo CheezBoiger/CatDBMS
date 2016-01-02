@@ -2,6 +2,8 @@
 #define _SORT_HELPERS_H_
 #pragma once
 
+#include "architecture/catdb_arch.h"
+
 namespace tools {
 namespace sorting {
 	/* Enum types intended for the sorting of arrays and List data structures.
