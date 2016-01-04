@@ -40,6 +40,7 @@ namespace Errors
 	enum errors
 	{
 		error_code_unknown = 0x0,
+		error_no_error,
 		error_find_file = 0xFFA1,
 		error_find_database = 0x1142,
 		error_fatal,
@@ -56,6 +57,9 @@ namespace Errors
 		error_array_out_of_bounds,
 		error_empty_structure,
 		error_user_has_no_permission,
+		error_not_unique,
+		error_cannot_add,
+		error_compatibility_issue,
 	};
 
 	typedef struct
@@ -65,5 +69,6 @@ namespace Errors
 	} err_info;
 
 	err_info get_error_msg(errors err);
+	void display_error_msg(err_info err);
 } /* catdb namespace */
 #endif /* _ERROR_H_ */

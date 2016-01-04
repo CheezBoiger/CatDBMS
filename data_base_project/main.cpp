@@ -10,7 +10,10 @@
 #include "tools/data_structures/doubly_linked_list.h"
 #include "tools/sorting/merge_sort.h"
 #include "tools/sorting/quick_sort.h"
-#include "lib/user.h"
+#include "lib/security/user.h"
+#include "lib/table.h"
+
+
 
 template<typename n>
 n get_me_a_cup_of_coffee(n cat)
@@ -62,6 +65,7 @@ void tests(void)
 	catdb::Element gared("Gared", "gared");
 	catdb::Element ben("Ben", "ben");
 	catdb::Element fred("Fred", "fred");
+	
 	/*
 	std::string jerry("Jerry");
 	std::string freddy("Freddy");
@@ -144,6 +148,10 @@ int main(int c, char **args)
 	else
 		std::cout << "Billy was not recovered" << std::endl;
 	std::cout << "Hash table size: " << catdb::get_user_list_size() << std::endl;
+
+	catdb::DBase::Table* abstract_table = new catdb::DBase::Database("Jorge's Database");
+	catdb::DBase::Database ta;
+	std::cout << abstract_table->get_table_name() << std::endl;
 	/*
 	tools::data_structures::s_list<int> test_list;
 	for (size_t i = 0; i < SIZE; ++i)

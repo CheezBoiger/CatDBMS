@@ -6,9 +6,10 @@
 #include "lib/container.h"
 
 #include <vector>
+
 // TODO(Garcia): Create our table database!!
 namespace catdb {
-namespace Database {
+namespace DBase {
 
 	/* Table interface intended to build an standard for catDBMS databases. */
 	class Table
@@ -16,19 +17,13 @@ namespace Database {
 	public:
 		virtual ~Table(void) { }
 
-		virtual bool merge(Table* table) = 0;
-
-		virtual bool is_subset(Table* table) = 0;
-
-		virtual Table* intersection(Table* table) = 0;
-
-		virtual Table* clone(void) = 0;
+		virtual std::string get_table_name(void) = 0;
 
 		virtual bool save_table(std::string name) = 0;
 
 		virtual bool load_table(std::string name) = 0;
 
-		virtual bool add_coloumn(Container& container) = 0;
+		virtual bool add_coloumn(Container* container) = 0;
 
 		virtual bool remove_coloumn(std::string coloumn_name) = 0;
 
@@ -37,7 +32,7 @@ namespace Database {
 	class Database : public Table
 	{
 	private:
-		std::vector<Container> coloumns;
+		std::vector<Container>* coloumns;
 
 		std::string table_name;
 
@@ -46,26 +41,34 @@ namespace Database {
 	protected:
 
 	public:
-		Database(void) : table_name("No name") { }
+		explicit Database(void);
+		explicit Database(std::string table_name);
 
 		virtual ~Database(void);
 
-		bool merge(Table* table);
+		std::string get_table_name(void) { return table_name; }
 
-		bool is_subest(Table* table);
-
+		bool merge(Database* database);
+		bool is_subset(Database* database);
 		bool save_table(std::string name);
-
 		bool load_table(std::string name);
-
-		bool add_coloumn(Container& container);
-
+		bool folder_create(void);
+		bool add_coloumn(Container* container);
 		bool remove_coloumn(std::string coloumn_name);
+		bool change_database_name(std::string new_name);
 
-		Table* instersection(Table* table);
+		Database* intersection(Database* database);
+		Database* clone(void);
 
-		Table* clone(void);
+		Container* find_container(std::string container_name);
+		Container* find_container(Container container);
+
+		int32_t get_row_dimension(void) { return row_dimension; }
+		int32_t get_coloumn_dimension(void) { return coloumn_dimension; }
 	};
+
+	void display_db_error_msg(void);
+	void display_last_error(void);
 } /* Database namespace */
 } /* catdb namespace */
 

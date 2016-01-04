@@ -136,7 +136,7 @@
     <ClInclude Include="lib\object.h" />
     <ClInclude Include="lib\security\security.h" />
     <ClInclude Include="lib\table.h" />
-    <ClInclude Include="lib\user.h" />
+    <ClInclude Include="lib\security\user.h" />
     <ClInclude Include="tools\data_structures\cat_list_interface.h" />
     <ClInclude Include="tools\data_structures\circlularly_linked_list.h" />
     <ClInclude Include="tools\data_structures\data_structures_specifics\hash_table_specifics.h" />
@@ -159,13 +159,13 @@
   <ItemGroup>
     <ClCompile Include="architecture\error.cpp" />
     <ClCompile Include="lib\container.cpp" />
+    <ClCompile Include="lib\database.cpp" />
     <ClCompile Include="lib\element.cpp" />
     <ClCompile Include="lib\object.cpp" />
-    <ClCompile Include="lib\user.cpp" />
+    <ClCompile Include="lib\security\user.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="todoList.txt" />
     <Text Include="tools\Tools_warning_note.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
