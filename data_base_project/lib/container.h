@@ -23,6 +23,7 @@ namespace catdb
 	{
 	private:
 		::List<catdb::Element*>* list;
+		tools::sorting::sort_type sorted_format;
 
 		int32_t size;
 
@@ -46,6 +47,7 @@ namespace catdb
 		
 		/* TODO(Garcia): Still need to implement these functions in the cpp file. */
 		/* Allows the container to be sorted with a specified sorting algorithm. */
+		void sort_container(sorting::sort_type sort_t);
 		void sort_container(type_sort_function sorting_function, sorting::sort_type sort_t);
 		void inspect_element(std::string element_name);
 		void setup_container_folder(User& user);

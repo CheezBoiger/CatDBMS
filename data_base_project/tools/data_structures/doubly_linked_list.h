@@ -93,7 +93,13 @@ namespace data_structures {
 				tail->next = NULL;
 			}
 
-			if (cursor->next == NULL)
+			if (cursor->prev && cursor->next)
+			{
+				cursor->prev->next = cursor->next;
+				cursor->next->prev = cursor->prev;
+				cursor = cursor->next;
+			}
+			else if (cursor->next == NULL)
 			{
 				cursor = cursor->prev;
 				cursor->next = NULL;

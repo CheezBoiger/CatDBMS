@@ -21,7 +21,7 @@ namespace catdb
 
 	void Element::attach_container(Container* container)
 	{
-		if (container != NULL)
+		if (container == NULL)
 			return;
 
 		this->container = container;

@@ -147,6 +147,7 @@
     <ClInclude Include="tools\data_structures\stack.h" />
     <ClInclude Include="tools\data_types\String.h" />
     <ClInclude Include="tools\remote\binary_search.h" />
+    <ClInclude Include="tools\remote\linear_search.h" />
     <ClInclude Include="tools\sorting\bubble_sort.h" />
     <ClInclude Include="tools\sorting\counting_sort.h" />
     <ClInclude Include="tools\sorting\insertion_sort.h" />
@@ -163,7 +164,7 @@
     <ClCompile Include="lib\element.cpp" />
     <ClCompile Include="lib\object.cpp" />
     <ClCompile Include="lib\security\user.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="tests\Unit\unit_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="tools\Tools_warning_note.txt" />

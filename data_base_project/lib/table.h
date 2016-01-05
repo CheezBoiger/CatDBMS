@@ -27,6 +27,10 @@ namespace DBase {
 
 		virtual bool remove_coloumn(std::string coloumn_name) = 0;
 
+		virtual int32_t get_row_dimension(void) = 0;
+
+		virtual int32_t get_coloumn_dimension(void) = 0;
+
 	};
 
 	class Database : public Table

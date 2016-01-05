@@ -105,11 +105,11 @@
     <ClInclude Include="lib\security\user.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tools\remote\linear_search.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="architecture\error.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -126,6 +126,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lib\database.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\Unit\unit_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

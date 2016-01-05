@@ -38,11 +38,13 @@ namespace catdb
 		Element(const Element& temp);
 
 		const std::string& get_attribute(void) { return attribute; }
-		const Container& get_from_what_container(void) { return *container; }
+		Container& const get_container(void) { return *container; }
 
 		void attach_container(Container* container);
 
-		virtual ~Element(void) { }
+		// Container will NOT be deleted! if a "new" allocated container was attached,
+		// be sure to keep track of it, or otherwise suffer the perils of memory leaks!
+		virtual ~Element(void) { container = NULL; }
 		 
 		virtual bool check_security(User& user) { return true; }
 
