@@ -3,7 +3,7 @@
 #pragma once
 
 #include "header.h"
-#include "lib/container.h"
+#include "lib/column.h"
 
 #include <vector>
 
@@ -23,7 +23,7 @@ namespace DBase {
 
 		virtual bool load_table(std::string name) = 0;
 
-		virtual bool add_coloumn(Container* container) = 0;
+		virtual bool add_coloumn(Column* column) = 0;
 
 		virtual bool remove_coloumn(std::string coloumn_name) = 0;
 
@@ -36,7 +36,7 @@ namespace DBase {
 	class Database : public Table
 	{
 	private:
-		std::vector<Container>* coloumns;
+		std::vector<Column>* coloumns;
 
 		std::string table_name;
 
@@ -57,15 +57,15 @@ namespace DBase {
 		bool save_table(std::string name);
 		bool load_table(std::string name);
 		bool folder_create(void);
-		bool add_coloumn(Container* container);
+		bool add_coloumn(Column* column);
 		bool remove_coloumn(std::string coloumn_name);
 		bool change_database_name(std::string new_name);
 
 		Database* intersection(Database* database);
 		Database* clone(void);
 
-		Container* find_container(std::string container_name);
-		Container* find_container(Container container);
+		Column* find_container(std::string container_name);
+		Column* find_container(Column container);
 
 		int32_t get_row_dimension(void) { return row_dimension; }
 		int32_t get_coloumn_dimension(void) { return coloumn_dimension; }

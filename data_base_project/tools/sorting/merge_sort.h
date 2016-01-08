@@ -11,7 +11,7 @@ namespace sorting {
 	// Merge sort currently works for array type structures. We will be implementing them in 
 	// other stuff later on.
 	template<typename V>
-	static void merge_sort(V* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ merge_sort(V* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 		V* temp(new V[size]);
@@ -22,7 +22,7 @@ namespace sorting {
 	}
 
 	template<typename V>
-	static void merge_sort(V** unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ merge_sort(V** unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 		V** temp(new V*[size]);
@@ -37,7 +37,7 @@ namespace sorting {
 	}
 
 	template<template<typename> class T, typename V>
-	static void merge_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ merge_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 
@@ -48,7 +48,7 @@ namespace sorting {
 
 	// WARNING: THIS FUNCTION WILL ONLY BE FUNCTIONAL IF YOUR CLASS HAS OVERLOADED THE [] OPERATOR.
 	template<template<typename> class T, typename V>
-	static void merge_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ merge_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 
@@ -61,7 +61,7 @@ namespace sorting {
 	}
 
 	template<template<typename> class T, typename V>
-	static void merge_sort(T<V*>* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ merge_sort(T<V*>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 		V** temp(new V*[size]);
@@ -74,7 +74,7 @@ namespace sorting {
 	namespace Internal
 	{
 		template<typename V>
-		static void merge_sort_helper(V* unsorted_array, int start, int size, V* temp, sort_type sort_t)
+		static void _CDECL_ merge_sort_helper(V* unsorted_array, int start, int size, V* temp, sort_type sort_t)
 		{
 			if (size - start < 2)
 				return;
@@ -88,7 +88,7 @@ namespace sorting {
 		}
 
 		template<typename V>
-		static void topdown_merge(V* unsorted_array, int start, int middle, int size, V* temp, sort_type sort_t)
+		static void _CDECL_ topdown_merge(V* unsorted_array, int start, int middle, int size, V* temp, sort_type sort_t)
 		{
 			int i0 = start;
 			int i1 = middle;
@@ -116,14 +116,14 @@ namespace sorting {
 		}
 
 		template<typename V>
-		static void copy_array(V* temp, int start, int size, V* array1)
+		static void _CDECL_ copy_array(V* temp, int start, int size, V* array1)
 		{
 			for (int k = start; k < size; ++k)
 				array1[k] = temp[k];
 		}
 
 		template<typename V>
-		static void merge_sort_helper(V** unsorted_array, int start, int size, V** temp, sort_type sort_t)
+		static void _CDECL_ merge_sort_helper(V** unsorted_array, int start, int size, V** temp, sort_type sort_t)
 		{
 			if (size - start < 2)
 				return;
@@ -137,7 +137,7 @@ namespace sorting {
 		}
 
 		template<typename V>
-		static void topdown_merge(V** unsorted_array, int start, int middle, int size, V** temp, sort_type sort_t)
+		static void _CDECL_ topdown_merge(V** unsorted_array, int start, int middle, int size, V** temp, sort_type sort_t)
 		{
 			int i0 = start;
 			int i1 = middle;
@@ -165,7 +165,7 @@ namespace sorting {
 		}
 
 		template<typename V>
-		static void copy_array(V** temp, int start, int size, V** array1)
+		static void _CDECL_ copy_array(V** temp, int start, int size, V** array1)
 		{
 
 			for (size_t i = start; i < size; ++i)
@@ -173,7 +173,7 @@ namespace sorting {
 		}
 
 		template<template<typename> class T, typename V>
-		static void merge_sort_helper(T<V>& unsorted_array, int start, int size, V* temp, sort_type sort_t)
+		static void _CDECL_ merge_sort_helper(T<V>& unsorted_array, int start, int size, V* temp, sort_type sort_t)
 		{
 			if (size - start < 2)
 				return;
@@ -187,7 +187,7 @@ namespace sorting {
 		}
 
 		template<template<typename> class T, typename V>
-		static void topdown_merge(T<V>& unsorted_array, int start, int middle, int size, V* temp, sort_type sort_t)
+		static void _CDECL_ topdown_merge(T<V>& unsorted_array, int start, int middle, int size, V* temp, sort_type sort_t)
 		{
 			int i0 = start;
 			int i1 = middle;
@@ -215,7 +215,7 @@ namespace sorting {
 		}
 
 		template<template<typename> class T, typename V>
-		static void merge_sort_helper(T<V>* unsorted_array, int start, int size,
+		static void _CDECL_ merge_sort_helper(T<V>* unsorted_array, int start, int size,
 			V* temp, sort_type sort_t)
 		{
 			if (size - start < 2)
@@ -230,7 +230,7 @@ namespace sorting {
 		}
 
 		template<template<typename> class T, typename V>
-		static void topdown_merge(T<V>* unsorted_array, int start, int middle, int size,
+		static void _CDECL_ topdown_merge(T<V>* unsorted_array, int start, int middle, int size,
 			V* temp, sort_type sort_t)
 		{
 			int i0 = start;
@@ -259,14 +259,14 @@ namespace sorting {
 		}
 
 		template<template<typename> class T, typename V>
-		static void copy_array(V* temp, int start, int size, T<V>& array1)
+		static void _CDECL_ copy_array(V* temp, int start, int size, T<V>& array1)
 		{
 			for (size_t i = start; i < size; ++i)
 				array1[i] = temp[i];
 		}
 
 		template<template<typename> class T, typename V>
-		static void merge_sort_helper(T<V*>* unsorted_array, int start, int size,
+		static void _CDECL_ merge_sort_helper(T<V*>* unsorted_array, int start, int size,
 			V** temp, sort_type sort_t)
 		{
 			if (size - start < 2)
@@ -281,7 +281,7 @@ namespace sorting {
 		}
 
 		template<template<typename> class T, typename V>
-		static void topdown_merge(T<V*>* unsorted_array, int start, int middle, int size,
+		static void _CDECL_ topdown_merge(T<V*>* unsorted_array, int start, int middle, int size,
 			V** temp, sort_type sort_t)
 		{
 			int i0 = start;

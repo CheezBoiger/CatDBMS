@@ -13,7 +13,7 @@ namespace DBase {
 	static Errors::err_info last_error = get_error_msg(Errors::error_no_error);
 
 	Database::Database(void) : table_name("no name"), coloumn_dimension(0), row_dimension(0),
-		coloumns(new std::vector<Container>())
+		coloumns(new std::vector<Column>())
 	{
 	}
 
@@ -27,7 +27,7 @@ namespace DBase {
 		delete coloumns;
 	}
 
-	bool Database::add_coloumn(Container* container)
+	bool Database::add_coloumn(Column* container)
 	{
 		if (container == NULL)
 		{
@@ -39,7 +39,7 @@ namespace DBase {
 
 		for (uint32_t i = 0; i < coloumns->size(); ++i)
 		{
-			if (container->get_container_name() == coloumns->at(i).get_container_name())
+			if (container->get_column_name() == coloumns->at(i).get_column_name())
 			{
 				last_error = db_error = get_error_msg(Errors::error_not_unique);
 				is_unique = false;
@@ -101,12 +101,12 @@ namespace DBase {
 		return NULL;
 	}
 
-	Container* Database::find_container(std::string container_name)
+	Column* Database::find_container(std::string container_name)
 	{
 		return NULL;
 	}
 
-	Container* Database::find_container(Container container)
+	Column* Database::find_container(Column container)
 	{
 		return NULL;
 	}

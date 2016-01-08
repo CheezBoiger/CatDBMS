@@ -129,9 +129,11 @@
     <ClInclude Include="architecture\crypto.h" />
     <ClInclude Include="architecture\directory_handler.h" />
     <ClInclude Include="architecture\error.h" />
-    <ClInclude Include="lib\container.h" />
+    <ClInclude Include="architecture\threading\thread.h" />
+    <ClInclude Include="lib\column.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="architecture\internal\os_arch.h" />
+    <ClInclude Include="lib\container.h" />
     <ClInclude Include="lib\element.h" />
     <ClInclude Include="lib\object.h" />
     <ClInclude Include="lib\security\security.h" />
@@ -159,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="architecture\error.cpp" />
+    <ClCompile Include="lib\column.cpp" />
     <ClCompile Include="lib\container.cpp" />
     <ClCompile Include="lib\database.cpp" />
     <ClCompile Include="lib\element.cpp" />

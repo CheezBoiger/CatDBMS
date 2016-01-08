@@ -1,8 +1,9 @@
 #include "header.h"
-#include "lib/container.h"
+#include "lib/column.h"
 #include "tools/data_structures/doubly_linked_list.h"
 #include "tools/remote/binary_search.h"
 #include "tools/sorting/quick_sort.h"
+#include "tools/remote/linear_search.h"
 
 using namespace std;
 
@@ -36,15 +37,14 @@ void dlink_test(void)
 	for (int i = 0; i < te->get_size(); ++i)
 		cout << (*te)[i]->get_filename() << endl;
 
-	catdb::Element tp("Kyle", "keyly");
-	cout << "index : " << tools::remote::binary_search(te, 0, te->get_size() - 1, tp, sorting::SORT_BIG_ENDIAN) << endl;
+	catdb::Element tp("Ren", "keyly");
+	cout << "index : " << tools::remote::linear_search(te, 0, te->get_size() - 1, &tp) << endl;
 }
 
-int main(int c, char** args)
+void column_testing(void)
 {
-
-	catdb::Container container;
-	container.sort_container(tools::sorting::SORT_LITTLE_ENDIAN);
+	catdb::Column container;
+	container.sort_column(tools::sorting::SORT_LITTLE_ENDIAN);
 	container.insert_new_element("Freddy", "Fred");
 	cout << container.display_list() << endl << endl;
 
@@ -60,10 +60,20 @@ int main(int c, char** args)
 	container.remove_element_name("Lora");
 	container.insert_new_element("Harold", "harold");
 	container.remove_element_name("Harold");
-	container.remove_element_name("Patty");
-	container.sort_container(SORT_BIG_ENDIAN);
+ 	container.remove_element_name("Patty");
+	container.sort_column(SORT_BIG_ENDIAN);
 	cout << container.display_list() << endl;
 	cout << "size is nao: " << container.get_size() << endl;
+	cout << "element: " << container.inspect_element("Billy")->get_filename() << endl;
+
+	cin.ignore();
+}
+
+int main(int c, char** args)
+{
+
+//	dlink_test();
+	column_testing();
 
 	cin.ignore();
 	return 0;

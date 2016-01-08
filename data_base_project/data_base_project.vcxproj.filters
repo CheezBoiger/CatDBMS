@@ -99,13 +99,19 @@
     <ClInclude Include="tools\data_types\String.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lib\container.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="lib\security\user.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tools\remote\linear_search.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\column.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\container.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="architecture\threading\thread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -119,9 +125,6 @@
     <ClCompile Include="lib\element.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lib\container.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="lib\security\user.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -129,6 +132,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tests\Unit\unit_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\column.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\container.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

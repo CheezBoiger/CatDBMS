@@ -40,7 +40,7 @@ namespace sorting {
 
 	/* Swaps the values within two locations of the array. */
 	template<typename T>
-	_INLINE_ static void swap(T* _array, int loc1, int loc2)
+	_INLINE_ static void _CDECL_ swap(T* _array, int loc1, int loc2)
 	{
 		T temp = _array[loc1];
 		_array[loc1] = _array[loc2];
@@ -50,7 +50,7 @@ namespace sorting {
 	/* Swaps the values within two locations of the array. In this case, you must overload the
 		[] operator within your generic class for this to work. */
 	template<template<typename> class T, typename V>
-	_INLINE_ static void swap(T<V>& _array, int loc1, int loc2)
+	_INLINE_ static void _CDECL_ swap(T<V>& _array, int loc1, int loc2)
 	{
 		V temp = _array[loc1];
 		_array[loc1] = _array[loc2];

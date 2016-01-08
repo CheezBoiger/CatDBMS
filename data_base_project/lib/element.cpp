@@ -4,14 +4,18 @@
 namespace catdb
 {
 	Element::Element(std::string filename, std::string ownername, int32_t id, int32_t sec_id, security_levels level)
-		: attribute(filename), owner_name(ownername), container(NULL), Object(filename,
+		: attribute(filename), owner_name(ownername), column(NULL), Object(filename,
 			ownername,
 			id,
 			sec_id,
 			level,
 			catdb::object_type::O_TYPE_ELEMENT)
 	{
+	}
 
+	Element::Element(const Element& file) : attribute(file.attribute), owner_name(file.owner_name),
+		column(file.column), Object(file)
+	{
 	}
 
 	void Element::check_problems(void)
@@ -19,18 +23,12 @@ namespace catdb
 
 	}
 
-	void Element::attach_container(Container* container)
+	void Element::attach_container(Column* container)
 	{
 		if (container == NULL)
 			return;
 
-		this->container = container;
-	}
-
-	Element::Element(const Element& file) : attribute(file.attribute), owner_name(file.owner_name),
-		container(file.container), Object(file)
-	{
-		
+		this->column = container;
 	}
 
 	void Element::update(void)

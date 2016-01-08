@@ -2,73 +2,40 @@
 #define _CONTAINER_H_
 
 #pragma once
-#include "lib/object.h"
-#include "tools/sorting/sort_helpers.h"
-#include "tools/data_structures/doubly_linked_list.h"
+
 #include "lib/element.h"
+#include <vector>
 
-using namespace tools;
-using namespace data_structures;
+namespace catdb {
 
-/* sorting algorithms used for the purpose of determining how the programmer wants to sort
-	 this container. */
-typedef void(*type_sort_function) (::List<catdb::Element*>*, int32_t, int32_t, ::sorting::sort_type);
-
-namespace catdb 
-{
-	// This is a contain that stores all similar files.
-	// For this case, we use a container to hold related
-	// values for proper storage.
-	class Container : public catdb::Object
+	class Container : public Object
 	{
 	private:
-		::List<catdb::Element*>* list;
-		tools::sorting::sort_type sorted_format;
+		std::vector<Element>* _elements;
 
-		int32_t size;
-
-		std::string container_title;
 	protected:
 
-		// TODO(Garcia): Implement check_security and update mang.
-		// this is to be fixed 
-		bool check_security(User& user) { return false; }
-
-		void update(void) { }
-
 	public:
-		Container(void);
-		Container(std::string container_name);
-		~Container(void);
+		Container(void) : _elements(new std::vector<Element>()), Object() { }
+		Container(std::string container_name) : Container() { objectname = container_name; }
 
-		int32_t get_size(void) { return size; }
+		~Container(void) { delete _elements; _elements = NULL; }
 
-		inline std::string get_container_name(void) { return container_title; }
-		
-		/* TODO(Garcia): Still need to implement these functions in the cpp file. */
-		/* Allows the container to be sorted with a specified sorting algorithm. */
-		void sort_container(sorting::sort_type sort_t);
-		void sort_container(type_sort_function sorting_function, sorting::sort_type sort_t);
-		void inspect_element(std::string element_name);
-		void setup_container_folder(User& user);
-		void combine_containers(Container* container);
-		void remove_similarities(Container* contiainer);
+		std::string get_container_name(void) const { return objectname; }
 
-		bool insert_new_element(std::string objectname, std::string ownername, int32_t id = 0, int32_t sec_id=0, security_levels level=SECURE_DEFAULT);
-		bool insert_element(Element& element);
-		bool remove_element_name(std::string objectname);
-		bool remove_owner_elements(std::string ownername);
+		int32_t get_size(void) const { return _elements->size(); }
 
-		inline bool is_empty(void) const { return size == 0; }
+		bool insert_new_element(std::string, std::string);
+		bool insert_element(Element* element);
+		bool is_similiar_element(Element* element);
 
-		bool subset(Container* container);
+		Element remove_element(std::string attribute);
 
-		Container* intersection(Container* container);
 
-		std::string display_list(void);
-
+		Element& obtain_element(std::string element_name);
+		Element& operator[](uint32_t index);
 	};
 
-}
+} // catdb namespace 
 
 #endif /* _CONTAINER_H_ */

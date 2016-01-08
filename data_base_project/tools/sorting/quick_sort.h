@@ -8,14 +8,14 @@
 namespace tools {
 namespace sorting {
 	template<typename T>
-	static void quick_sort(T* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ quick_sort(T* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 		quick_sort_helper(unsorted_array, start, size - 1, sort_t);
 	}
 
 	template<typename T>
-	static void quick_sort(T** unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ quick_sort(T** unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 		quick_sort_helper(unsorted_array, start, size - 1, sort_t);
@@ -24,21 +24,21 @@ namespace sorting {
 	// TODO(Garcia): Implement the following templates for quick_sort to remain compatible with 
 	// the database software.
 	template<template<typename> class T, typename V>
-	static void quick_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ quick_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 		quick_sort_helper(unsorted_array, start, size - 1, sort_t);
 	}
 
 	template<template<typename> class T, typename V>
-	static void quick_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ quick_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 		quick_sort_helper(*unsorted_array, start, size - 1, sort_t);
 	}
 
 	template<template<typename> class T, typename V>
-	static void quick_sort(T<V*>* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ quick_sort(T<V*>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
 		quick_sort_helper(*unsorted_array, start, size - 1, sort_t);
@@ -47,7 +47,7 @@ namespace sorting {
 	namespace Internal
 	{
 		template<typename T>
-		static void quick_sort_helper(T* unsorted_array, int start, int end, sort_type sort_t)
+		static void _CDECL_ quick_sort_helper(T* unsorted_array, int start, int end, sort_type sort_t)
 		{
 			if (start < end)
 			{
@@ -63,7 +63,7 @@ namespace sorting {
 		}
 
 		template<typename T>
-		static int partition(T* unsorted_array, int start, int end, sort_type sort_t)
+		static int _CDECL_ partition(T* unsorted_array, int start, int end, sort_type sort_t)
 		{
 			int pivot_index = choose_pivot(start, end);
 			T pivot_value = unsorted_array[pivot_index];
@@ -100,7 +100,7 @@ namespace sorting {
 		}
 
 		template<typename T>
-		static int partition(T** unsorted_array, int start, int end, sort_type sort_t)
+		static int _CDECL_ partition(T** unsorted_array, int start, int end, sort_type sort_t)
 		{
 			int pivot_index = choose_pivot(start, end);
 			T& pivot_value = *unsorted_array[pivot_index];
@@ -137,7 +137,7 @@ namespace sorting {
 		}
 
 		template<template<typename> class T, typename V>
-		static void quick_sort_helper(T<V>& unsorted_array, int start, int end, sort_type sort_t)
+		static void _CDECL_ quick_sort_helper(T<V>& unsorted_array, int start, int end, sort_type sort_t)
 		{
 			if (start < end)
 			{
@@ -148,7 +148,7 @@ namespace sorting {
 		}
 
 		template<template<typename> class T, typename V>
-		static int partition(T<V>& unsorted_array, int start, int end, sort_type sort_t)
+		static int _CDECL_ partition(T<V>& unsorted_array, int start, int end, sort_type sort_t)
 		{
 			int pivot_index = choose_pivot(start, end);
 			V pivot_value = unsorted_array[pivot_index];
@@ -185,7 +185,7 @@ namespace sorting {
 		}
 
 		template<template<typename> class T, typename V>
-		static int partition(T<V*>& unsorted_array, int start, int end, sort_type sort_t)
+		static int _CDECL_ partition(T<V*>& unsorted_array, int start, int end, sort_type sort_t)
 		{
 			int pivot_index = choose_pivot(start, end);
 			V& pivot_value = *unsorted_array[pivot_index];
