@@ -12,6 +12,22 @@ namespace DBase {
 	static Errors::err_info db_error = get_error_msg(Errors::error_no_error);
 	static Errors::err_info last_error = get_error_msg(Errors::error_no_error);
 
+	struct table_node
+	{
+		table_node* next;
+		table_node* previous;
+
+		Table* table;
+	};
+
+	static table_node* root = NULL;
+	static int tables_size;
+
+	Table* add_table(Database& database)
+	{
+
+	}
+
 	Database::Database(void) : table_name("no name"), coloumn_dimension(0), row_dimension(0),
 		coloumns(new std::vector<Column>())
 	{
