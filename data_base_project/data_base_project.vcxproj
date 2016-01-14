@@ -100,7 +100,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Python\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Python\include;C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -167,7 +167,7 @@
     <ClCompile Include="lib\element.cpp" />
     <ClCompile Include="lib\object.cpp" />
     <ClCompile Include="lib\security\user.cpp" />
-    <ClCompile Include="tests\Unit\unit_test.cpp" />
+    <ClCompile Include="tests\Unit\table_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="tools\Tools_warning_note.txt" />

@@ -2,6 +2,7 @@
 #include "lib/security/user.h"
 #include "architecture/error.h"
 #include "architecture/directory_handler.h"
+#include "tools/remote/linear_search.h"
 
 using namespace Errors;
 
@@ -23,13 +24,14 @@ namespace DBase {
 	static table_node* root = NULL;
 	static int tables_size;
 
+	// Still needing to update this thing.
 	Table* add_table(Database& database)
-	{
-
+	{ 
+		return NULL; // for now...
 	}
 
-	Database::Database(void) : table_name("no name"), coloumn_dimension(0), row_dimension(0),
-		coloumns(new std::vector<Column>())
+	Database::Database(void) : columns(), containers(), table_name("no name"),
+		coloumn_dimension(0), row_dimension(0)
 	{
 	}
 
@@ -40,7 +42,6 @@ namespace DBase {
 
 	Database::~Database(void)
 	{
-		delete coloumns;
 	}
 
 	bool Database::add_coloumn(Column* container)
@@ -53,9 +54,9 @@ namespace DBase {
 
 		bool is_unique = true;
 
-		for (uint32_t i = 0; i < coloumns->size(); ++i)
+		for (uint32_t i = 0; i < columns.size(); ++i)
 		{
-			if (container->get_column_name() == coloumns->at(i).get_column_name())
+			if (container->get_column_name() == columns.at(i).get_column_name())
 			{
 				last_error = db_error = get_error_msg(Errors::error_not_unique);
 				is_unique = false;
@@ -65,7 +66,7 @@ namespace DBase {
 
 		if (is_unique)
 		{
-			coloumns->push_back(*container);
+			columns.push_back(*container);
 			coloumn_dimension++;
 		}
 
@@ -74,7 +75,19 @@ namespace DBase {
 
 	bool Database::remove_coloumn(std::string container)
 	{
-		return true;
+		bool success = false;
+		Column temp(container);
+
+		std::vector<Column>::iterator delete_index;
+		delete_index = std::find(columns.begin(), columns.end(), temp);
+
+		if (delete_index != columns.end())
+		{
+			columns.erase(delete_index);
+			success = true;
+		}
+
+		return success;
 	}
 
 	bool Database::merge(Database* database)
@@ -107,24 +120,80 @@ namespace DBase {
 		return true;
 	}
 
-	Database* Database::intersection(Database* database)
+	bool Database::add_container(Container* container)
 	{
-		return NULL;
+		bool is_unique = true;
+		std::vector<Container>::iterator iter = std::find(containers.begin(), containers.end(), *container);
+
+		if (iter == containers.end())
+		{
+			containers.push_back(*container);
+		}
+		else
+			is_unique = false;
+
+		return is_unique;
 	}
 
-	Database* Database::clone(void)
+	Container* Database::get_container(std::string container_name)
 	{
-		return NULL;
+		Container* container_ptr = NULL;
+		for (size_t i = 0; i < containers.size(); ++i)
+		{
+			Container* cont = &containers.at(i);
+			if (cont->get_container_name().compare(container_name) == STR_MATCH)
+			{
+				container_ptr = cont;
+				break;
+			}
+		}
+
+		return container_ptr;
 	}
 
-	Column* Database::find_container(std::string container_name)
+	Database Database::intersection(Database* database)
 	{
-		return NULL;
+		Database new_database;
+		return new_database;
 	}
 
-	Column* Database::find_container(Column container)
+	Database Database::clone(void)
 	{
-		return NULL;
+		return *this;
+	}
+
+	Column* Database::find_column(std::string column_name)
+	{
+		Column* container_ptr = NULL;
+		for (size_t i = 0; i < columns.size(); ++i)
+		{
+			Column* column = &columns.at(i);
+			if (column->get_column_name().compare(column_name) == STR_MATCH)
+			{
+				container_ptr = column;
+				break;
+			}
+		}
+
+		return container_ptr;
+	}
+
+	Column* Database::find_column(Column column)
+	{
+		return find_column(column.get_column_name());
+	}
+
+	std::string Database::display_all_containers()
+	{
+		std::string result = "";
+		
+		for (size_t i = 0; i < columns.size(); ++i)
+		{
+			Column* col = &columns.at(i);
+			result += col->get_column_name();
+		}
+
+		return result;
 	}
 
 	void display_db_error_msg(void)

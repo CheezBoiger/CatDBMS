@@ -45,20 +45,21 @@ namespace catdb
 		Column& const get_column(void) const { return *column; }
 		Container& const get_container(void) const { return *container; }
 
-		void attach_container(Column* container);
+		void attach_column(Column* column);
+		void attach_container(Container* container);
 
-		// Container will NOT be deleted! if a "new" allocated container was attached,
+		// Container and column will NOT be deleted! if a "new" allocated container was attached,
 		// be sure to keep track of it, or otherwise suffer the perils of memory leaks!
-		virtual ~Element(void) { column = NULL; }
+		virtual ~Element(void) { column = NULL; container = NULL; }
 		 
 		virtual bool check_security(User& user) { return true; }
 
-		friend bool operator<(Element& ele1, Element& ele2);
-		friend bool operator<=(Element& ele1, Element& ele2);
-		friend bool operator>(Element& ele1, Element& ele2);
-		friend bool operator>=(Element& ele1, Element& ele2);
-		friend bool operator==(Element& ele1, Element& ele2);
-		friend bool operator!=(Element& ele1, Element& ele2);
+		bool operator<(const Element& ele1);
+		bool operator<=(const Element& ele1);
+		bool operator>(const Element& ele1);
+		bool operator>=(const Element& ele1);
+		bool operator==(const Element& ele1);
+		bool operator!=(const Element& ele1);
 
 		operator uint32_t(void);
 	};

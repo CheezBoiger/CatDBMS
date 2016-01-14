@@ -14,7 +14,7 @@ namespace catdb
 	}
 
 	Element::Element(const Element& file) : attribute(file.attribute), owner_name(file.owner_name),
-		column(file.column), Object(file)
+		column(file.column), container(file.container), Object(file)
 	{
 	}
 
@@ -23,12 +23,19 @@ namespace catdb
 
 	}
 
-	void Element::attach_container(Column* container)
+	void Element::attach_column(Column* column)
+	{
+		if (column == NULL)
+			return;
+
+		this->column = column;
+	}
+
+	void Element::attach_container(Container* container)
 	{
 		if (container == NULL)
 			return;
-
-		this->column = container;
+		this->container = container;
 	}
 
 	void Element::update(void)
@@ -36,46 +43,34 @@ namespace catdb
 
 	}
 
-	bool operator<(Element& ele1, Element& ele2)
+	bool Element::operator<(const Element& ele1)
 	{
-		Object& obj1 = ele1;
-		Object& obj2 = ele2;
-		return catdb::operator<(obj1, obj2);
+		return Object::operator<(ele1);
 	}
 
-	bool operator<=(Element& ele1, Element& ele2)
+	bool Element::operator<=(const Element& ele1)
 	{
-		Object& obj1 = ele1;
-		Object& obj2 = ele2;
-		return catdb::operator<=(obj1, obj2);
+		return Object::operator<=(ele1);
 	}
 
-	bool operator>(Element& ele1, Element& ele2)
+	bool Element::operator>(const Element& ele1)
 	{
-		Object& obj1 = ele1;
-		Object& obj2 = ele2;
-		return catdb::operator>(obj1, obj2);
+		return Object::operator>(ele1);
 	}
 
-	bool operator>=(Element& ele1, Element& ele2)
+	bool Element::operator>=(const Element& ele1)
 	{
-		Object& obj1 = ele1;
-		Object& obj2 = ele2;
-		return catdb::operator>=(obj1, obj2);
+		return Object::operator>=(ele1);
 	}
 
-	bool operator==(Element& ele1, Element& ele2)
+	bool Element::operator==(const Element& ele1)
 	{
-		Object& obj1 = ele1;
-		Object& obj2 = ele2;
-		return catdb::operator==(obj1, obj2);
+		return Object::operator==(ele1);
 	}
 
-	bool operator!=(Element& ele1, Element& ele2)
+	bool Element::operator!=(const Element& ele1)
 	{
-		Object& obj1 = ele1;
-		Object& obj2 = ele2;
-		return operator!=(obj1, obj2);
+		return Object::operator!=(ele1);
 	} 
 
 	Element::operator uint32_t(void)

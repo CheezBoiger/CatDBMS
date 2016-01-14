@@ -8,4 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include <algorithm>
+
+#define STR_MATCH 0
 #endif /* _HEADER_H_ */

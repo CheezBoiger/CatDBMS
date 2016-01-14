@@ -8,15 +8,26 @@ namespace catdb {
 
 namespace searching = tools::remote;
 
-	Column::Column(void) : size(0), list(new ::doubly_linked_list<Element*>()), sorted_format(tools::sorting::SORT_BIG_ENDIAN),
-		column_title("no_name"), Object()
+	Column::Column(void) : size(0), list(new ::doubly_linked_list<Element*>()),
+		sorted_format(tools::sorting::SORT_BIG_ENDIAN),
+		column_title("no_name"),
+		Object("No name", "No name", 0, 0, SECURE_DEFAULT, O_TYPE_COLUMN)
 	{
 	}
 
 	Column::Column(std::string column_name) : Column()
 	{
-		column_title = column_name;
+		objectname = column_title = column_name;
 	}
+
+	Column::Column(const Column& column) : list(new ::doubly_linked_list<Element*>()), 
+		sorted_format(column.sorted_format),
+		column_title(column.column_title)
+	{
+		for (size_t i = 0; i < column.list->get_size(); ++i)
+			this->insert_element(*(*column.list)[i]);
+	}
+	
 
 	Column::~Column(void)
 	{
@@ -30,10 +41,11 @@ namespace searching = tools::remote;
 			delete list;
 	}
 
-	bool Column::insert_new_element(std::string objectname, std::string ownername, int32_t id, int32_t sec_id, security_levels level)
+	bool Column::insert_new_element(std::string objectname, std::string ownername, int32_t id, int32_t sec_id, 
+		security_levels level)
 	{
 		catdb::Element* new_obj(new catdb::Element(objectname, ownername, id, sec_id, level));
-		new_obj->attach_container(this);
+		new_obj->attach_column(this);
 		list->insert(new_obj);
 
 		size = list->get_size();
@@ -49,7 +61,7 @@ namespace searching = tools::remote;
 			_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_null_value));
 
 		Element* new_element(new Element(object));
-		new_element->attach_container(this);
+		new_element->attach_column(this);
 		list->insert(new_element);
 		size = list->get_size();
 		sort_column(sorted_format);
@@ -150,5 +162,35 @@ namespace searching = tools::remote;
 	{
 		sorted_format = sort_t;
 		sorting_function(list, 0, list->get_size(), sorted_format);
+	}
+
+	bool Column::operator<(const Column& col)
+	{
+		return Object::operator<(col);
+	}
+
+	bool Column::operator<=(const Column& col)
+	{
+		return Object::operator<=(col);
+	}
+
+	bool Column::operator>(const Column& col)
+	{
+		return Object::operator>(col);
+	}
+
+	bool Column::operator>=(const Column& col)
+	{
+		return Object::operator>=(col);
+	}
+
+	bool Column::operator==(const Column& col)
+	{
+		return Object::operator==(col);
+	}
+
+	bool Column::operator!=(const Column& col)
+	{
+		return Object::operator!=(col);
 	}
 }

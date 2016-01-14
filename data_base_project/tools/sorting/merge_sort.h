@@ -16,8 +16,6 @@ namespace sorting {
 		using namespace Internal;
 		V* temp(new V[size]);
 		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
-		//copy_array(temp, start, size, unsorted_array);
-
 		delete[] temp;
 	}
 
@@ -26,13 +24,7 @@ namespace sorting {
 	{
 		using namespace Internal;
 		V** temp(new V*[size]);
-
-		for (size_t i = 0; i < size; ++i)
-			temp[i] = NULL;
-
 		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
-		//copy_array(temp, start, size, unsorted_array);
-
 		delete[] temp;
 	}
 
@@ -40,9 +32,17 @@ namespace sorting {
 	static void _CDECL_ merge_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
-
 		V* temp(new V[size]);
 		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
+		delete[] temp;
+	}
+
+	template<template<typename> class T, typename V>
+	static void _CDECL_ merge_sort(T<V*>& unsorted_array, int start, int size, sort_type sort_t)
+	{
+		using namespace Internal;
+		V** temp(new V*[size]);
+		merge_sort_helper(&unsorted_array, start, size, temp, sort_t);
 		delete[] temp;
 	}
 
@@ -51,11 +51,8 @@ namespace sorting {
 	static void _CDECL_ merge_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;
-
 		V* temp(new V[size]);
-
 		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
-		//copy_array(temp, start, size, unsorted_array);
 		delete[] temp;
 
 	}

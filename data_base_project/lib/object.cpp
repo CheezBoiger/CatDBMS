@@ -32,16 +32,16 @@ namespace catdb
 		return result;
 	}
 
-	bool operator==(Object& obj1, Object& obj2)
+	bool Object::operator==(const Object& obj1)
 	{
 		int32_t obj1_tot = 0;
 		int32_t obj2_tot = 0;
 
-		for (size_t i = 0; i < obj1.objectname.length(); ++i)
-			obj1_tot += static_cast<int32_t>(obj1.objectname[i]);
+		for (size_t i = 0; i < objectname.length(); ++i)
+			obj1_tot += static_cast<int32_t>(objectname[i]);
 
-		for (size_t i = 0; i < obj2.objectname.length(); ++i)
-			obj2_tot += static_cast<int32_t>(obj2.objectname[i]);
+		for (size_t i = 0; i < obj1.objectname.length(); ++i)
+			obj2_tot += static_cast<int32_t>(obj1.objectname[i]);
 
 		if (obj1_tot == obj2_tot)
 			return true;
@@ -49,70 +49,70 @@ namespace catdb
 			return false;
 	}
 
-	bool operator<=(Object &obj1, Object &obj2)
+	bool Object::operator<=(const Object &obj1)
 	{
-		if (obj1.objectname[0] >= obj2.objectname[0])
+		if (objectname[0] >= obj1.objectname[0])
 			return true;
 		else
 			return false;
 	}
 
-	bool operator>=(Object &obj1, Object &obj2)
+	bool Object::operator>=(const Object &obj1)
 	{
-		if (obj1.objectname[0] <= obj2.objectname[0])
+		if (objectname[0] <= obj1.objectname[0])
 			return true;
 		else
 			return false;
 	}
 
-	bool operator<(Object &obj1, Object &obj2)
+	bool Object::operator<(const Object &obj1)
 	{
 		int array_size;
 
-		if (obj1.objectname.length() > obj2.objectname.length())
-			array_size = obj2.objectname.length();
-		else
+		if (objectname.length() > obj1.objectname.length())
 			array_size = obj1.objectname.length();
+		else
+			array_size = objectname.length();
 
 		for (size_t i = 0; i < array_size; ++i)
 		{
-			if (obj1.objectname[i] > obj2.objectname[i])
+			if (objectname[i] > obj1.objectname[i])
 				return true;
-			else if (obj1.objectname[i] < obj2.objectname[i])
+			else if (objectname[i] < obj1.objectname[i])
 				return false;
 		}
 
-		if (obj1.objectname.length() < obj2.objectname.length())
+		if (objectname.length() < obj1.objectname.length())
 			return true;
 		else
 			return false;
 	}
 
-	bool operator>(Object &obj1, Object &obj2)
+	bool Object::operator>(const Object &obj1)
 	{
 		int array_size;
 
-		if (obj1.objectname.length() > obj2.objectname.length())
-			array_size = obj2.objectname.length();
-		else
+		if (objectname.length() > obj1.objectname.length())
 			array_size = obj1.objectname.length();
+		else
+			array_size = objectname.length();
 
 		for (size_t i = 0; i < array_size; ++i)
 		{
-			if (obj1.objectname[i] < obj2.objectname[i])
+			if (objectname[i] < obj1.objectname[i])
 				return true;
-			else if (obj1.objectname[i] > obj2.objectname[i])
+			else if (objectname[i] > obj1.objectname[i])
 				return false;
 		}
 
-		if (obj1.objectname.length() > obj2.objectname.length())
+		if (objectname.length() > obj1.objectname.length())
 			return true;
 		else
 			return false;
 	}
 
-	bool operator!=(Object &obj1, Object &obj2)
+	bool Object::operator!=(const Object &obj1)
 	{
-		return !(obj1 == obj2);
+		return !(*this == obj1);
 	}
 }

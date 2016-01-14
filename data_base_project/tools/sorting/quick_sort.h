@@ -31,6 +31,13 @@ namespace sorting {
 	}
 
 	template<template<typename> class T, typename V>
+	static void _CDECL_ quick_sort(T<V*>& unsorted_array, int start, int size, sort_type sort_t)
+	{
+		using namespace Internal;
+		quick_sort_helper(unsorted_array, start, size - 1, sort_t);
+	}
+
+	template<template<typename> class T, typename V>
 	static void _CDECL_ quick_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
 	{
 		using namespace Internal;

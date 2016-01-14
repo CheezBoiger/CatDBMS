@@ -131,13 +131,13 @@
     <ClCompile Include="lib\database.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tests\Unit\unit_test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="lib\column.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lib\container.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\Unit\table_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

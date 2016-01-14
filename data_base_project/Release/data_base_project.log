@@ -1,59 +1,77 @@
-﻿Build started 12/13/2015 6:22:28 PM.
-     1>Project "C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\data_base_project\data_base_project.vcxproj" on node 2 (Rebuild target(s)).
-     1>ClCompile:
-         D:\Alex Programs\VC\bin\CL.exe /c /ID:\Python\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt architecture\error.cpp container.cpp lib\file.cpp lib\object.cpp main.cpp
-         error.cpp
-         container.cpp
-     1>container.cpp(14): warning C4018: '<': signed/unsigned mismatch
-     1>container.cpp(36): warning C4390: ';': empty controlled statement found; is this the intent?
-     1>container.cpp(48): warning C4018: '<': signed/unsigned mismatch
-     1>container.cpp(67): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/linked_list.h(138): warning C4018: '<': signed/unsigned mismatch
-         c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/linked_list.h(103): note: while compiling class template member function 'bool tools::s_list<catdb::Object *>::remove(V)'
-                 with
-                 [
-                     V=catdb::Object *
-                 ]
-         container.cpp(53): note: see reference to function template instantiation 'bool tools::s_list<catdb::Object *>::remove(V)' being compiled
-                 with
-                 [
-                     V=catdb::Object *
-                 ]
-         container.cpp(7): note: see reference to class template instantiation 'tools::s_list<catdb::Object *>' being compiled
-     1>c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/linked_list.h(105): warning C4101: 'error_info': unreferenced local variable
-         file.cpp
-         object.cpp
-     1>lib\object.cpp(65): warning C4018: '<': signed/unsigned mismatch
-     1>lib\object.cpp(88): warning C4018: '<': signed/unsigned mismatch
-         main.cpp
-     1>c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(25): warning C4091: 'typedef ': ignored on left of 'tools::doubly_linked_list<V>::d_node' when no variable is declared
-         c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(276): note: see reference to class template instantiation 'tools::doubly_linked_list<V>' being compiled
-     1>c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(25): warning C4091: 'typedef ': ignored on left of 'tools::doubly_linked_list<std::string>::d_node' when no variable is declared
-         main.cpp(73): note: see reference to class template instantiation 'tools::doubly_linked_list<std::string>' being compiled
-     1>c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(177): warning C4018: '<': signed/unsigned mismatch
-         c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(146): note: while compiling class template member function 'bool tools::doubly_linked_list<std::string>::remove(V)'
-                 with
-                 [
-                     V=std::string
-                 ]
-         main.cpp(75): note: see reference to function template instantiation 'bool tools::doubly_linked_list<std::string>::remove(V)' being compiled
-                 with
-                 [
-                     V=std::string
-                 ]
-         main.cpp(73): note: see reference to class template instantiation 'tools::doubly_linked_list<std::string>' being compiled
-       Link:
-         D:\Alex Programs\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\Release\data_base_project.exe" /NOLOGO /LIBPATH:D:\Python\libs python34.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\Release\data_base_project.pdb" /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\Release\data_base_project.lib" /MACHINE:X86 /SAFESEH Release\error.obj
-         Release\container.obj
-         Release\file.obj
-         Release\object.obj
-         Release\main.obj
-         Generating code
-         All 257 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-         Finished generating code
-         data_base_project.vcxproj -> C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\Release\data_base_project.exe
-     1>Done Building Project "C:\Users\cmgarcia\documents\visual studio 2015\Projects\data_base_project\data_base_project\data_base_project.vcxproj" (Rebuild target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:03.24
+﻿  error.cpp
+  column.cpp
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<V>::d_node' when no variable is declared
+  C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(317): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<V>' being compiled
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\lib/element.h(45): warning C4227: anachronism used: qualifiers on reference are ignored
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\lib/element.h(46): warning C4227: anachronism used: qualifiers on reference are ignored
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<catdb::Element *>::d_node' when no variable is declared
+  lib\column.cpp(11): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Element *>' being compiled
+lib\column.cpp(27): warning C4018: '<': signed/unsigned mismatch
+lib\column.cpp(34): warning C4018: '<': signed/unsigned mismatch
+lib\column.cpp(61): warning C4390: ';': empty controlled statement found; is this the intent?
+lib\column.cpp(121): warning C4018: '<': signed/unsigned mismatch
+lib\column.cpp(134): warning C4018: '<': signed/unsigned mismatch
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(202): warning C4018: '<': signed/unsigned mismatch
+  C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(171): note: while compiling class template member function 'bool tools::data_structures::doubly_linked_list<catdb::Element *>::remove(V)'
+          with
+          [
+              V=catdb::Element *
+          ]
+  lib\column.cpp(11): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Element *>' being compiled
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/remote/linear_search.h(78): warning C4018: '<=': signed/unsigned mismatch
+  lib\column.cpp(123): note: see reference to function template instantiation 'int tools::remote::linear_search<tools::data_structures::List,catdb::Element>(tools::data_structures::List<catdb::Element *> *,int,int,V *)' being compiled
+          with
+          [
+              V=catdb::Element
+          ]
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/sorting/quick_sort.h(205): warning C4018: '<': signed/unsigned mismatch
+  C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/sorting/quick_sort.h(151): note: see reference to function template instantiation 'int tools::sorting::Internal::partition<tools::data_structures::List,catdb::Element>(tools::data_structures::List<catdb::Element *> &,int,int,tools::sorting::sort_type)' being compiled
+  C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/sorting/quick_sort.h(51): note: see reference to function template instantiation 'void tools::sorting::Internal::quick_sort_helper<tools::data_structures::List,catdb::Element*>(tools::data_structures::List<catdb::Element *> &,int,int,tools::sorting::sort_type)' being compiled
+  lib\column.cpp(158): note: see reference to function template instantiation 'void tools::sorting::quick_sort<tools::data_structures::List,catdb::Element>(tools::data_structures::List<catdb::Element *> *,int,int,tools::sorting::sort_type)' being compiled
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/sorting/quick_sort.h(216): warning C4018: '<': signed/unsigned mismatch
+  container.cpp
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\lib/element.h(45): warning C4227: anachronism used: qualifiers on reference are ignored
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\lib/element.h(46): warning C4227: anachronism used: qualifiers on reference are ignored
+  database.cpp
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<V>::d_node' when no variable is declared
+  C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(317): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<V>' being compiled
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\lib/element.h(45): warning C4227: anachronism used: qualifiers on reference are ignored
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\lib/element.h(46): warning C4227: anachronism used: qualifiers on reference are ignored
+  element.cpp
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\lib/element.h(45): warning C4227: anachronism used: qualifiers on reference are ignored
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\lib/element.h(46): warning C4227: anachronism used: qualifiers on reference are ignored
+  object.cpp
+lib\object.cpp(77): warning C4018: '<': signed/unsigned mismatch
+lib\object.cpp(100): warning C4018: '<': signed/unsigned mismatch
+  user.cpp
+lib\security\user.cpp(73): warning C4101: 'oor': unreferenced local variable
+  unit_test.cpp
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<V>::d_node' when no variable is declared
+  C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(317): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<V>' being compiled
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\lib/element.h(45): warning C4227: anachronism used: qualifiers on reference are ignored
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\lib/element.h(46): warning C4227: anachronism used: qualifiers on reference are ignored
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<catdb::Element *>::d_node' when no variable is declared
+  tests\Unit\unit_test.cpp(13): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Element *>' being compiled
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(202): warning C4018: '<': signed/unsigned mismatch
+  C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/data_structures/doubly_linked_list.h(171): note: while compiling class template member function 'bool tools::data_structures::doubly_linked_list<catdb::Element *>::remove(V)'
+          with
+          [
+              V=catdb::Element *
+          ]
+  tests\Unit\unit_test.cpp(13): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Element *>' being compiled
+C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/sorting/merge_sort.h(274): warning C4018: '<': signed/unsigned mismatch
+  C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/sorting/merge_sort.h(290): note: see reference to function template instantiation 'void tools::sorting::Internal::copy_array<tools::data_structures::doubly_linked_list,V*>(catdb::Element *,int,int,tools::data_structures::doubly_linked_list<catdb::Element *> &)' being compiled
+          with
+          [
+              V=catdb::Element
+          ]
+  C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\data_base_project\tools/sorting/merge_sort.h(55): note: see reference to function template instantiation 'void tools::sorting::Internal::merge_sort_helper<tools::data_structures::doubly_linked_list,catdb::Element>(tools::data_structures::doubly_linked_list<catdb::Element *> *,int,int,V **,tools::sorting::sort_type)' being compiled
+          with
+          [
+              V=catdb::Element
+          ]
+  tests\Unit\unit_test.cpp(36): note: see reference to function template instantiation 'void tools::sorting::merge_sort<tools::data_structures::doubly_linked_list,catdb::Element>(tools::data_structures::doubly_linked_list<catdb::Element *> &,int,int,tools::sorting::sort_type)' being compiled
+  Generating code
+  All 652 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  data_base_project.vcxproj -> C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\Release\data_base_project.exe

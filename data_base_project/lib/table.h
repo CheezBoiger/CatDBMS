@@ -4,6 +4,7 @@
 
 #include "header.h"
 #include "lib/column.h"
+#include "lib/container.h"
 
 #include <vector>
 
@@ -25,6 +26,8 @@ namespace DBase {
 
 		virtual bool add_coloumn(Column* column) = 0;
 
+		virtual bool add_container(Container* container) = 0;
+
 		virtual bool remove_coloumn(std::string coloumn_name) = 0;
 
 		virtual int32_t get_row_dimension(void) = 0;
@@ -36,7 +39,8 @@ namespace DBase {
 	class Database : public Table
 	{
 	private:
-		std::vector<Column>* coloumns;
+		std::vector<Column> columns;
+		std::vector<Container> containers;
 
 		std::string table_name;
 
@@ -60,15 +64,20 @@ namespace DBase {
 		bool add_coloumn(Column* column);
 		bool remove_coloumn(std::string coloumn_name);
 		bool change_database_name(std::string new_name);
+		bool add_container(Container* container);
 
-		Database* intersection(Database* database);
-		Database* clone(void);
+		Database intersection(Database* database);
+		Database clone(void);
 
-		Column* find_container(std::string container_name);
-		Column* find_container(Column container);
+		Column* find_column(std::string column_name);
+		Column* find_column(Column column);
+
+		Container* get_container(std::string container_name);
 
 		int32_t get_row_dimension(void) { return row_dimension; }
 		int32_t get_coloumn_dimension(void) { return coloumn_dimension; }
+
+		std::string display_all_containers();
 	};
 
 	void display_db_error_msg(void);

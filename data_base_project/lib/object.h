@@ -25,6 +25,7 @@ namespace catdb
 		O_TYPE_OBJECT,
 		O_TYPE_ELEMENT,
 		O_TYPE_MODULE,
+		O_TYPE_COLUMN,
 	};
 
 	/*
@@ -52,13 +53,6 @@ namespace catdb
 
 		virtual bool check_security(User& user) = 0;
 
-		friend bool operator==(Object &obj1, Object &obj2);
-		friend bool operator<=(Object &obj1, Object &obj2);
-		friend bool operator>=(Object &obj1, Object &obj2);
-		friend bool operator<(Object &obj1, Object &obj2);
-		friend bool operator>(Object &obj1, Object &obj2);
-		friend bool operator!=(Object &obj1, Object &obj2);
-
 	public:
 		virtual ~Object(void) { }
 		Object(const Object &obj);
@@ -72,6 +66,13 @@ namespace catdb
 		std::string get_owner_name(void) { return owner; }
 
 		object_type get_object_type(void) { return type; }
+
+		bool operator==(const Object &obj1);
+		bool operator<=(const Object &obj1);
+		bool operator>=(const Object &obj1);
+		bool operator<(const Object &obj1);
+		bool operator>(const Object &obj1);
+		bool operator!=(const Object &obj1);
 
 		operator uint32_t(void);
 	};

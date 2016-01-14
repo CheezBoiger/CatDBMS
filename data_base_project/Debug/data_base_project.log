@@ -3,6 +3,53 @@ c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_b
   c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(317): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<V>' being compiled
 c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\element.h(45): warning C4227: anachronism used: qualifiers on reference are ignored
 c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\element.h(46): warning C4227: anachronism used: qualifiers on reference are ignored
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\table.h(42): error C2059: syntax error: '}'
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\table.h(42): error C2143: syntax error: missing ';' before '}'
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\table.h(42): error C2238: unexpected token(s) preceding ';'
+  container.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\element.h(45): warning C4227: anachronism used: qualifiers on reference are ignored
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\element.h(46): warning C4227: anachronism used: qualifiers on reference are ignored
+  Generating Code...
+  Compiling...
+  table_test.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<V>::d_node' when no variable is declared
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(317): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<V>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\element.h(45): warning C4227: anachronism used: qualifiers on reference are ignored
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\element.h(46): warning C4227: anachronism used: qualifiers on reference are ignored
+  user.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\security\user.cpp(73): warning C4101: 'oor': unreferenced local variable
+  object.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\object.cpp(77): warning C4018: '<': signed/unsigned mismatch
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\object.cpp(100): warning C4018: '<': signed/unsigned mismatch
+  element.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\element.h(45): warning C4227: anachronism used: qualifiers on reference are ignored
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\element.h(46): warning C4227: anachronism used: qualifiers on reference are ignored
+  column.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<V>::d_node' when no variable is declared
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(317): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<V>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\element.h(45): warning C4227: anachronism used: qualifiers on reference are ignored
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\element.h(46): warning C4227: anachronism used: qualifiers on reference are ignored
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(31): warning C4091: 'typedef ': ignored on left of 'tools::data_structures::doubly_linked_list<catdb::Element *>::d_node' when no variable is declared
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\column.cpp(11): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Element *>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\column.cpp(27): warning C4018: '<': signed/unsigned mismatch
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\column.cpp(34): warning C4018: '<': signed/unsigned mismatch
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\column.cpp(121): warning C4018: '<': signed/unsigned mismatch
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\column.cpp(134): warning C4018: '<': signed/unsigned mismatch
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(202): warning C4018: '<': signed/unsigned mismatch
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\data_structures\doubly_linked_list.h(171): note: while compiling class template member function 'bool tools::data_structures::doubly_linked_list<catdb::Element *>::remove(V)'
+          with
+          [
+              V=catdb::Element *
+          ]
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\column.cpp(11): note: see reference to class template instantiation 'tools::data_structures::doubly_linked_list<catdb::Element *>' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\remote\linear_search.h(78): warning C4018: '<=': signed/unsigned mismatch
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\column.cpp(123): note: see reference to function template instantiation 'int tools::remote::linear_search<tools::data_structures::List,catdb::Element>(tools::data_structures::List<catdb::Element *> *,int,int,V *)' being compiled
+          with
+          [
+              V=catdb::Element
+          ]
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(205): warning C4018: '<': signed/unsigned mismatch
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(151): note: see reference to function template instantiation 'int tools::sorting::Internal::partition<tools::data_structures::List,catdb::Element>(tools::data_structures::List<catdb::Element *> &,int,int,tools::sorting::sort_type)' being compiled
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(51): note: see reference to function template instantiation 'void tools::sorting::Internal::quick_sort_helper<tools::data_structures::List,catdb::Element*>(tools::data_structures::List<catdb::Element *> &,int,int,tools::sorting::sort_type)' being compiled
+  c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\column.cpp(158): note: see reference to function template instantiation 'void tools::sorting::quick_sort<tools::data_structures::List,catdb::Element>(tools::data_structures::List<catdb::Element *> *,int,int,tools::sorting::sort_type)' being compiled
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\tools\sorting\quick_sort.h(216): warning C4018: '<': signed/unsigned mismatch
+  error.cpp
+  Generating Code...
+  data_base_project.vcxproj -> C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\Debug\data_base_project.exe

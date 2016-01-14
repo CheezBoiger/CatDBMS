@@ -1,5 +1,5 @@
-#ifndef _CONTAINER_H_
-#define _CONTAINER_H_
+#ifndef _COLUMN_H_
+#define _COLUMN_H_
 
 #pragma once
 #include "lib/object.h"
@@ -39,6 +39,7 @@ namespace catdb
 	public:
 		Column(void);
 		Column(std::string column_name);
+		Column(const Column& column);
 		~Column(void);
 
 		int32_t get_size(void) { return size; }
@@ -68,8 +69,15 @@ namespace catdb
 
 		std::string display_list(void);
 
+		bool operator<(const Column& col);
+		bool operator<=(const Column& col);
+		bool operator>(const Column& col);
+		bool operator>=(const Column& col);
+		bool operator==(const Column& col);
+		bool operator!=(const Column& col);
+
 	};
 
 }
 
-#endif /* _CONTAINER_H_ */
+#endif /* _COLUMN_H_ */
