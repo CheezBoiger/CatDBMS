@@ -4,7 +4,7 @@
 namespace catdb
 {
 	Element::Element(std::string filename, std::string ownername, int32_t id, int32_t sec_id, security_levels level)
-		: attribute(filename), owner_name(ownername), column(NULL), Object(filename,
+		: attribute(filename), owner_name(ownername), Object(filename,
 			ownername,
 			id,
 			sec_id,
@@ -14,28 +14,13 @@ namespace catdb
 	}
 
 	Element::Element(const Element& file) : attribute(file.attribute), owner_name(file.owner_name),
-		column(file.column), container(file.container), Object(file)
+		 Object(file)
 	{
 	}
 
 	void Element::check_problems(void)
 	{
 
-	}
-
-	void Element::attach_column(Column* column)
-	{
-		if (column == NULL)
-			return;
-
-		this->column = column;
-	}
-
-	void Element::attach_container(Container* container)
-	{
-		if (container == NULL)
-			return;
-		this->container = container;
 	}
 
 	void Element::update(void)

@@ -13,8 +13,7 @@ namespace catdb {
 namespace DBase {
 
 	/* Table interface intended to build an standard for catDBMS databases. */
-	class Table
-	{
+	class Table {
 	public:
 		virtual ~Table(void) { }
 
@@ -24,11 +23,7 @@ namespace DBase {
 
 		virtual bool load_table(std::string name) = 0;
 
-		virtual bool add_coloumn(Column* column) = 0;
-
 		virtual bool add_container(Container* container) = 0;
-
-		virtual bool remove_coloumn(std::string coloumn_name) = 0;
 
 		virtual int32_t get_row_dimension(void) = 0;
 
@@ -36,13 +31,14 @@ namespace DBase {
 
 	};
 
-	class Database : public Table
-	{
+	class Database : public Table {
 	private:
-		std::vector<Column> columns;
+		const std::string default_path = "lib/"; 
+
 		std::vector<Container> containers;
 
 		std::string table_name;
+		std::string directory_path;
 
 		int32_t coloumn_dimension;
 		int32_t row_dimension;
@@ -61,10 +57,9 @@ namespace DBase {
 		bool save_table(std::string name);
 		bool load_table(std::string name);
 		bool folder_create(void);
-		bool add_coloumn(Column* column);
-		bool remove_coloumn(std::string coloumn_name);
 		bool change_database_name(std::string new_name);
 		bool add_container(Container* container);
+		bool remove_container(std::string container_name);
 
 		Database intersection(Database* database);
 		Database clone(void);

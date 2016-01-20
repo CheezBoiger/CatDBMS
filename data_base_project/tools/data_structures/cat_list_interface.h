@@ -9,8 +9,7 @@ namespace data_structures {
 	/* This is  List template interface intended to conform any list-like
 		data structure that plans to use the sorting algorithms in tools */
 	template<typename V>
-	class List
-	{
+	class List {
 	public:
 		virtual ~List(void) { }
 

@@ -9,7 +9,7 @@ namespace tools {
 namespace sorting {
 	// Default function template for sorting an array holding basic values.
 	template<class T>
-	static void _CDECL_ selection_sort(T* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ selection_sort(T* unsorted_array, int start, int size, sort_format sort_t)
 	{
 		Errors::err_info err;
 
@@ -56,7 +56,7 @@ namespace sorting {
 
 	// Overloaded template designed for Abstract arrays, carrying lists of abstract pointers.
 	template<class T>
-	static void _CDECL_ selection_sort(T** unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ selection_sort(T** unsorted_array, int start, int size, sort_format sort_t)
 	{
 		Errors::err_info err;
 
@@ -102,7 +102,7 @@ namespace sorting {
 	}
 
 	template<template<typename> class T, typename V>
-	static void _CDECL_ selection_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ selection_sort(T<V>& unsorted_array, int start, int size, sort_format sort_t)
 	{
 		Errors::err_info err;
 
@@ -142,7 +142,7 @@ namespace sorting {
 	}
 
 	template<template<typename> class T, typename V>
-	static void _CDECL_ selection_sort(T<V*>* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ selection_sort(T<V*>* unsorted_array, int start, int size, sort_format sort_t)
 	{
 		Errors::err_info err;
 
@@ -190,7 +190,7 @@ namespace sorting {
 	}
 
 	template<template<typename> class T, typename V>
-	static void _CDECL_ selection_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ selection_sort(T<V>* unsorted_array, int start, int size, sort_format sort_t)
 	{
 		Errors::err_info err;
 

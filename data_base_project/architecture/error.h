@@ -60,6 +60,9 @@ namespace Errors
 		error_not_unique,
 		error_cannot_add,
 		error_compatibility_issue,
+		error_path_not_found,
+		error_folder_already_exists,
+		error_file_already_exists,
 	};
 
 	typedef struct

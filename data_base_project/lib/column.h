@@ -12,18 +12,16 @@ using namespace data_structures;
 
 /* sorting algorithms used for the purpose of determining how the programmer wants to sort
 	 this container. */
-typedef void(*type_sort_function) (::List<catdb::Element*>*, int32_t, int32_t, ::sorting::sort_type);
+typedef void(*type_sort_function) (::List<catdb::Element*>*, int32_t, int32_t, ::sorting::sort_format);
 
-namespace catdb 
-{
+namespace catdb {
 	// This is a contain that stores all similar files.
 	// For this case, we use a container to hold related
 	// values for proper storage.
-	class Column : public catdb::Object
-	{
+	class Column : public Object {
 	private:
 		::List<catdb::Element*>* list;
-		tools::sorting::sort_type sorted_format;
+		tools::sorting::sort_format sorted_format;
 
 		int32_t size;
 
@@ -40,7 +38,7 @@ namespace catdb
 		Column(void);
 		Column(std::string column_name);
 		Column(const Column& column);
-		~Column(void);
+		virtual ~Column(void);
 
 		int32_t get_size(void) { return size; }
 
@@ -48,8 +46,8 @@ namespace catdb
 		
 		/* TODO(Garcia): Still need to implement these functions in the cpp file. */
 		/* Allows the container to be sorted with a specified sorting algorithm. */
-		void sort_column(sorting::sort_type sort_t);
-		void sort_column(type_sort_function sorting_function, sorting::sort_type sort_t);
+		void sort_column(sorting::sort_format sort_t);
+		void sort_column(type_sort_function sorting_function, sorting::sort_format sort_t);
 		void setup_container_folder(User& user);
 		void combine_containers(Column* column);
 		void remove_similarities(Column* column);
@@ -75,7 +73,6 @@ namespace catdb
 		bool operator>=(const Column& col);
 		bool operator==(const Column& col);
 		bool operator!=(const Column& col);
-
 	};
 
 }

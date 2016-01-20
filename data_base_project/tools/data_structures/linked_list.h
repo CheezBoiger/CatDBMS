@@ -16,11 +16,9 @@ namespace data_structures {
 	// Some of it's features, like insertion, hold a O(1) time complexity, while 
 	// removal and lookup are O(n). 
 	template<class V>
-	class s_list : public List<V>
-	{
+	class s_list : public List<V> {
 	private:
-		struct s_node
-		{
+		struct s_node {
 			s_node* next;
 			int32_t i;
 			V data;
@@ -34,8 +32,7 @@ namespace data_structures {
 	protected:
 
 		// grab the root and handle it.
-		s_node* handle_root_removal(void)
-		{
+		s_node* handle_root_removal(void) {
 			s_node* rem_node = root;
 
 			if (root != NULL)
@@ -44,8 +41,7 @@ namespace data_structures {
 		}
 
 		// Grab the tail from the list and assign the new one.
-		s_node* handle_tail_removal(void)
-		{
+		s_node* handle_tail_removal(void) {
 			s_node* rem_node = tail;
 			s_node* traverse = root;
 
@@ -63,13 +59,11 @@ namespace data_structures {
 
 
 		//TODO(Garcia): there may need to be some fixes, like checking for memory leaks.
-		virtual ~s_list(void)
-		{
+		virtual ~s_list(void) {
 			s_node* prev_node;
 			s_node* traverse = root;
 
-			while (traverse != NULL)
-			{
+			while (traverse != NULL) {
 				prev_node = traverse;
 				traverse = traverse->next;
 				delete prev_node;
@@ -80,19 +74,15 @@ namespace data_structures {
 			tail = NULL;
 		}
 
-		void insert(V data)
-		{
+		void insert(V data) {
 			s_node* new_node(new s_node);
 			new_node->data = data;
 			new_node->next = NULL;
 
-			if (root == NULL)
-			{
+			if (root == NULL) {
 				root = tail = new_node;
 				new_node->i = size++;
-			}
-			else
-			{
+			} else {
 				tail->next = new_node;
 				tail = tail->next;
 				new_node->i = size++;
@@ -100,28 +90,23 @@ namespace data_structures {
 		}
 
 		// Removes a data piece from the linked list. 
-		bool remove(V data)
-		{
+		bool remove(V data) {
 			bool result = false;
 			Errors::err_info error_info;
 			s_node* rem_node = NULL;
 
 			// The huge ass algorithm used to find and delete the node from the 
 			// list.
-			if (size > 0 || root != NULL)
-			{
+			if (size > 0 || root != NULL) {
 				if (data == root->data)
 					rem_node = handle_root_removal();
 				else if (data == tail->data)
 					rem_node = handle_tail_removal();
-				else
-				{
+				else {
 					s_node* traverse = root->next;
 					s_node* prev_node = root;
-					while (traverse != NULL)
-					{
-						if (traverse->data == data)
-						{
+					while (traverse != NULL) {
+						if (traverse->data == data) {
 							prev_node->next = traverse->next;
 							rem_node = traverse;
 							break;
@@ -132,12 +117,10 @@ namespace data_structures {
 					}
 				}
 
-				if (rem_node != NULL)
-				{
+				if (rem_node != NULL) {
 					// reset all numbering for the indices!!
 					s_node* traverse = rem_node->next;
-					for (size_t i = rem_node->i; i < size - 1; ++i)
-					{
+					for (size_t i = rem_node->i; i < size - 1; ++i) {
 						traverse->i = i;
 						traverse = traverse->next;
 					}
@@ -146,33 +129,26 @@ namespace data_structures {
 					rem_node = NULL;
 					size--;
 					result = true;
-				}
-				else
-				{
+				} else {
 					// Cannot find the data that was to be deleted.
 					_DISPLAY_ERROR(get_error_msg(Errors::error_find_file));
 				}
-			}
-			else
-			{
+			} else {
 				// The structure is empty. Nothing to delete.
 				_DISPLAY_ERROR(get_error_msg(Errors::error_empty_structure));
 			}
 			return result;
 		}
 
-		V* get(int index)
-		{
+		V* get(int index) {
 			Errors::err_info error_info;
 
-			if (is_empty())
-			{
+			if (is_empty()) {
 				error_info = get_error_msg(Errors::error_empty_structure);
 				_DISPLAY_ERROR(error_info);
 				return NULL;
 			}
-			else if (index > size || index < 0)
-			{
+			else if (index > size || index < 0) {
 				error_info = get_error_msg(Errors::error_array_out_of_bounds);
 				_DISPLAY_ERROR(error_info);
 				return NULL;
@@ -180,8 +156,7 @@ namespace data_structures {
 
 			s_node* traverse = root;
 
-			while (traverse != NULL)
-			{
+			while (traverse != NULL) {
 				if (traverse->i == index)
 					return &traverse->data;
 
@@ -195,18 +170,13 @@ namespace data_structures {
 
 		// Access the linked list through means of array format.
 		// There MAY be some trouble if you attempt to access an index of NULL value.
-		V& operator[](const int32_t index)
-		{
+		V& operator[](const int32_t index) {
 			V* result = NULL;
 
-			if (index >= size || index < MINIMUM_ARRAY_BOUNDARY)
-			{
-				if (is_empty())
-				{
+			if (index >= size || index < MINIMUM_ARRAY_BOUNDARY) {
+				if (is_empty()) {
 					_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_empty_structure));
-				}
-				else
-				{
+				} else {
 					_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_array_out_of_bounds));
 				}
 
@@ -215,14 +185,11 @@ namespace data_structures {
 
 			s_node* traverse = root;
 
-			while (traverse != NULL)
-			{
-				if (traverse->i == index)
-				{
+			while (traverse != NULL) {
+				if (traverse->i == index) {
 					result = &traverse->data;
 					break;
 				}
-
 				traverse = traverse->next;
 			}
 

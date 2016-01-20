@@ -21,11 +21,9 @@ namespace data_structures {
 
 	*/
 	template<typename Key, typename Value>
-	class HashTable
-	{
+	class HashTable {
 	private:
-		struct pair
-		{
+		struct pair {
 			Key key;
 			Value value;
 		};
@@ -36,8 +34,7 @@ namespace data_structures {
 		int32_t max_size;
 		int32_t current_size;
 
-		uint32_t hash(Key key) const
-		{
+		uint32_t hash(Key key) const {
 			int32_t seed = 131;
 			return ((static_cast<uint32_t>(key) ^ seed) >> 2);
 		}
@@ -47,29 +44,25 @@ namespace data_structures {
 	public:
 		explicit HashTable(void) : table(new pair*[DEFAULT_HASHTABLE_LENGTH]),
 			has_been_used(new bool[DEFAULT_HASHTABLE_LENGTH]), max_size(DEFAULT_HASHTABLE_LENGTH),
-			current_size(0)  
-		{
-			for (size_t i = 0; i < DEFAULT_HASHTABLE_LENGTH; ++i)
-			{
+			current_size(0) {
+
+			for (size_t i = 0; i < DEFAULT_HASHTABLE_LENGTH; ++i) {
 				table[i] = NULL;
 				has_been_used[i] = false;
 			}
 		}
 
 		explicit HashTable(int32_t length) : table(new pair*[length]),
-			has_been_used(new bool[length]), max_size(length), current_size(0) 
-		{
-			for (size_t i = 0; i < length; ++i)
-			{
+			has_been_used(new bool[length]), max_size(length), current_size(0) {
+
+			for (size_t i = 0; i < length; ++i) {
 				table[i] = NULL;
 				has_been_used[i] = false;
 			}
 		}
 
-		~HashTable(void)
-		{
-			for (size_t i = 0; i < max_size; ++i)
-			{
+		~HashTable(void) {
+			for (size_t i = 0; i < max_size; ++i) {
 				if (table[i] != NULL)
 					delete table[i];
 			}
@@ -77,15 +70,13 @@ namespace data_structures {
 			delete[] has_been_used;
 		}
 
-		bool puts(Key key, Value value)
-		{
+		bool puts(Key key, Value value) {
 			bool success = false;
 			uint32_t index = hash(key) % max_size;
 			
 			while (table[index] != NULL && index < max_size)
 				index++;
-			if (index < max_size)
-			{
+			if (index < max_size) {
 				pair* new_pair(new pair());
 				new_pair->key = key;
 				new_pair->value = value;
@@ -97,8 +88,7 @@ namespace data_structures {
 			return success;
 		}
 	
-		const Value* const gets(Key key) const
-		{
+		const Value* const gets(Key key) const {
 			uint32_t index = hash(key) % max_size;
 
 			if (table[index] == NULL)
@@ -108,8 +98,7 @@ namespace data_structures {
 		}
 
 		// Implement the remove function for removing values and keys from the hash table.
-		Value remove(Key key)
-		{
+		Value remove(Key key) {
 			Value result;
 
 			uint32_t index = hash(key) % max_size;
@@ -117,8 +106,7 @@ namespace data_structures {
 			while (table[index] != NULL && index <= max_size)
 				index++;
 
-			if (index <= max_size)
-			{
+			if (index <= max_size) {
 				result = table[index]->value;
 				delete table[index];
 				table[index] = NULL;
@@ -131,8 +119,6 @@ namespace data_structures {
 		}
 
 	}; /* HashTable */
-
-	template<> class HashTable<std::string, std::string>;
 } /* data_structures namespace */
 } /* tools namespace */
 

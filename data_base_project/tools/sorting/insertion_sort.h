@@ -10,7 +10,7 @@ namespace tools {
 namespace sorting {
 	// Insertion Sort for any array with default primitive, or object, values.
 	template<class T>
-	static void _CDECL_ insertion_sort(T* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ insertion_sort(T* unsorted_array, int start, int size, sort_format sort_t)
 	{
 		Errors::err_info err;
 
@@ -57,7 +57,7 @@ namespace sorting {
 
 	// Overloaded Insertion sort specifically for abstract arrays, arrays that hold lists of derived objects.
 	template<class T>
-	static void _CDECL_ insertion_sort(T** unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ insertion_sort(T** unsorted_array, int start, int size, sort_format sort_t)
 	{
 		Errors::err_info err;
 
@@ -103,7 +103,7 @@ namespace sorting {
 	}
 
 	template<template<typename> class T, typename V>
-	static void _CDECL_ insertion_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ insertion_sort(T<V>& unsorted_array, int start, int size, sort_format sort_t)
 	{
 		Errors::err_info err;
 
@@ -144,7 +144,7 @@ namespace sorting {
 
 	// ONLY WORKS IF YOUR TEMPLATE CLASS HAS OVERLOADED THE [] OPERATOR.
 	template<template<typename> class T, typename V>
-	static void _CDECL_ insertion_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ insertion_sort(T<V>* unsorted_array, int start, int size, sort_format sort_t)
 	{
 		Errors::err_info err;
 
@@ -195,7 +195,7 @@ namespace sorting {
 	// Handles sorting with template objects holding abstract objects. WARNING, THIS FUNCTION ONLY WORKS IF YOU HAVE OVERLOADED THE 
 	// [] OPERATOR IN YOUR TEMPLATED CLASS.
 	template<template<typename> class T, typename V>
-	static void _CDECL_ insertion_sort(T<V*>* unsorted_array, int start, int size, sort_type sort_t)
+	static void _CDECL_ insertion_sort(T<V*>* unsorted_array, int start, int size, sort_format sort_t)
 	{
 		Errors::err_info err;
 

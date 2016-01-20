@@ -12,13 +12,11 @@ namespace data_structures {
 
 	// The ol' fashioned doubly linked list yall.
 	template<typename V>
-	class doubly_linked_list : public List<V>
-	{
+	class doubly_linked_list : public List<V> {
 	private:
 		
 		// struct to hold node pairs. 
-		typedef struct d_node
-		{
+		typedef struct d_node {
 			/* Previous node. */
 			d_node* prev;
 			/* Next node */
@@ -43,8 +41,7 @@ namespace data_structures {
 	protected:
 
 		/* Handles the node removal cleanup before deleting. */
-		d_node* handle_root_removal(void)
-		{
+		d_node* handle_root_removal(void) {
 			d_node* rem_node = root;
 
 			if (cursor == root)
@@ -61,8 +58,7 @@ namespace data_structures {
 		}
 
 		/* Handls the tail removal cleanup before deleting. */
-		d_node* handle_tail_removal(void)
-		{
+		d_node* handle_tail_removal(void) {
 			d_node* rem_node = tail;
 
 			if (cursor == tail)
@@ -78,34 +74,28 @@ namespace data_structures {
 		   Checks if cursor happens to be tail, or root, or both, 
 		   and fixes this problem.
 		 */
-		d_node* handle_cursor_removal(void)
-		{
+		d_node* handle_cursor_removal(void) {
 			d_node* rem_node = cursor;
 
-			if (cursor == root)
-			{
+			if (cursor == root) {
 				root = root->next;
 				root->prev = NULL;
 			}
-			if (cursor == tail)
-			{
+			if (cursor == tail) {
 				tail = tail->prev;
 				tail->next = NULL;
 			}
 
-			if (cursor->prev && cursor->next)
-			{
+			if (cursor->prev && cursor->next) {
 				cursor->prev->next = cursor->next;
 				cursor->next->prev = cursor->prev;
 				cursor = cursor->next;
 			}
-			else if (cursor->next == NULL)
-			{
+			else if (cursor->next == NULL) {
 				cursor = cursor->prev;
 				cursor->next = NULL;
 			}
-			else if (cursor->prev == NULL)
-			{
+			else if (cursor->prev == NULL) {
 				cursor = cursor->next;
 				cursor->prev = NULL;
 			}
@@ -121,12 +111,10 @@ namespace data_structures {
 		doubly_linked_list(void) : size(0), root(NULL), tail(NULL), cursor(NULL) { }
 
 		/* The list destroyer. */
-		virtual ~doubly_linked_list(void)
-		{
+		virtual ~doubly_linked_list(void) {
 			d_node* previous;
 			d_node* traverse = root;
-			while (traverse != NULL)
-			{
+			while (traverse != NULL) {
 				previous = traverse;
 				traverse = traverse->next;
 				delete previous;
@@ -139,20 +127,16 @@ namespace data_structures {
 		}
 
 		// Inserts data at the end of the list.
-		void insert(V data)
-		{
+		void insert(V data) {
 			d_node* new_node(new d_node);
 			new_node->data = data;
 			new_node->next = NULL;
 
-			if (root == NULL)
-			{
+			if (root == NULL) {
 				new_node->index = size++;
 				new_node->prev = NULL;
 				root = tail = cursor = new_node;
-			}
-			else
-			{
+			} else {
 				new_node->index = size++;
 				new_node->prev = tail;
 				tail->next = new_node;
@@ -161,32 +145,26 @@ namespace data_structures {
 		}
 
 		// insert data at a particular index. The tail end of the list will shift by one index to the right.
-		void insert(V data, int32_t index)
-		{
+		void insert(V data, int32_t index) {
 
 		}
 
 		/* Removes the value from the list. If not found, the result returns false(0). */
-		bool remove(V data)
-		{
+		bool remove(V data) {
 			d_node* rem_node = NULL;
 
-			if (size > 0 || root != NULL)
-			{
+			if (size > 0 || root != NULL) {
 				if (root->data == data)
 					rem_node = handle_root_removal();
 				else if (tail->data == data)
 					rem_node = handle_tail_removal();
 				else if (cursor->data == data)
 					rem_node = handle_cursor_removal();
-				else
-				{
+				else {
 					d_node* traverse = root;
 
-					while (traverse != NULL)
-					{
-						if (traverse->data == data)
-						{
+					while (traverse != NULL) {
+						if (traverse->data == data) {
 							traverse->next->prev = traverse->prev;
 							traverse->prev->next = traverse->next;
 							rem_node = traverse;
@@ -196,11 +174,9 @@ namespace data_structures {
 					}
 				}
 
-				if (rem_node != NULL)
-				{
+				if (rem_node != NULL) {
 					d_node* traverse = rem_node->next;
-					for (size_t i = rem_node->index; i < size - 1; ++i)
-					{
+					for (size_t i = rem_node->index; i < size - 1; ++i) {
 						traverse->index = i;
 						traverse = traverse->next;
 					}
@@ -225,39 +201,30 @@ namespace data_structures {
 		inline bool is_empty(void) const { return size == 0; }
 
 		/* Grabs the front of the list. The root is returned. */
-		const V* front(void)
-		{
-			if (root == NULL)
-			{
+		const V* front(void) {
+			if (root == NULL) {
 				_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_null_value));
 				return NULL;
 			}
-
 			return &root->data;
 		}
 
 		/* Returns the back(tail) of the list. */
-		const V* back(void)
-		{
-			if (tail == NULL)
-			{
+		const V* back(void) {
+			if (tail == NULL) {
 				_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_null_value));
 				return NULL;
 			}
-
 
 			return &tail->data;
 		}
 
 		/* Returns the current (cursor) node of the list. */
-		const V* get_current(void)
-		{
-			if (cursor == NULL)
-			{
+		const V* get_current(void) {
+			if (cursor == NULL) {
 				_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_null_value));
 				return NULL;
 			}
-
 			return &cursor->data;
 		}
 
@@ -265,16 +232,11 @@ namespace data_structures {
 		// Value can be obtained from this overload, however, 
 		// if attempting to access outside the this data structure, there will 
 		// be a out of bounds error, resulting in premature exiting of the program.
-		V& operator[](const int32_t i)
-		{
-			if (i >= size || i < MINIMUM_ARRAY_BOUNDARY)
-			{
-				if (is_empty())
-				{
+		V& operator[](const int32_t i) {
+			if (i >= size || i < MINIMUM_ARRAY_BOUNDARY) {
+				if (is_empty()) {
 					_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_empty_structure));
-				}
-				else
-				{
+				} else {
 					_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_array_out_of_bounds));
 				}
 
@@ -289,29 +251,21 @@ namespace data_structures {
 				result = &root->data;
 			else if (i == (size - 1))
 				result = &tail->data;
-			else if (cursor->index > i)
-			{
-				while (cursor->prev != NULL)
-				{
-					if (cursor->index == i)
-					{
+			else if (cursor->index > i) {
+				while (cursor->prev != NULL) {
+					if (cursor->index == i) {
 						result = &cursor->data; break;
 					}
 					cursor = cursor->prev;
 				}
-			}
-			else
-			{
-				while (cursor->next != NULL)
-				{
-					if (cursor->index == i)
-					{
+			} else {
+				while (cursor->next != NULL) {
+					if (cursor->index == i) {
 						result = &cursor->data; break;
 					}
 					cursor = cursor->next;
 				}
 			}
-
 			return *result;
 		}
 	};

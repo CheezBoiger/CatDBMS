@@ -33,19 +33,10 @@
     <ClInclude Include="tools\data_structures\linked_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tools\data_structures\stack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="tools\sorting\selection_sort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tools\sorting\sort_helpers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\data_structures\heap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tools\data_structures\data_structures_specifics\hash_table_specifics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tools\data_structures\hash_table.h">
@@ -114,6 +105,12 @@
     <ClInclude Include="architecture\threading\thread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="architecture\internal\cattypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\remote\cat_hashing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="architecture\error.cpp">
@@ -143,5 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="tools\Tools_warning_note.txt" />
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
 </Project>

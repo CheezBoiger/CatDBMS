@@ -129,6 +129,7 @@
     <ClInclude Include="architecture\crypto.h" />
     <ClInclude Include="architecture\directory_handler.h" />
     <ClInclude Include="architecture\error.h" />
+    <ClInclude Include="architecture\internal\cattypes.h" />
     <ClInclude Include="architecture\threading\thread.h" />
     <ClInclude Include="lib\column.h" />
     <ClInclude Include="header.h" />
@@ -141,14 +142,12 @@
     <ClInclude Include="lib\security\user.h" />
     <ClInclude Include="tools\data_structures\cat_list_interface.h" />
     <ClInclude Include="tools\data_structures\circlularly_linked_list.h" />
-    <ClInclude Include="tools\data_structures\data_structures_specifics\hash_table_specifics.h" />
     <ClInclude Include="tools\data_structures\doubly_linked_list.h" />
     <ClInclude Include="tools\data_structures\hash_table.h" />
-    <ClInclude Include="tools\data_structures\heap.h" />
     <ClInclude Include="tools\data_structures\linked_list.h" />
-    <ClInclude Include="tools\data_structures\stack.h" />
     <ClInclude Include="tools\data_types\String.h" />
     <ClInclude Include="tools\remote\binary_search.h" />
+    <ClInclude Include="tools\remote\cat_hashing.h" />
     <ClInclude Include="tools\remote\linear_search.h" />
     <ClInclude Include="tools\sorting\bubble_sort.h" />
     <ClInclude Include="tools\sorting\counting_sort.h" />
@@ -170,6 +169,7 @@
     <ClCompile Include="tests\Unit\table_test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="CMakeLists.txt" />
     <Text Include="tools\Tools_warning_note.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

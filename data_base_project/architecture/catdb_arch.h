@@ -4,7 +4,7 @@
 #pragma once
 
 #include "internal/os_arch.h"
-
+#include "architecture/internal/cattypes.h"
 #ifndef __cplusplus
  #error C++ compiler required!
 #endif /* __cplusplus*/

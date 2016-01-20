@@ -8,8 +8,7 @@
 
 namespace catdb {
 
-	class Container : public Object
-	{
+	class Container : public Object {
 	private:
 		std::vector<Element> _elements;
 
@@ -23,7 +22,7 @@ namespace catdb {
 		Container(std::string container_name) : Container() { objectname = container_name; }
 		Container(const Container& container);
 
-		~Container(void) { }
+		virtual ~Container(void) { }
 
 		std::string get_container_name(void) const { return objectname; }
 

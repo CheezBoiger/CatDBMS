@@ -25,6 +25,9 @@ namespace Errors
 		_ERROR_CODE(error_not_unique, "This value is not unique."),
 		_ERROR_CODE(error_cannot_add, "Can not add value into data structure."),
 		_ERROR_CODE(error_compatibility_issue, "Compatibility issue with this structure."),
+		_ERROR_CODE(error_path_not_found, "Path could not be found. Unable to resolve unknown path name. "),
+		_ERROR_CODE(error_folder_already_exists, "Folder already exists. "),
+		_ERROR_CODE(error_file_already_exists, "File already exists. "),
 	};
 
 	err_info get_error_msg(errors err)

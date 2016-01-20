@@ -9,7 +9,7 @@ namespace tools {
 namespace sorting {
 
 	template<typename T>
-	static void bubble_sort(T* unsorted_array, int start, int size, sort_type sort_t)
+	static void bubble_sort(T* unsorted_array, int start, int size, sort_format sort_t)
 	{
 		bool finished;
 
@@ -39,7 +39,7 @@ namespace sorting {
 	}
 
 	template<typename T>
-	static void bubble_sort(T** unsorted_array, int start, int size, sort_type sort_t)
+	static void bubble_sort(T** unsorted_array, int start, int size, sort_format sort_t)
 	{
 		bool finished;
 
@@ -69,19 +69,19 @@ namespace sorting {
 	}
 
 	template<template<typename> class T, typename V>
-	static void bubble_sort(T<V>& unsorted_array, int start, int size, sort_type sort_t)
+	static void bubble_sort(T<V>& unsorted_array, int start, int size, sort_format sort_t)
 	{
 
 	}
 
 	template<template<typename> class T, typename V>
-	static void bubble_sort(T<V>* unsorted_array, int start, int size, sort_type sort_t)
+	static void bubble_sort(T<V>* unsorted_array, int start, int size, sort_format sort_t)
 	{
 
 	}
 
 	template<template<typename> class T, typename V>
-	static void bubble_sort(T<V*>* unsorted_array, int start, int size, sort_type sort_t)
+	static void bubble_sort(T<V*>* unsorted_array, int start, int size, sort_format sort_t)
 	{
 
 	}
