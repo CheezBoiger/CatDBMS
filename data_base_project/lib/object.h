@@ -9,72 +9,69 @@
  #define _interpret_bool(a) ( (a == 1) ? "true" : "false" )
 #endif /* __INTERPRET_BOOL */
 
-namespace catdb
-{
-	struct file_information_buffer
-	{
-		std::string filename;
-		std::string owner;
+namespace catdb {
 
-		int32_t id;
-		int32_t security_id;
-	};
+struct file_information_buffer {
+   std::string filename;
+   std::string owner;
 
-	enum object_type
-	{
-		O_TYPE_OBJECT,
-		O_TYPE_ELEMENT,
-		O_TYPE_MODULE,
-		O_TYPE_COLUMN,
-	};
+   int32_t id;
+   int32_t security_id;
+};
 
-	/*
-	 * Object class. Abstract class since it shows the similarities of
-	 * all files in the data base.
-	 */
-	class Object
-	{
-	private:
+enum object_type {
+   O_TYPE_OBJECT,
+   O_TYPE_ELEMENT,
+   O_TYPE_MODULE,
+   O_TYPE_COLUMN,
+};
 
-		int32_t id;
-		int32_t security_id;
+/*
+ * Object class. Abstract class since it shows the similarities of
+ * all files in the data base.
+ */
+class Object {
+private:
 
-	protected:
-		security::security_levels sec_level;
-		object_type type;
+   int32_t id;
+   int32_t security_id;
 
-		std::string objectname;
-		std::string owner;
+protected:
+   security::security_levels sec_level;
+   object_type type;
 
-		int32_t get_id(void) { return id; }
-		int32_t get_security_id(void) { return security_id; }
+   std::string objectname;
+   std::string owner;
 
-		virtual void update(void) = 0;
+   int32_t get_id(void) { return id; }
+   int32_t get_security_id(void) { return security_id; }
 
-		virtual bool check_security(User& user) = 0;
+   virtual void update(void) = 0;
 
-	public:
-		virtual ~Object(void) { }
-		Object(const Object &obj);
-		Object(const Object* obj);
-		Object(void);
+   virtual bool check_security(User& user) = 0;
 
-		Object(std::string objname, std::string objowner, int32_t id,
-			int32_t sec_id, security_levels level, object_type type);
+public:
+   virtual ~Object(void) { }
+   Object(const Object &obj);
+   Object(const Object* obj);
+   Object(void);
+
+   Object(std::string objname, std::string objowner, int32_t id,
+      int32_t sec_id, security_levels level, object_type type);
 		
-		std::string get_filename(void) { return objectname; }
-		std::string get_owner_name(void) { return owner; }
+   std::string get_filename(void) { return objectname; }
+   std::string get_owner_name(void) { return owner; }
 
-		object_type get_object_type(void) { return type; }
+   object_type get_object_type(void) { return type; }
 
-		bool operator==(const Object &obj1) const;
-		bool operator<=(const Object &obj1) const;
-		bool operator>=(const Object &obj1) const;
-		bool operator<(const Object &obj1) const;
-		bool operator>(const Object &obj1) const;
-		bool operator!=(const Object &obj1) const;
+   bool operator==(const Object &obj1) const;
+   bool operator<=(const Object &obj1) const;
+   bool operator>=(const Object &obj1) const;
+   bool operator<(const Object &obj1) const;
+   bool operator>(const Object &obj1) const;
+   bool operator!=(const Object &obj1) const;
 
-		operator uint32_t(void);
-	};
+   operator uint32_t(void);
+};
 } /* catdb namespace */
 #endif /* _OBJECT_H_ */

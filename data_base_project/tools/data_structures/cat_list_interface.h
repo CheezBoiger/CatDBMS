@@ -6,23 +6,23 @@
 
 namespace tools {
 namespace data_structures {
-	/* This is  List template interface intended to conform any list-like
-		data structure that plans to use the sorting algorithms in tools */
-	template<typename V>
-	class List {
-	public:
-		virtual ~List(void) { }
+/* This is  List template interface intended to conform any list-like
+   data structure that plans to use the sorting algorithms in tools */
+template<typename V>
+class List {
+public:
+   virtual ~List(void) { }
 
-		virtual void insert(V value) = 0;
+   virtual void insert(V value) = 0;
 
-		virtual bool remove(V value) = 0;
+   virtual bool remove(V value) = 0;
 
-		virtual V& operator[](const int32_t i) = 0;
+   virtual V& operator[](const int32_t i) = 0;
 
-		virtual int32_t get_size(void) const = 0;
+   virtual int32_t get_size(void) const = 0;
 
-		virtual bool is_empty(void) const = 0;
-	};
+   virtual bool is_empty(void) const = 0;
+};
 } /* data_structures namespace */
 } /* tools namespace */
 

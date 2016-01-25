@@ -12,77 +12,70 @@
 namespace catdb {
 namespace DBase {
 
-	/* Table interface intended to build an standard for catDBMS databases. */
-	class Table {
-	public:
-		virtual ~Table(void) { }
+/* Table interface intended to build an standard for catDBMS databases. */
+class Table {
+public:
+   virtual ~Table(void) { }
+   virtual std::string get_table_name(void) = 0;
+   virtual bool save_table(std::string name) = 0;
+   virtual bool load_table(std::string name) = 0;
+   virtual bool add_container(Container* container) = 0;
+   virtual int32_t get_row_dimension(void) = 0;
+   virtual int32_t get_coloumn_dimension(void) = 0;
+};
 
-		virtual std::string get_table_name(void) = 0;
+class Database : public Table {
+private:
+   const std::string default_path = "lib/"; 
 
-		virtual bool save_table(std::string name) = 0;
+   std::vector<Container> containers;
 
-		virtual bool load_table(std::string name) = 0;
+   std::string table_name;
+   std::string directory_path;
 
-		virtual bool add_container(Container* container) = 0;
+   int32_t coloumn_dimension;
+   int32_t row_dimension;
+protected:
+   Container operator[](const int32_t index) {
+      return containers[index];
+   }
 
-		virtual int32_t get_row_dimension(void) = 0;
+public:
+   typedef std::vector<Container>::iterator _iter;
 
-		virtual int32_t get_coloumn_dimension(void) = 0;
+   explicit Database(void);
+   explicit Database(std::string table_name);
 
-	};
+   virtual ~Database(void);
 
-	class Database : public Table {
-	private:
-		const std::string default_path = "lib/"; 
+   std::string get_table_name(void) { return table_name; }
 
-		std::vector<Container> containers;
+   bool merge(Database* database);
+   bool is_subset(Database* database);
+   bool save_table(std::string name);
+   bool load_table(std::string name);
+   bool folder_create(void);
+   bool change_database_name(std::string new_name);
+   bool add_container(Container* container);
+   bool remove_container(std::string container_name);
 
-		std::string table_name;
-		std::string directory_path;
+   Database intersection(Database* database);
+   Database clone(void);
 
-		int32_t coloumn_dimension;
-		int32_t row_dimension;
-	protected:
-		Container operator[](const int32_t index) {
-			return containers[index];
-		}
+   Column* find_column(std::string column_name);
+   Column* find_column(Column column);
 
-	public:
-		typedef std::vector<Container>::iterator _iter;
+   Container* get_container(std::string container_name);
 
-		explicit Database(void);
-		explicit Database(std::string table_name);
+   int32_t get_row_dimension(void) { return row_dimension; }
+   int32_t get_coloumn_dimension(void) { return coloumn_dimension; }
+   int32_t get_number_of_containers(void) const { return containers.size(); }
 
-		virtual ~Database(void);
+   std::string display_all_containers();
+};
 
-		std::string get_table_name(void) { return table_name; }
-
-		bool merge(Database* database);
-		bool is_subset(Database* database);
-		bool save_table(std::string name);
-		bool load_table(std::string name);
-		bool folder_create(void);
-		bool change_database_name(std::string new_name);
-		bool add_container(Container* container);
-		bool remove_container(std::string container_name);
-
-		Database intersection(Database* database);
-		Database clone(void);
-
-		Column* find_column(std::string column_name);
-		Column* find_column(Column column);
-
-		Container* get_container(std::string container_name);
-
-		int32_t get_row_dimension(void) { return row_dimension; }
-		int32_t get_coloumn_dimension(void) { return coloumn_dimension; }
-		int32_t get_number_of_containers(void) const { return containers.size(); }
-
-		std::string display_all_containers();
-	};
-
-	void display_db_error_msg(void);
-	void display_last_error(void);
+void display_db_error_msg(void);
+void display_last_error(void);
 } /* Database namespace */
 } /* catdb namespace */
 

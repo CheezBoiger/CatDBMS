@@ -6,33 +6,33 @@
 
 namespace tools {
 namespace data_structures {
-	template<typename V>
-	class circularly_linked_list {
-	private:
 
-		struct c_node {
-			c_node* previous;
-			c_node* next;
+template<typename V>
+class circularly_linked_list {
+private:
 
-			V data;
-			int32_t index;
-		};
+   struct c_node {
+      c_node* previous;
+      c_node* next;
 
-		c_node* cursor;
-		c_node* root;
-		c_node* tail;
+      V data;
+      int32_t index;
+   };
 
-		int32_t size;
+   c_node* cursor;
+   c_node* root;
+   c_node* tail;
 
-	protected:
+   int32_t size;
 
-	public:
-		circularly_linked_list(void) : root(NULL), tail(NULL), cursor(NULL), size(0) { }
+protected:
 
-		~circularly_linked_list(void) {
+public:
+   circularly_linked_list(void) : root(NULL), tail(NULL), cursor(NULL), size(0) { }
 
-		}
-	};
+   ~circularly_linked_list(void) {
+   }
+};
 } /* data_structures namespace */
 } /* tools namespace */
 

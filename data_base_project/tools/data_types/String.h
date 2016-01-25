@@ -5,19 +5,16 @@
 namespace data_types {
 namespace catdb {
 
-	class String_interface
-	{
-	public:
-		virtual ~String(void) { }
+class String_interface {
+public:
+   virtual ~String_interface(void) { }
 
 
-	};
+};
 
 
-	class String
-	{
-
-	};
+class String {
+};
 
 } /* catdb namespace */
 }
