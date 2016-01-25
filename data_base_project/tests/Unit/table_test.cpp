@@ -1,5 +1,6 @@
 #include "tools/sorting/quick_sort.h"
 #include "lib/table.h"
+#include "lib/Comparator.h"
 
 void test_table(void)
 {
@@ -24,15 +25,17 @@ void test_table(void)
 	database.add_container(&container1);
 	database.add_container(&container2);
 	database.add_container(&container3);
-	delete container;
-	container = NULL;
+
 	std::cout << database.get_container("Alex")->get_container_name() << std::endl;
 	std::cout << "Here is a list of stuff in this column" << std::endl;
 	catdb::Column* column = database.find_column("Cool");
-	catdb::Element* element = column->inspect_element("12.2");
+	catdb::Element* element = column->inspect_element("12.2", "Cool");
 	column->sort_column(tools::sorting::quick_sort, tools::sorting::SORT_LITTLE_ENDIAN);
 	std::cout << column->display_list() << std::endl;
 	database.remove_container("Alex");
+	database.remove_container("Billy");
+	database.remove_container("Fred");
+	database.remove_container("Zen");
 	delete column;
 	column = NULL;
 

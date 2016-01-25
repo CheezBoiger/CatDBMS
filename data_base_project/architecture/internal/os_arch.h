@@ -24,6 +24,9 @@
 
 #pragma once
 
+#define BIT32_OS    
+#define BIT64_OS
+
 // Define Windows operating systems, default _WIN32 bit compatible with 64-bit OS Windows too!
 #ifdef _WIN32
  #define _DB_CAT_WINDOWS

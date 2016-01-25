@@ -3,6 +3,7 @@
 #pragma once
 
 #include <iostream>
+#include "tools/remote/searchingxx.h"
 
 #define DEFAULT_HASHTABLE_LENGTH    64
 
@@ -36,7 +37,14 @@ namespace data_structures {
 
 		uint32_t hash(Key key) const {
 			int32_t seed = 131;
-			return ((static_cast<uint32_t>(key) ^ seed) >> 2);
+			return (std::hash(key) ^ seed) >> 2);
+		}
+
+		void next_index(int32_t& index) {
+			++index;
+			if (index >= max_size) {
+				index = 0;
+			}
 		}
 
 	protected:
@@ -75,7 +83,8 @@ namespace data_structures {
 			uint32_t index = hash(key) % max_size;
 			
 			while (table[index] != NULL && index < max_size)
-				index++;
+				next_index(index);
+
 			if (index < max_size) {
 				pair* new_pair(new pair());
 				new_pair->key = key;
@@ -98,22 +107,29 @@ namespace data_structures {
 		}
 
 		// Implement the remove function for removing values and keys from the hash table.
-		Value remove(Key key) {
-			Value result;
+		bool remove(Key key) {
+			bool result;
 
 			uint32_t index = hash(key) % max_size;
-			
-			while (table[index] != NULL && index <= max_size)
-				index++;
+			uint32_t copy_index = index;
+			while (table[index] == NULL || table[index]->key != key) {
+				next_index(index);
+				if (index == copy_index) {
+					index = INDEX_NOT_FOUND; 
+					break;
+				}
+			}
 
-			if (index <= max_size) {
+			if (index != INDEX_NOT_FOUND) {
 				result = table[index]->value;
 				delete table[index];
 				table[index] = NULL;
 				current_size--;
-			}
-			else
+				result = true;
+			} else {
 				_DISPLAY_ERROR(Errors::get_error_msg(Errors::error_find_file));
+				result = false;
+			}
 
 			return result;
 		}

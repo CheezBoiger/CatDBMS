@@ -134,6 +134,7 @@
     <ClInclude Include="lib\column.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="architecture\internal\os_arch.h" />
+    <ClInclude Include="lib\Comparator.h" />
     <ClInclude Include="lib\container.h" />
     <ClInclude Include="lib\element.h" />
     <ClInclude Include="lib\object.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="tools\remote\binary_search.h" />
     <ClInclude Include="tools\remote\cat_hashing.h" />
     <ClInclude Include="tools\remote\linear_search.h" />
+    <ClInclude Include="tools\remote\searchingxx.h" />
     <ClInclude Include="tools\sorting\bubble_sort.h" />
     <ClInclude Include="tools\sorting\counting_sort.h" />
     <ClInclude Include="tools\sorting\insertion_sort.h" />
@@ -169,7 +171,6 @@
     <ClCompile Include="tests\Unit\table_test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="CMakeLists.txt" />
     <Text Include="tools\Tools_warning_note.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

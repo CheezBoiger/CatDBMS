@@ -67,12 +67,12 @@ namespace catdb
 
 		object_type get_object_type(void) { return type; }
 
-		bool operator==(const Object &obj1);
-		bool operator<=(const Object &obj1);
-		bool operator>=(const Object &obj1);
-		bool operator<(const Object &obj1);
-		bool operator>(const Object &obj1);
-		bool operator!=(const Object &obj1);
+		bool operator==(const Object &obj1) const;
+		bool operator<=(const Object &obj1) const;
+		bool operator>=(const Object &obj1) const;
+		bool operator<(const Object &obj1) const;
+		bool operator>(const Object &obj1) const;
+		bool operator!=(const Object &obj1) const;
 
 		operator uint32_t(void);
 	};

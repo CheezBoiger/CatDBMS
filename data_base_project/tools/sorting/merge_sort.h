@@ -25,7 +25,7 @@ namespace sorting {
 		merge_sort_helper(unsorted_array, start, size, temp, sort_t);
 		delete[] temp;
 	}
-
+	
 	template<template<typename> class T, typename V>
 	static void _CDECL_ merge_sort(T<V>& unsorted_array, int start, int size, sort_format sort_t) {
 		using namespace Internal;

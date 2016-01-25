@@ -2,18 +2,15 @@
 
 namespace catdb {
 
-	Container::Container(const Container& container) :
+	Container::Container(const Container& container) : _elements(container._elements),
 		Object(container.objectname, container.owner, 0, 0,SECURE_DEFAULT, container.type) {
-		for (size_t i = 0; i < container.get_size(); ++i) {
-			Element* element = (Element*)&container._elements[i];
-			_elements.push_back(*element);
-		}
 	}
 
-	bool Container::insert_new_element(std::string attribute, std::string ownername) {
+	// Insert a new element into the container.
+	bool Container::insert_new_element(std::string attribute, std::string column_name) {
 		bool is_unique = true;
-		Element new_element(attribute, ownername);
-		std::vector<Element>::iterator iter = std::find(_elements.begin(), _elements.end(), new_element);
+		Element new_element(attribute, this->objectname, column_name);
+		_container_iterator iter = std::find(_elements.begin(), _elements.end(), new_element);
 
 		if (iter == _elements.end()) {
 			_elements.push_back(new_element);
@@ -24,11 +21,12 @@ namespace catdb {
 		return is_unique;
 	}
 
+	// Insert an existing element into the container.
 	bool Container::insert_element(Element* element) {
 		bool is_unique = true;
 
 		Element new_element(*element);
-		std::vector<Element>::iterator iter = std::find(_elements.begin(), _elements.end(), new_element);
+		_container_iterator iter = std::find(_elements.begin(), _elements.end(), new_element);
 
 		if (iter == _elements.end()) {
 			_elements.push_back(new_element);
@@ -42,7 +40,7 @@ namespace catdb {
 	bool Container::is_similiar_element(Element* attribute) {
 		bool is_similiar = true;
 
-		std::vector<Element>::iterator iter = std::find(_elements.begin(), _elements.end(), *attribute);
+		_container_iterator iter = std::find(_elements.begin(), _elements.end(), *attribute);
 
 		if (iter != _elements.end())
 			is_similiar = false;
@@ -50,10 +48,10 @@ namespace catdb {
 		return is_similiar;
 	}
 
-	bool Container::remove_element(std::string attribute) {
+	bool Container::remove_element(std::string attribute, std::string column_name) {
 		bool removed = false;
-		Element temp(attribute, attribute);
-		std::vector<Element>::iterator iter = std::find(_elements.begin(), _elements.end(), temp);
+		Element temp(attribute, attribute, column_name);
+		_container_iterator iter = std::find(_elements.begin(), _elements.end(), temp);
 
 		if (iter != _elements.end()) {
 			_elements.erase(iter);
@@ -84,6 +82,33 @@ namespace catdb {
 
 	Element& Container::operator[](uint32_t index) {
 		return _elements[index];
+	}
+
+
+	// operator overloads for comparator.
+
+	bool Container::operator<(const Container& container) const {
+		return (_elements.size() < container._elements.size());
+	}
+
+	bool Container::operator<=(const Container& container) const {
+		return (_elements.size() <= container._elements.size());
+	}
+
+	bool Container::operator>(const Container& container) const {
+		return (_elements.size() > container._elements.size());
+	}
+
+	bool Container::operator>=(const Container& container) const {
+		return (_elements.size() >= container._elements.size());
+	}
+
+	bool Container::operator==(const Container& container) const {
+		return (_elements.size() == container._elements.size());
+	}
+
+	bool Container::operator!=(const Container& container) const {
+		return (_elements.size() != container._elements.size());
 	}
 
 } /* catdb namespace */

@@ -1,0 +1,30 @@
+#ifndef _COMPARATOR_H_
+#define _COMPARATOR_H_
+#pragma once
+#include "tools/sorting/sort_helpers.h"
+
+using namespace tools::sorting;
+
+namespace catdb {
+	template<typename _Class, sort_format sort_form=SORT_LITTLE_ENDIAN>
+	class Comparator {
+	public:
+		// declare left and right comparator.
+		typedef _Class _Left;
+		typedef _Class _Right;
+		Comparator(void) : sort_t(sort_form) { } 
+			
+		bool operator()(const _Class& _left, const _Class& _right) {
+			if (sort_t == SORT_LITTLE_ENDIAN) {
+				return (_left < _right);
+			} else {
+				return (_left > _right);
+			}
+		}
+	private:
+		sort_format sort_t;
+	};
+
+} /* catdb comparator */
+
+#endif /* _COMPARATOR_H_ */

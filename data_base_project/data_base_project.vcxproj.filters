@@ -111,6 +111,12 @@
     <ClInclude Include="tools\remote\cat_hashing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tools\remote\searchingxx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Comparator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="architecture\error.cpp">
@@ -140,6 +146,5 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="tools\Tools_warning_note.txt" />
-    <Text Include="CMakeLists.txt" />
   </ItemGroup>
 </Project>

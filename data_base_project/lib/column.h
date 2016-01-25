@@ -52,9 +52,10 @@ namespace catdb {
 		void combine_containers(Column* column);
 		void remove_similarities(Column* column);
 
-		bool insert_new_element(std::string objectname, std::string ownername, int32_t id = 0, int32_t sec_id=0, security_levels level=SECURE_DEFAULT);
+		bool insert_new_element(std::string objectname, std::string ownername, std::string column_name,
+			int32_t id = 0, int32_t sec_id=0, security_levels level=SECURE_DEFAULT);
 		bool insert_element(Element& element);
-		bool remove_element_name(std::string objectname);
+		bool remove_element_name(std::string objectname, std::string column_name);
 		bool remove_owner_elements(std::string ownername);
 
 		inline bool is_empty(void) const { return size == 0; }
@@ -63,7 +64,7 @@ namespace catdb {
 
 		Column* intersection(Column* column);
 
-		catdb::Element* const inspect_element(std::string element_name);
+		catdb::Element* const inspect_element(std::string element_name, std::string column_name);
 
 		std::string display_list(void);
 

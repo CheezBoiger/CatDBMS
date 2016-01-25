@@ -27,7 +27,7 @@ namespace catdb
 		return result;
 	}
 
-	bool Object::operator==(const Object& obj1) {
+	bool Object::operator==(const Object& obj1) const {
 		int32_t obj1_tot = 0;
 		int32_t obj2_tot = 0;
 
@@ -43,21 +43,21 @@ namespace catdb
 			return false;
 	}
 
-	bool Object::operator<=(const Object &obj1) {
+	bool Object::operator<=(const Object &obj1) const {
 		if (objectname[0] >= obj1.objectname[0])
 			return true;
 		else
 			return false;
 	}
 
-	bool Object::operator>=(const Object &obj1) {
+	bool Object::operator>=(const Object &obj1) const {
 		if (objectname[0] <= obj1.objectname[0])
 			return true;
 		else
 			return false;
 	}
 
-	bool Object::operator<(const Object &obj1) {
+	bool Object::operator<(const Object &obj1) const {
 		int array_size;
 
 		if (objectname.length() > obj1.objectname.length())
@@ -78,7 +78,7 @@ namespace catdb
 			return false;
 	}
 
-	bool Object::operator>(const Object &obj1) {
+	bool Object::operator>(const Object &obj1) const {
 		int array_size;
 
 		if (objectname.length() > obj1.objectname.length())
@@ -99,7 +99,7 @@ namespace catdb
 			return false;
 	}
 
-	bool Object::operator!=(const Object &obj1) {
+	bool Object::operator!=(const Object &obj1) const {
 		return !(*this == obj1);
 	}
 }

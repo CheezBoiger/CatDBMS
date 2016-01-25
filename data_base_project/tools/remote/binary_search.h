@@ -5,6 +5,7 @@
 
 #include "../sorting/sort_helpers.h"
 #include "../../architecture/error.h"
+#include "tools/remote/searchingxx.h"
 
 using namespace tools::sorting;
 

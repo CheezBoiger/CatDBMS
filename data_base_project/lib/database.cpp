@@ -41,18 +41,36 @@ namespace DBase {
 	Database::~Database(void) {
 	}
 
+	// Merges database to this one.
 	bool Database::merge(Database* database) {
+		if (database == NULL) {
+			db_error = last_error = Errors::get_error_msg(Errors::error_null_value);
+			return false;
+		}
+
+		for (size_t i = 0; i < database->get_number_of_containers(); ++i) {
+			_iter iter = std::find(containers.begin(), 
+									 containers.end(),
+									 (*database)[i]);
+			if (iter == containers.end()) {
+				containers.push_back((*database)[i]);
+			}
+		}
+
 		return true;
 	}
 
+	// Checks if database is a subset of this one.
 	bool Database::is_subset(Database* database) {
 		return true;
 	}
 
+	// Saves the database into its own folder.
 	bool Database::save_table(std::string name) {
 		return true;
 	}
 
+	// Load up a database to this one. Will override everything on this database object.
 	bool Database::load_table(std::string name) {
 		return true;
 	}
@@ -83,8 +101,9 @@ namespace DBase {
 
 	bool Database::add_container(Container* container) {
 		bool is_unique = true;
-		std::vector<Container>::iterator iter = std::find(containers.begin(), containers.end(), *container);
-
+		_iter iter = std::find(containers.begin(), 
+								 containers.end(),
+								 *container);
 		if (iter == containers.end()) {
 			containers.push_back(*container);
 		}
@@ -97,7 +116,9 @@ namespace DBase {
 	bool Database::remove_container(std::string container_name)	{
 		bool removed = false;
 		Container temp(container_name);
-		std::vector<Container>::iterator iter = std::find(containers.begin(), containers.end(), temp);
+		_iter iter = std::find(containers.begin(), 
+								 containers.end(),
+								 temp);
 		if (iter != containers.end()) {
 			containers.erase(iter);
 			removed = true;
@@ -133,7 +154,7 @@ namespace DBase {
 			Container* container = &containers[i];
 			for (size_t j = 0; j < container->get_size(); ++j) {
 				Element* element = &(*container)[j];
-				if (element->get_owner_name().compare(column_name) == STR_MATCH) {
+				if (element->get_column_name().compare(column_name) == STR_MATCH) {
 					container_ptr->insert_element(*element);
 					break;
 				}

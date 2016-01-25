@@ -36,9 +36,9 @@ namespace searching = tools::remote;
 			delete list;
 	}
 
-	bool Column::insert_new_element(std::string objectname, std::string ownername, int32_t id, int32_t sec_id, 
-		security_levels level) {
-		catdb::Element* new_obj(new catdb::Element(objectname, ownername, id, sec_id, level));
+	bool Column::insert_new_element(std::string objectname, std::string ownername, std::string column_name,
+		int32_t id, int32_t sec_id, security_levels level) {
+		catdb::Element* new_obj(new catdb::Element(objectname, ownername, column_name, id, sec_id, level));
 		list->insert(new_obj);
 
 		size = list->get_size();
@@ -59,8 +59,8 @@ namespace searching = tools::remote;
 		return true;
 	}
 
-	bool Column::remove_element_name(std::string objectname) {
-		catdb::Element temp(objectname, objectname);
+	bool Column::remove_element_name(std::string objectname, std::string column_name) {
+		catdb::Element temp(objectname, objectname, column_name);
 		int index = searching::binary_search(list, 0, list->get_size() - 1, temp, sorted_format);
 
 		if (index != -1) {
@@ -115,18 +115,21 @@ namespace searching = tools::remote;
 		std::string table = "";
 
 		for (size_t i = 0; i < size; ++i)
-			table += (*list)[i]->get_filename() + " ";
+			table += (*list)[i]->get_filename() + '\n';
 
 		return table;
 	}
 
-	catdb::Element* const Column::inspect_element(std::string element_name) {
-		catdb::Element search(element_name, element_name);
+	catdb::Element* const Column::inspect_element(std::string element_name, std::string column_name) {
+		catdb::Element search(element_name, element_name, column_name);
 		catdb::Element* result = NULL;
-
-		int index = searching::linear_search(list, 0, list->get_size() - 1, &search);
+		int index;
+		if (!list->is_empty())
+			index = searching::linear_search(list, 0, list->get_size() - 1, &search);
+		else
+			index = INDEX_NOT_FOUND;
 		
-		if(index != -1) {
+		if(index != INDEX_NOT_FOUND) {
 			result = (*list)[index];
 		}
 

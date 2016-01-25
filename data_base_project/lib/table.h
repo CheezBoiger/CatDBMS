@@ -43,8 +43,13 @@ namespace DBase {
 		int32_t coloumn_dimension;
 		int32_t row_dimension;
 	protected:
+		Container operator[](const int32_t index) {
+			return containers[index];
+		}
 
 	public:
+		typedef std::vector<Container>::iterator _iter;
+
 		explicit Database(void);
 		explicit Database(std::string table_name);
 
@@ -71,6 +76,7 @@ namespace DBase {
 
 		int32_t get_row_dimension(void) { return row_dimension; }
 		int32_t get_coloumn_dimension(void) { return coloumn_dimension; }
+		int32_t get_number_of_containers(void) const { return containers.size(); }
 
 		std::string display_all_containers();
 	};

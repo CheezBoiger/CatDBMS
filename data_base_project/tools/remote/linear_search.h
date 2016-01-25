@@ -3,6 +3,7 @@
 #pragma once
 
 #include "architecture/error.h"
+#include "tools/remote/searchingxx.h"
 
 namespace tools {
 namespace remote {
