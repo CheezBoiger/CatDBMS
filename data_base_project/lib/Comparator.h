@@ -15,8 +15,8 @@ template<typename _Class, sort_format sort_form=SORT_LITTLE_ENDIAN>
 class Comparator {
 public:
    // declare left and right comparator.
-typedef _Class _Left;
-typedef _Class _Right;
+   typedef _Class _Left;
+   typedef _Class _Right;
    Comparator(void) : sort_t(sort_form) { } 
    ~Comparator(void) { }
 
