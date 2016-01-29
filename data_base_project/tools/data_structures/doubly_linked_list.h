@@ -4,6 +4,7 @@
 
 #include "../../architecture/error.h"
 #include "cat_list_interface.h"
+#include "lib/Comparator.h"
 
 #define MINIMUM_ARRAY_BOUNDARY        0
 
@@ -11,7 +12,8 @@ namespace tools {
 namespace data_structures {
 
 // The ol' fashioned doubly linked list yall.
-template<typename V>
+template<typename V,
+         class _Compare = catdb::GreaterComparator<V>>
 class doubly_linked_list : public List<V> {
 private:
 		
@@ -228,6 +230,24 @@ public:
       return &cursor->data;
    }
 
+   // Checks if the structure contains the value of the same value.
+   bool contains(const V& data) { 
+      if ( _comp.compare(root->data, data) == _EQUAL || 
+           _comp.compare(tail->data, data) == _EQUAL ||
+           _comp.compare(cursor->data, data) == _EQUAL) { 
+         return true;   
+      } else {
+         cursor = root;
+         while ( cursor != tail) { 
+            if (_comp.compare(cursor->data, data) == _EQUAL) { 
+               return true;
+            }
+            cursor = cursor->next;
+         }
+      } 
+      return false;
+   }
+
    // Operator overload for this template class!!
    // Value can be obtained from this overload, however, 
    // if attempting to access outside the this data structure, there will 
@@ -270,6 +290,8 @@ public:
       }
       return *result;
    }
+private:
+   _Compare _comp;
 };
 } /* data_structures namepace */
 } /* tools namespace */

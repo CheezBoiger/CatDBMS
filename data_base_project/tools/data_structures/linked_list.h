@@ -3,6 +3,7 @@
 #pragma once
 
 #include "../../architecture/error.h"
+#include "lib/Comparator.h"
 #include "cat_list_interface.h"
 
 #define MINIMUM_ARRAY_BOUNDARY 0
@@ -15,19 +16,33 @@ namespace data_structures {
 // provided to hold information. 
 // Some of it's features, like insertion, hold a O(1) time complexity, while 
 // removal and lookup are O(n). 
-template<class V>
+template<typename V, 
+         class _Compare = catdb::GreaterComparator<V>>
 class s_list : public List<V> {
 private:
    struct s_node {
       s_node* next;
       int32_t i;
       V data;
+      friend bool operator>(const s_node& left, const s_node& right) { 
+         return left.data > right.data;
+      }
+      
+      friend bool operator==(const s_node& left, const s_node& right) { 
+         return left.data == right.data;
+      }
+
+      friend bool operator<(const s_node& left, const s_node& right) { 
+         return left.data < right.data;
+      }
    };
 
    s_node* root;
    s_node* tail;
 
    int32_t size;
+
+   _Compare _comp;
 
 protected:
 
@@ -100,15 +115,15 @@ public:
       // The huge ass algorithm used to find and delete the node from the 
       // list.
       if (size > 0 || root != NULL) {
-         if (data == root->data) {
+         if (_comp.compare(data, root->data) == _EQUAL) {
             rem_node = handle_root_removal();
-         } else if (data == tail->data) {
+         } else if (_comp.compare(data, tail->data) == _EQUAL) {
             rem_node = handle_tail_removal();
          } else {
             s_node* traverse = root->next;
             s_node* prev_node = root;
             while (traverse != NULL) {
-               if (traverse->data == data) {
+               if (_comp.compare(traverse->data, data) == _EQUAL) {
                   prev_node->next = traverse->next;
                   rem_node = traverse;
                   break;
@@ -140,6 +155,18 @@ public:
          _DISPLAY_ERROR(get_error_msg(Errors::error_empty_structure));
       }
       return result;
+   }
+
+   // Check if structure has a value of the same category.
+   bool contains(const V& data) { 
+      s_node* traverse = root;
+      while (traverse != NULL) { 
+         if (_comp.compare(traverse->data, data) == _EQUAL) {
+            return true;
+         }
+         traverse = traverse->next;
+      }
+      return false;
    }
 
    V* get(int index) {

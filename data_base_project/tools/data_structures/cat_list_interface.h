@@ -22,6 +22,8 @@ public:
    virtual int32_t get_size(void) const = 0;
 
    virtual bool is_empty(void) const = 0;
+
+   virtual bool contains(const V& data) = 0;
 };
 } /* data_structures namespace */
 } /* tools namespace */

@@ -6,6 +6,8 @@
 #define _HEADER_H_
 #pragma once
 
+#include "lib/Comparator.h"
+
 #include <iostream>
 #include <string>
 #include <algorithm>

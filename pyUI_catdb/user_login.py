@@ -5,9 +5,9 @@ class UserLogin:
 
     id = randint(1, 12312)
 
-    def __init__(self, **kwargs):
+    def __init__(self):
         self.username = "Guest"
-        return super().__init__(**kwargs)
+        return super().__init__()
      
     # Get username and search for it in the database.
     def log_to_user(self, user_name):

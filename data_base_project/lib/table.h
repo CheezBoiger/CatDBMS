@@ -13,15 +13,19 @@ namespace catdb {
 namespace DBase {
 
 /* Table interface intended to build an standard for catDBMS databases. */
-class Table {
+class Table : Comparable<Table> {
 public:
+   // Table destructor.
    virtual ~Table(void) { }
+   // Grab the table name.
    virtual std::string get_table_name(void) = 0;
+   // Save the table in a hash map.
    virtual bool save_table(std::string name) = 0;
    virtual bool load_table(std::string name) = 0;
    virtual bool add_container(Container* container) = 0;
-   virtual int32_t get_row_dimension(void) = 0;
-   virtual int32_t get_coloumn_dimension(void) = 0;
+
+   virtual int compare_to(const Table& _right) = 0;
+   virtual bool equals(const Table& _right) = 0;
 };
 
 class Database : public Table {
@@ -33,8 +37,6 @@ private:
    std::string table_name;
    std::string directory_path;
 
-   int32_t coloumn_dimension;
-   int32_t row_dimension;
 protected:
    Container operator[](const int32_t index) {
       return containers[index];
@@ -59,16 +61,27 @@ public:
    bool add_container(Container* container);
    bool remove_container(std::string container_name);
 
+   const Database& operator=(const Database& _right);
+
    Database intersection(Database* database);
    Database clone(void);
+
+   int compare_to(const Table& _right) { 
+      return compare_to(_right);
+   }
+
+   int compare_to(const Database& _right);
+
+   bool equals(const Table& _right) { 
+      return equals(_right);
+   }
+   bool equals(const Database& _right);
 
    Column* find_column(std::string column_name);
    Column* find_column(Column column);
 
    Container* get_container(std::string container_name);
 
-   int32_t get_row_dimension(void) { return row_dimension; }
-   int32_t get_coloumn_dimension(void) { return coloumn_dimension; }
    int32_t get_number_of_containers(void) const { return containers.size(); }
 
    std::string display_all_containers();

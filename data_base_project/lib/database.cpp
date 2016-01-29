@@ -4,6 +4,8 @@
 #include "architecture/directory_handler.h"
 #include "tools/remote/linear_search.h"
 
+#include <unordered_map>
+
 using namespace Errors;
 
 namespace catdb {
@@ -13,23 +15,16 @@ namespace DBase {
 static Errors::err_info db_error = get_error_msg(Errors::error_no_error);
 static Errors::err_info last_error = get_error_msg(Errors::error_no_error);
 
-struct table_node {
-   table_node* next;
-   table_node* previous;
-
-   Table* table;
-};
-
-static table_node* root = NULL;
-static int tables_size;
+// Table map used to store information of each database table.
+std::unordered_map<std::string, Table*> table_map;
 
 // Still needing to update this thing.
-Table* add_table(Database& database) { 
+Table* add_table(Database& database, std::string password) { 
    return NULL; // for now...
 }
 
 Database::Database(void) : containers(), table_name("no name"),
-   coloumn_dimension(0), row_dimension(0), directory_path(default_path + table_name)
+   directory_path(default_path + table_name)
 {
 }
 
@@ -94,8 +89,9 @@ bool Database::folder_create(void) {
 }
 
 bool Database::change_database_name(std::string new_name) {
-   if (table_name.compare(new_name) == STR_MATCH)
+   if (table_name.compare(new_name) == STR_MATCH) {
       return false;
+   }
 
    table_name = new_name;
 
@@ -174,6 +170,52 @@ std::string Database::display_all_containers() {
 		
    return result;
 }
+
+int Database::compare_to(const Database& _right) {
+   if (containers.size() == _right.containers.size()) { 
+      return _EQUAL;
+   } else if (containers.size() > _right.containers.size()) { 
+      return _GREATER;
+   } else { 
+      return _LESSER;
+   } 
+}
+
+bool Database::equals(const Database& _right) {
+   bool is_equal = false;
+   if (table_name.compare(_right.table_name) == STR_MATCH) {
+      if (directory_path.compare(_right.directory_path) == STR_MATCH) { 
+         if (containers.size() == _right.containers.size()) {
+            bool result = true; 
+            for (size_t i = 0; i < containers.size(); ++i) { 
+               Container& container = containers.at(i);
+               std::vector<Container>& vec_containers = (std::vector<Container>)_right.containers;
+               _iter iter = std::find(vec_containers.begin(), 
+                                      vec_containers.end(), 
+                                      container);
+               if (iter == vec_containers.end()) { 
+                  result = false;
+                  break; 
+               }
+            }
+            if (result) {
+               is_equal = true; 
+            }
+         }
+      } 
+   }
+
+   return is_equal;
+}
+
+const Database& Database::operator=(const Database& _right) { 
+   this->table_name = _right.table_name;
+   this->directory_path = _right.directory_path;
+
+   this->containers = _right.containers;
+   return (*this);
+}
+
 
 void display_db_error_msg(void) {
    Errors::display_error_msg(db_error);

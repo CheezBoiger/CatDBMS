@@ -1,9 +1,11 @@
 #include "tools/sorting/quick_sort.h"
 #include "lib/table.h"
 #include "lib/Comparator.h"
+#include "tools/data_structures/hash_map.h"
 
 void test_table(void) {
    catdb::DBase::Database database("Billy_database");
+   catdb::DBase::Database database1("Johnny_database");
    catdb::Column* temp = database.find_column("Cool");
 
    std::cout << temp->display_list() << std::endl;
@@ -37,6 +39,15 @@ void test_table(void) {
    database.remove_container("Zen");
    delete column;
    column = NULL;
+
+   database1 = database;
+   catdb::GreaterComparator<catdb::Element> _g;
+   catdb::Comparator<catdb::Element>& _comp = catdb::LesserComparator<catdb::Element>();
+   catdb::Element el1("Cooler", "Bool", "Mang");
+   catdb::Element el2("Alex", "Benson", "Kol");
+   std::cout << _comp(el1, el2) << std::endl;
+   tools::data_structures::hash_map<int, int> mapping;
+   
 
 //	if (database.get_container("Alex") == NULL)
 //	   std::cout << "Alex is deleted!" << std::endl;
