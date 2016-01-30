@@ -1,6 +1,8 @@
 #include "tools/data_structures/doubly_linked_list.h"
 #include "tools/data_structures/linked_list.h"
 #include "tools/data_structures/hash_map.h"
+#include "tools/data_structures/bin_heap.h"
+#include "tools/data_structures/graph.h"
 
 using namespace std;
 namespace ds = tools::data_structures;

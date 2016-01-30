@@ -135,6 +135,7 @@
     <ClInclude Include="header.h" />
     <ClInclude Include="architecture\internal\os_arch.h" />
     <ClInclude Include="lib\Comparator.h" />
+    <ClInclude Include="lib\compression\serializable.h" />
     <ClInclude Include="lib\container.h" />
     <ClInclude Include="lib\element.h" />
     <ClInclude Include="lib\object.h" />
@@ -145,10 +146,12 @@
     <ClInclude Include="tools\data_structures\cat_list_interface.h" />
     <ClInclude Include="tools\data_structures\circlularly_linked_list.h" />
     <ClInclude Include="tools\data_structures\doubly_linked_list.h" />
+    <ClInclude Include="tools\data_structures\graph.h" />
     <ClInclude Include="tools\data_structures\hash_map.h" />
     <ClInclude Include="tools\data_structures\hash_table.h" />
     <ClInclude Include="tools\data_structures\linked_list.h" />
     <ClInclude Include="tools\data_types\String.h" />
+    <ClInclude Include="tools\mathematics\matrix.h" />
     <ClInclude Include="tools\remote\binary_search.h" />
     <ClInclude Include="tools\remote\cat_hashing.h" />
     <ClInclude Include="tools\remote\linear_search.h" />

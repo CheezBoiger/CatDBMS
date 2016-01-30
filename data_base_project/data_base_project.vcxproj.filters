@@ -123,6 +123,15 @@
     <ClInclude Include="tools\data_structures\bin_heap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tools\data_structures\graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\compression\serializable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\mathematics\matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="architecture\error.cpp">

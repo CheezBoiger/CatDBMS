@@ -32,7 +32,9 @@ public:
 
    virtual bool empty(void) const = 0;
 
-   virtual void ensure_capacity(void) = 0;
+   virtual void ensure_capacity(void) = 0
+;
+   virtual map_size_t get_size(void) const = 0;
 protected:
    virtual map_size_t hash(_ElemKy& key) = 0;
 };
@@ -110,6 +112,8 @@ public:
    bool empty(void) const { return current_size == 0; }
 
    void ensure_capacity(void) { }
+   
+   map_size_t get_size(void) const { return current_size; }
 
 private:
    s_list<mPair>* map;
