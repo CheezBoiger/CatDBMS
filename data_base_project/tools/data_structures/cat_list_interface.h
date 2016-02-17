@@ -2,8 +2,6 @@
 #define _CAT_LIST_INTERFACE_H_
 #pragma once
 
-#include "../../lib/object.h"
-
 namespace tools {
 namespace data_structures {
 /* This is  List template interface intended to conform any list-like

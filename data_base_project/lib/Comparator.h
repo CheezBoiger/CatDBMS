@@ -15,11 +15,11 @@ public:
    Comparator(void) { }
    virtual ~Comparator(void) { }
 
-   virtual bool operator()(const _Class& _left, const _Class& _right) {
-      return (_left > _right);
+   virtual int operator()(const _Class& _left, const _Class& _right) {
+      return compare(_left, _right);
    }
 
-   int compare(const _Class& _left, const _Class& _right) { 
+   inline int compare(const _Class& _left, const _Class& _right) { 
       if (_left == _right) { 
          return _EQUAL;
       } else if (_left > _right) { 
@@ -27,37 +27,6 @@ public:
       } else { 
          return _LESSER;
       }
-   }
-};
-  
-// Comparator class intended to check if left value is greater than
-// right value.
-template<typename _Class>
-class GreaterComparator : public Comparator<_Class> {
-public:
-   // declare left and right comparator.
-   typedef _Class _Left;
-   typedef _Class _Right;
-   GreaterComparator(void) { } 
-   ~GreaterComparator(void) { }
-
-   bool operator()(const _Class& _left, const _Class& _right) {
-      return (_left > _right);
-   }
-};
-
-// Comparator class intended to check if left value is less than
-// right value.
-template<typename _Class>
-class LesserComparator : public Comparator<_Class> { 
-public:
-   typedef _Class _Left;
-   typedef _Class _Right;
-   LesserComparator(void) { }
-   ~LesserComparator(void) { }
-   
-   bool operator()(const _Class& _left, const _Class& _right) { 
-      return (_left < _right);
    }
 };
 

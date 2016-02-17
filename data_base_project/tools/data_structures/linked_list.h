@@ -17,24 +17,13 @@ namespace data_structures {
 // Some of it's features, like insertion, hold a O(1) time complexity, while 
 // removal and lookup are O(n). 
 template<typename V, 
-         class _Compare = catdb::GreaterComparator<V>>
+         class _Compare = catdb::Comparator<V>>
 class s_list : public List<V> {
 private:
    struct s_node {
       s_node* next;
       int32_t i;
       V data;
-      friend bool operator>(const s_node& left, const s_node& right) { 
-         return left.data > right.data;
-      }
-      
-      friend bool operator==(const s_node& left, const s_node& right) { 
-         return left.data == right.data;
-      }
-
-      friend bool operator<(const s_node& left, const s_node& right) { 
-         return left.data < right.data;
-      }
    };
 
    s_node* root;

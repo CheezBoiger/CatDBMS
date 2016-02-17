@@ -142,6 +142,7 @@
     <ClInclude Include="lib\security\security.h" />
     <ClInclude Include="lib\table.h" />
     <ClInclude Include="lib\security\user.h" />
+    <ClInclude Include="tools\data_structures\auto_vector.h" />
     <ClInclude Include="tools\data_structures\bin_heap.h" />
     <ClInclude Include="tools\data_structures\cat_list_interface.h" />
     <ClInclude Include="tools\data_structures\circlularly_linked_list.h" />

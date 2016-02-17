@@ -21,8 +21,7 @@ static const map_size_t DEFAULT_SIZE = 100;
 // Map interface class.
 //--------------------------------------------------------------------------------
 template<typename _ElemKy, 
-         typename _ElemTy, 
-         class _Compare = catdb::Comparator<_ElemKy>>
+         typename _ElemTy>
 class Map { 
 public:
    ~Map(void) { }
@@ -45,7 +44,7 @@ protected:
 template<typename _ElemKy, 
          typename _ElemTy,
          class _Compare = catdb::Comparator<_ElemKy>>
-class hash_map : public Map<_ElemKy, _ElemTy, _Compare> { 
+class hash_map : public Map<_ElemKy, _ElemTy> { 
    struct mPair {
       _ElemKy key;
       _ElemTy value;
@@ -59,11 +58,11 @@ class hash_map : public Map<_ElemKy, _ElemTy, _Compare> {
 
       friend bool operator<(const mPair& left, const mPair& right) {
          return (left.value < right.value);
-      }
+      } 
    };
    
    map_size_t hash(_ElemKy& key) { 
-      return 0;
+      return 0 % max_size;
    }
    
    void get_next_index(map_size_t& index) {
@@ -111,7 +110,11 @@ public:
 
    bool empty(void) const { return current_size == 0; }
 
-   void ensure_capacity(void) { }
+   void ensure_capacity(void) {
+      if (current_size >= ((max_size * 3) / 4)) { 
+         
+      }
+   }
    
    map_size_t get_size(void) const { return current_size; }
 

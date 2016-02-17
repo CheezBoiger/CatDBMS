@@ -13,7 +13,7 @@ namespace data_structures {
 
 // The ol' fashioned doubly linked list yall.
 template<typename V,
-         class _Compare = catdb::GreaterComparator<V>>
+         class _Compare = catdb::Comparator<V>>
 class doubly_linked_list : public List<V> {
 private:
 		
