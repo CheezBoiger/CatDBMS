@@ -3,6 +3,7 @@
 #include "tools/data_structures/hash_map.h"
 #include "tools/data_structures/bin_heap.h"
 #include "tools/data_structures/graph.h"
+#include "lib/table.h"
 
 #include <exception>
 
@@ -32,6 +33,16 @@ int map_test(void) {
    ds::hash_map<int, char*> hashmap;
    ds::Map<int, char*>& map = hashmap;
    ds::bin_heap<int> heap;
+   
+   map.puts(14, "Apple");
+   map.puts(15, "Pear");
+   cout << "Hash map testing\n" << endl;
+   if ( map.gets(16) != NULL) { 
+      cout << *(map.gets(16)) << endl;
+   }
+
+
+
    heap.change_mode(ds::MAX);
    heap.heap_sort();
    heap.add(200);
@@ -82,6 +93,18 @@ int list_tests(void) {
    return 0;
 }
 
+int database_test(void) {
+   catdb::DBase::Database data_base_test("Billy_Data"); 
+   catdb::Container cat("kittens");
+   catdb::Container test1("billy");
+   catdb::Container test2("fred");
+   data_base_test.add_container(&cat);
+   data_base_test.add_container(&test1);
+   data_base_test.add_container(&test2);
+   data_base_test.save_table("Billy_had_a_cat");
+   return 0;
+}
+
 int main(int c, char** args) { 
    int completion_result;
 #if MAP_TEST 
@@ -89,6 +112,7 @@ int main(int c, char** args) {
 #elif LIST_TEST
    completion_result = list_tests();
 #endif
+   database_test();
    cout << "completion result: " << completion_result << endl;
    cin.ignore();
    return 0;

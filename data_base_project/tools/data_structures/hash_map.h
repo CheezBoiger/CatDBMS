@@ -28,6 +28,7 @@ public:
 
    virtual int puts(const _ElemKy& key, const _ElemTy& value) = 0; 
    virtual _ElemTy* gets(const _ElemKy& key) = 0;
+   virtual bool remove(const _ElemKy& key) = 0;
 
    virtual bool empty(void) const = 0;
 
@@ -61,8 +62,10 @@ class hash_map : public Map<_ElemKy, _ElemTy> {
       } 
    };
    
+   // Hash the key to store into this structure.
+   // 
    map_size_t hash(_ElemKy& key) { 
-      return 0 % max_size;
+      return std::hash<_ElemKy>()(key) % max_size;
    }
    
    void get_next_index(map_size_t& index) {
@@ -97,19 +100,43 @@ public:
       new_pair.value = value;
       
       map_size_t hash_index = hash((_ElemKy&)key);
-      if (current_size > 0) { 
-         map[hash_index].insert(new_pair);
-      }
+      map[hash_index].insert(new_pair);
 
       return Errors::error_no_error;
    }
 
+   /* Get the pointer to the value. Returns NULL if there is no such key-value pair. */
    _ElemTy* gets(const _ElemKy& key) { 
-      return NULL;
+      _ElemTy* result = NULL;
+      map_size_t index = hash((_ElemKy&)key);
+      if (index != -1 && !empty()) { 
+         int i = 0;
+         mPair* temp = map[index].get(i);
+         while (temp != NULL && temp->key != key) { 
+            temp = map[index].get(++i);
+         }
+         result = &temp->value;
+      } else { 
+         // call error.
+      }
+      return result;
    }
 
+   // Remove the key-value pair in the hash map.
+   bool remove(const _ElemKy& key) { 
+      bool success = false;
+      map_size_t index = hash((_ElemKy&)key);
+      return false;
+   }
+   
+   /* Is this hash map feeling a bit "empty"? Bad... just bad... 
+      Checks if the structure is empty, no key-value pairs.
+    */
    bool empty(void) const { return current_size == 0; }
 
+   // Ensures the capacity of the structure. If the current size of the 
+   // structure is greater than 3/4ths of its max size, the capacity increases 
+   // two-fold.
    void ensure_capacity(void) {
       if (current_size >= ((max_size * 3) / 4)) { 
          

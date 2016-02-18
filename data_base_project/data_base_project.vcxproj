@@ -131,6 +131,8 @@
     <ClInclude Include="architecture\error.h" />
     <ClInclude Include="architecture\internal\cattypes.h" />
     <ClInclude Include="architecture\threading\thread.h" />
+    <ClInclude Include="db\storage.hpp" />
+    <ClInclude Include="front\manager.hpp" />
     <ClInclude Include="lib\column.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="architecture\internal\os_arch.h" />

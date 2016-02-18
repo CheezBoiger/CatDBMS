@@ -3,8 +3,11 @@
 #include "architecture/error.h"
 #include "architecture/directory_handler.h"
 #include "tools/remote/linear_search.h"
+#include "architecture/crypto.h"
 
 #include <unordered_map>
+#include <algorithm>
+#include <fstream>
 
 using namespace Errors;
 
@@ -15,11 +18,18 @@ namespace DBase {
 static Errors::err_info db_error = get_error_msg(Errors::error_no_error);
 static Errors::err_info last_error = get_error_msg(Errors::error_no_error);
 
+void update_last_error(void) {
+   last_error = db_error;
+   db_error = get_error_msg(Errors::error_no_error);
+}
+
 // Table map used to store information of each database table.
-std::unordered_map<std::string, Table*> table_map;
+std::unordered_map<std::string, Table&> table_map;
 
 // Still needing to update this thing.
 Table* add_table(Database& database, std::string password) { 
+   std::pair<std::string, Table&> stored_pair(password, database);
+   table_map.insert(stored_pair);
    return NULL; // for now...
 }
 
@@ -56,16 +66,28 @@ bool Database::merge(Database* database) {
 
 // Checks if database is a subset of this one.
 bool Database::is_subset(Database* database) {
-   if(true) { 
-      // do something
-   } else { 
-      // do nothing 
-   }
    return true;
 }
 
 // Saves the database into its own folder.
+// Still working on this!!!!
 bool Database::save_table(std::string name) {
+   folder_create();
+   if (db_error.code_number == Errors::error_path_not_found) { 
+      return false;  
+   }
+   if (!containers.empty()) {
+      std::ofstream file; 
+      for (int i = 0; i < containers.size(); ++i) {
+         Container* container = &containers.at(i); 
+         file.open(directory_path + "/" + container->get_container_name() + ".txt");
+         if (file.is_open()) {
+            file << container->get_container_name() << "\n";
+            file.close();
+         }
+      }
+   }
+   update_last_error();
    return true;
 }
 
@@ -80,9 +102,9 @@ bool Database::folder_create(void) {
       _ERR_ err = _OBTAIN_LAST_ERROR;
       // These are windows api macros that must be changed later on for compatibility reasons.
       if (err == ERROR_ALREADY_EXISTS) {
-         last_error = db_error = get_error_msg(Errors::error_folder_already_exists);
+         db_error = get_error_msg(Errors::error_folder_already_exists);
       } else if (err == ERROR_PATH_NOT_FOUND) {
-         last_error = db_error = get_error_msg(Errors::error_path_not_found);
+         db_error = get_error_msg(Errors::error_path_not_found);
       }
    }
    return bool(success);
@@ -100,7 +122,7 @@ bool Database::change_database_name(std::string new_name) {
 
 bool Database::add_container(Container* container) {
    bool is_unique = true;
-   _iter iter = std::find(containers.begin(), 
+    _iter iter = std::find(containers.begin(), 
                           containers.end(),
                           *container);
    if (iter == containers.end()) {
@@ -215,7 +237,6 @@ const Database& Database::operator=(const Database& _right) {
    this->containers = _right.containers;
    return (*this);
 }
-
 
 void display_db_error_msg(void) {
    Errors::display_error_msg(db_error);

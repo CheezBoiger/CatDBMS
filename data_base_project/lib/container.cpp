@@ -108,7 +108,7 @@ bool Container::operator>=(const Container& container) const {
 }
 
 bool Container::operator==(const Container& container) const {
-   return (_elements.size() == container._elements.size());
+   return (objectname == container.objectname);
 }
 
 bool Container::operator!=(const Container& container) const {

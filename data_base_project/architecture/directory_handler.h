@@ -12,6 +12,9 @@
 #define _OBTAIN_LAST_ERROR GetLastError()
 #elif defined(_DB_CAT_LINUX) || defined(_DB_CAT_UNIX)
  #define create_folder(filename, mode) mkdir(filename, mode);
+ #define _ERR_ 
+ #define _BOOL_ int
+ #define _OBTAIN_LAST_ERROR
 #endif /* _DB_CAT_WINDOWS */
 
 #endif /* _DIRECTORY_HANDLER_H_ */
