@@ -6,7 +6,7 @@ namespace serialization {
 
 // type defines for this particular namespace.
 typedef char*              string;
-typedef unsigned long int*     serial;
+typedef unsigned int*      serial;
 typedef unsigned short     uint16;
 
 typedef char               int8;
@@ -25,43 +25,46 @@ struct string_packet {
    uint16 len;
 };
 
-serial pack_string(string str, uint16 len);
+serial pack_string_packet(string_packet str, serial input);
+string_packet* unpack_string_packet(serial input, string_packet* str);
+
+serial pack_string(string str, uint16 len, serial input);
 string unpack_string(serial input, uint16* len);
 
-serial pack_uint8(uint8 num, serial offset);
-uint8 unpack_uint8(serial input, serial offset);
+serial pack_uint8(uint8 num, serial input);
+uint8 unpack_uint8(serial input);
 
-serial pack_int8(int8 num, serial offset);
-int8 unpack_int8(serial input, serial offset);
+serial pack_int8(int8 num, serial input);
+int8 unpack_int8(serial input);
 
-serial pack_int16(int16 num, serial offset);
-int16 unpack_int16(serial input, serial offset);
+serial pack_int16(int16 num, serial input);
+int16 unpack_int16(serial input);
 
-serial pack_uint16(uint16 num, serial offset);
-uint16 unpack_uint16(serial input, serial offset);
+serial pack_uint16(uint16 num, serial input);
+uint16 unpack_uint16(serial input);
 
-serial pack_uint32(uint32 num, serial offset);
-uint32 unpack_uint32(serial input, serial offset);
+serial pack_uint32(uint32 num, serial input);
+uint32 unpack_uint32(serial input);
 
-serial pack_int32(int32 num, serial offset);
-int32 unpack_int32(serial input, serial offset);
+serial pack_int32(int32 num, serial input);
+int32 unpack_int32(serial input);
 
-serial pack_uint64(uint64 num, serial offset);
-uint64 unpack_uint64(serial input, serial offset);
+serial pack_uint64(uint64 num, serial input);
+uint64 unpack_uint64(serial input);
 
-serial pack_int64(int64 num, serial offset);
-int64 unpack_int64(serial input, serial offset);
+serial pack_int64(int64 num, serial input);
+int64 unpack_int64(serial input);
 
-serial pack_float32(float32 num, serial offset);
-float32 unpack_float32(serial input, serial offset);
+serial pack_float32(float32 num, serial input);
+float32 unpack_float32(serial input);
 
-serial pack_float6(float64 num, serial offset);
-float64 unpack_float64(serial input, serial offset);
+serial pack_float6(float64 num, serial input);
+float64 unpack_float64(serial input);
 
 // ObjectStream is a stream buffer that pushes data into a smaller, more manageable 
 // chunk to hash and store for the data base.
 class ObjectStream {
-   typedef unsigned char* discrete;
+   typedef serial discrete;
 public:
    ObjectStream(void) : ser_num(0) { }
    ~ObjectStream(void) { }
