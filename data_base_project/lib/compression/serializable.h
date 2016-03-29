@@ -6,9 +6,9 @@ namespace serialization {
 
 // type defines for this particular namespace.
 typedef char*              string;
-typedef unsigned int*      serial;
-typedef unsigned short     uint16;
+typedef unsigned char*     serial;
 
+typedef unsigned short     uint16;
 typedef char               int8;
 typedef unsigned char      uint8;
 typedef uint8              byte;
@@ -29,7 +29,7 @@ serial pack_string_packet(string_packet str, serial input);
 string_packet* unpack_string_packet(serial input, string_packet* str);
 
 serial pack_string(string str, uint16 len, serial input);
-string unpack_string(serial input, uint16* len);
+string unpack_string(serial input, string str, uint16* len);
 
 serial pack_uint8(uint8 num, serial input);
 uint8 unpack_uint8(serial input);
@@ -79,7 +79,7 @@ public:
    ObjectStream& operator<<(uint64 num);
    ObjectStream& operator<<(byte num);
    ObjectStream& operator<<(float32 flo);
-   ObjectStream& operator>>(float64 flo);
+   ObjectStream& operator<<(float64 flo);
 
    ObjectStream& operator>>(string_packet str);
    ObjectStream& operator>>(string str);
