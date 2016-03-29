@@ -46,6 +46,8 @@ template<typename _ElemKy,
          typename _ElemTy,
          class _Compare = catdb::Comparator<_ElemKy>>
 class hash_map : public Map<_ElemKy, _ElemTy> { 
+   // map pair class. 
+   // overloaded operators should be private, but ehhh.
    struct mPair {
       _ElemKy key;
       _ElemTy value;
@@ -126,7 +128,8 @@ public:
    bool remove(const _ElemKy& key) { 
       bool success = false;
       map_size_t index = hash((_ElemKy&)key);
-      return false;
+      
+      return success;
    }
    
    /* Is this hash map feeling a bit "empty"? Bad... just bad... 

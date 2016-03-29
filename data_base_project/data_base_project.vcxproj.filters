@@ -108,9 +108,6 @@
     <ClInclude Include="architecture\internal\cattypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tools\remote\cat_hashing.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="tools\remote\searchingxx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -135,10 +132,19 @@
     <ClInclude Include="tools\data_structures\auto_vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="db\storage.hpp">
+    <ClInclude Include="front\manager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="front\manager.hpp">
+    <ClInclude Include="architecture\threading\mutex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="db\hashtable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\remote\cat_hashing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="db\base\base64.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -164,7 +170,22 @@
     <ClCompile Include="lib\container.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tests\Unit\data_struct_test.cpp">
+    <ClCompile Include="architecture\threading\mutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="architecture\threading\cat_thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="db\hashtable.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\compression\serializable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="db\base\base64.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\Unit\serialization_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

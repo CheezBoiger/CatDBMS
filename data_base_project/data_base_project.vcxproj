@@ -130,8 +130,10 @@
     <ClInclude Include="architecture\directory_handler.h" />
     <ClInclude Include="architecture\error.h" />
     <ClInclude Include="architecture\internal\cattypes.h" />
+    <ClInclude Include="architecture\threading\mutex.h" />
     <ClInclude Include="architecture\threading\thread.h" />
-    <ClInclude Include="db\storage.hpp" />
+    <ClInclude Include="db\base\base64.h" />
+    <ClInclude Include="db\hashtable.h" />
     <ClInclude Include="front\manager.hpp" />
     <ClInclude Include="lib\column.h" />
     <ClInclude Include="header.h" />
@@ -170,13 +172,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="architecture\error.cpp" />
+    <ClCompile Include="architecture\threading\cat_thread.cpp" />
+    <ClCompile Include="architecture\threading\mutex.cpp" />
+    <ClCompile Include="db\base\base64.c" />
+    <ClCompile Include="db\hashtable.c" />
     <ClCompile Include="lib\column.cpp" />
+    <ClCompile Include="lib\compression\serializable.cpp" />
     <ClCompile Include="lib\container.cpp" />
     <ClCompile Include="lib\database.cpp" />
     <ClCompile Include="lib\element.cpp" />
     <ClCompile Include="lib\object.cpp" />
     <ClCompile Include="lib\security\user.cpp" />
-    <ClCompile Include="tests\Unit\data_struct_test.cpp" />
+    <ClCompile Include="tests\Unit\serialization_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="tools\Tools_warning_note.txt" />

@@ -11,9 +11,14 @@
 
 #ifdef _DB_CAT_WINDOWS
  #include <Windows.h>
+ #include <stdio.h>
+ #pragma comment(lib, "user32.lib")
+ #pragma comment(lib, "ws2_32.lib")
+ 
  #define _INLINE_  __forceinline
  #define _CDECL_   __cdecl 
 #elif defined(_DB_CAT_UNIX)
+ #include <pthread.h>  
  #include <sys/types.h>
  #include <sys/stat.h>
  #include <unistd.h>

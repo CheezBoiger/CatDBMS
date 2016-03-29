@@ -51,6 +51,16 @@ const char* const User::obtain_password(const User& user) const {
    return password;
 }
 
+// Hash the User object for better information storage.
+User::operator uint32_t(void) { 
+   uint32_t hash = 0;
+   uint32_t seed = 32643;
+   for (int iter = 0; iter < user_name.size(); ++iter) { 
+      hash += user_name.at(iter) ^ seed;   
+   }
+   return (hash + seed);
+}
+
 bool store_user(User& user) {
    UserTable.insert(std::pair<std::string, User>(user.get_username(), user));
    return true;

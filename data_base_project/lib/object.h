@@ -3,6 +3,7 @@
 #pragma once
 
 #include "lib/security/user.h"
+#include "lib/compression/serializable.h"
 
 #ifndef __INTERPRET_BOOL
  #define __INTERPRET_BOOL
@@ -30,7 +31,7 @@ enum object_type {
  * Object class. Abstract class since it shows the similarities of
  * all files in the data base.
  */
-class Object {
+class Object : public serialization::Serialize {
 private:
 
    int32_t id;
@@ -70,6 +71,9 @@ public:
    bool operator<(const Object &obj1) const;
    bool operator>(const Object &obj1) const;
    bool operator!=(const Object &obj1) const;
+
+   virtual void serialize(serialization::ObjectStream& stream);
+   virtual void deserialize(serialization::ObjectStream& stream);
 
    operator uint32_t(void);
 };

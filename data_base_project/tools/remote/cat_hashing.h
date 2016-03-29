@@ -10,7 +10,7 @@ typedef unsigned int hash_size_t;
 #define HASH_TWO     2
 #define HASH_THREE   3
 
-#ifdef HASHCAT_VERSION == 1
+#if (HASHCAT_VERSION > 0)
  #define HASH_16BIT            16
  #define HASH_32BIT            32
  #define HASH_64BIT            64
@@ -19,10 +19,9 @@ typedef unsigned int hash_size_t;
  #define HASH_512BIT           512
  #define HASH_1024BIT          1024
 
-
-
+ #define CAT_HASH(key_ptr) 
 #else 
- #error Hash can not be used.
+ #error Hash can not be used. Incorrect version detected.
 #endif /* HASH_XX defined */
 
 #endif /* _CAT_HASHING_H_ */

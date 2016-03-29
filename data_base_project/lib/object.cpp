@@ -120,6 +120,13 @@ bool Object::operator>(const Object &obj1) const {
    }
 }
 
+void Object::serialize(serialization::ObjectStream& stream) {
+
+}
+
+void Object::deserialize(serialization::ObjectStream& stream) { 
+}
+
 bool Object::operator!=(const Object &obj1) const {
    return !(*this == obj1);
 }

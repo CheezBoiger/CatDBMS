@@ -8,6 +8,9 @@
 namespace tools {
 namespace data_structures { 
 
+// Auto Vector Data Structure!
+// Implements the Standard Template Library Vector 
+// Yet with modifications to simplify the structure.
 template<typename _Ty>
 class auto_vector {
    typedef std::vector<_Ty> _Vector;
