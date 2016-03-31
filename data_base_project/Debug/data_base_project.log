@@ -1,4 +1,2 @@
-﻿  serializable.cpp
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\compression\serializable.cpp(6): warning C4005: 'NULL': macro redefinition
-  d:\alex programs\vc\include\vcruntime.h(224): note: see previous definition of 'NULL'
+﻿  serialization_test.cpp
   data_base_project.vcxproj -> C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\Debug\data_base_project.exe

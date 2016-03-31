@@ -1,6 +1,8 @@
 #ifndef _SERIALIZABLE_H_
 #define _SERIALIZABLE_H_
 
+#include <iostream>
+
 namespace catdb { 
 namespace serialization { 
 
@@ -20,6 +22,7 @@ typedef unsigned long long uint64;
 typedef double             float64;
 typedef float              float32;
 
+// String packet used to hold both the string literal and the length.
 struct string_packet {
    string str;
    uint16 len;
@@ -80,6 +83,7 @@ public:
    ObjectStream& operator<<(byte num);
    ObjectStream& operator<<(float32 flo);
    ObjectStream& operator<<(float64 flo);
+   ObjectStream& operator<<(std::string str);
 
    ObjectStream& operator>>(string_packet str);
    ObjectStream& operator>>(string str);
@@ -92,6 +96,7 @@ public:
    ObjectStream& operator>>(byte num);
    ObjectStream& operator>>(float32 flo);
    ObjectStream& operator>>(float64 flo);
+   ObjectStream& operator>>(std::string str);
 
    operator int(void);
 private:
