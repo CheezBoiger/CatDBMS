@@ -147,6 +147,12 @@
     <ClInclude Include="db\base\base64.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lib\compression\objectstream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\compression\serialize.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="architecture\error.cpp">

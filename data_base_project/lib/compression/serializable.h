@@ -6,6 +6,8 @@
 namespace catdb { 
 namespace serialization { 
 
+#define MAX_BUFFER_SIZE    1024
+
 // type defines for this particular namespace.
 typedef char*              string;
 typedef unsigned char*     serial;
@@ -63,53 +65,6 @@ float32 unpack_float32(serial input);
 
 serial pack_float64(float64 num, serial input);
 float64 unpack_float64(serial input);
-
-// ObjectStream is a stream buffer that pushes data into a smaller, more manageable 
-// chunk to hash and store for the data base.
-class ObjectStream {
-   typedef serial discrete;
-public:
-   ObjectStream(void) : ser_num(0) { }
-   ~ObjectStream(void) { }
-
-   ObjectStream& operator<<(string_packet str);
-   ObjectStream& operator<<(string str);
-   ObjectStream& operator<<(uint16 num);
-   ObjectStream& operator<<(int16 num);
-   ObjectStream& operator<<(uint32 num);
-   ObjectStream& operator<<(int32 num);
-   ObjectStream& operator<<(int64 num);
-   ObjectStream& operator<<(uint64 num);
-   ObjectStream& operator<<(byte num);
-   ObjectStream& operator<<(float32 flo);
-   ObjectStream& operator<<(float64 flo);
-   ObjectStream& operator<<(std::string str);
-
-   ObjectStream& operator>>(string_packet str);
-   ObjectStream& operator>>(string str);
-   ObjectStream& operator>>(uint16 num);
-   ObjectStream& operator>>(int16 num);
-   ObjectStream& operator>>(uint32 num);
-   ObjectStream& operator>>(int32 num);
-   ObjectStream& operator>>(int64 num);
-   ObjectStream& operator>>(uint64 num);
-   ObjectStream& operator>>(byte num);
-   ObjectStream& operator>>(float32 flo);
-   ObjectStream& operator>>(float64 flo);
-   ObjectStream& operator>>(std::string str);
-
-   operator int(void);
-private:
-   discrete ser_num;
-};
-
-class Serialize { 
-public:
-   virtual ~Serialize(void) { }
-   virtual void serialize(ObjectStream& stream) = 0; 
-   virtual void deserialize(ObjectStream& stream) = 0;
-};
-
 } // serialization namespace 
 } // catdb namespace
 

@@ -138,7 +138,9 @@
     <ClInclude Include="header.h" />
     <ClInclude Include="architecture\internal\os_arch.h" />
     <ClInclude Include="lib\Comparator.h" />
+    <ClInclude Include="lib\compression\objectstream.h" />
     <ClInclude Include="lib\compression\serializable.h" />
+    <ClInclude Include="lib\compression\serialize.h" />
     <ClInclude Include="lib\container.h" />
     <ClInclude Include="lib\element.h" />
     <ClInclude Include="lib\object.h" />

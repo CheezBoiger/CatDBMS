@@ -2,8 +2,8 @@
 #define _OBJECT_H_
 #pragma once
 
-#include "lib/security/user.h"
-#include "lib/compression/serializable.h"
+#include <lib/security/user.h>
+#include <lib/compression/serialize.h>
 
 #ifndef __INTERPRET_BOOL
  #define __INTERPRET_BOOL

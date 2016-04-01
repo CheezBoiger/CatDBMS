@@ -121,7 +121,7 @@ bool Object::operator>(const Object &obj1) const {
 }
 
 void Object::serialize(serialization::ObjectStream& stream) {
-
+   stream.get_cat();
 }
 
 void Object::deserialize(serialization::ObjectStream& stream) { 
