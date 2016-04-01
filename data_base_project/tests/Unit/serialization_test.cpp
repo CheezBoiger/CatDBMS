@@ -30,10 +30,10 @@ int main(int c, char** args) {
    }
    star = in;
    ss = in;
-   in = pack_uint32(12, in);
-   std::cout << (unsigned int)*(star+0) << std::endl;
-   uint32 res = unpack_uint32(star);
-   std::cout << (unsigned int)res << std::endl;
+   in = pack_float64(23.43576, in);
+   std::cout << *(star+2) << std::endl;
+   float64 res = unpack_float64(star);
+   std::cout << (float64)res << std::endl;
    delete[] ss;
    std::cin.ignore();
    return 0;

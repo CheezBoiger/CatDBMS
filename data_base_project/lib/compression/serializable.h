@@ -61,7 +61,7 @@ int64 unpack_int64(serial input);
 serial pack_float32(float32 num, serial input);
 float32 unpack_float32(serial input);
 
-serial pack_float6(float64 num, serial input);
+serial pack_float64(float64 num, serial input);
 float64 unpack_float64(serial input);
 
 // ObjectStream is a stream buffer that pushes data into a smaller, more manageable 
