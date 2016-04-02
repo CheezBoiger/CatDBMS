@@ -5,14 +5,14 @@
 namespace catdb {
 namespace serialization {
 
-ObjectStream& ObjectStream::operator<<(string str) {
-   if ((data_buff_end+DEFAULT_STRING_SIZE) < buff_end) {
+ObjectStream& ObjectStream::operator<<(string& str) {
+   if ((data_buff_end+DEFAULT_STRING_SIZE) <= buff_end) {
       data_buff_end = pack_string(str, DEFAULT_STRING_SIZE, data_buff_end);
    }
    return (*this);
 }
 
-ObjectStream& ObjectStream::operator>>(string str) {
+ObjectStream& ObjectStream::operator>>(string& str) {
    if (data_buff_end > data_buff_start && 
       ((data_buff_start+DEFAULT_STRING_SIZE) < buff_end)) {
       uint16 temp = 0;
@@ -22,7 +22,7 @@ ObjectStream& ObjectStream::operator>>(string str) {
    return (*this);
 }
 
-ObjectStream& ObjectStream::operator<<(std::string str) {
+ObjectStream& ObjectStream::operator<<(std::string& str) {
    int size_check = data_buff_end - data_buff_start;
    if ((size_check+str.size()) < MAX_BUFFER_SIZE) {
       string_packet string_p;
@@ -50,12 +50,19 @@ ObjectStream& ObjectStream::operator>>(std::string& str) {
    return (*this);
 }
 
-ObjectStream& ObjectStream::operator<<(byte num) { 
-   
+ObjectStream& ObjectStream::operator<<(byte& num) { 
+   if ((data_buff_end+1) <= buff_end) { 
+      data_buff_end = pack_uint8(num, data_buff_end);
+   } 
    return (*this);
 }
 
-ObjectStream& ObjectStream::operator>>(byte num) { 
+ObjectStream& ObjectStream::operator>>(byte& num) { 
+   if (data_buff_end > data_buff_start &&
+       ((data_buff_start+1) < buff_end)) {
+      num = unpack_uint8(data_buff_start);
+      data_buff_start += 1;
+   }
    return (*this);
 }
 } // serialization namespace 

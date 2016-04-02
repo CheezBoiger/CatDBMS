@@ -39,15 +39,18 @@ void testPacking(void) {
    std::cin.ignore();
 }
 
-
 int main(int c, char** args) { 
    using namespace catdb::serialization;   
    ObjectStream obj;
    std::string cat = "cats are the best things to happen since the dawn of spider man!! :o";
    obj << cat;
-   std::string s;
-   obj >> s;
-   std::cout << s << std::endl;
+   uint8 s = 255;
+   obj << s;
+   uint8 r;
+   std::string result;
+   obj >> result >> r;
+   std::cout << result << std::endl;
+   std::cout << (int)r << std::endl;
    std::cin.ignore();
    return 0;
 }

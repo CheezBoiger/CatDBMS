@@ -35,7 +35,7 @@ string_packet* unpack_string_packet(serial input, string_packet* str) {
 }
 
 serial pack_uint8(uint8 num, serial input) { 
-   *(input) = num;
+   *(input+0) = num;
    return (input+1);
 }
 

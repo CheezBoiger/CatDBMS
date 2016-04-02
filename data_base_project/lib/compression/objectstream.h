@@ -25,30 +25,30 @@ public:
       }
    }
 
-   ObjectStream& operator<<(string_packet str);
-   ObjectStream& operator<<(string str);
-   ObjectStream& operator<<(uint16 num);
-   ObjectStream& operator<<(int16 num);
-   ObjectStream& operator<<(uint32 num);
-   ObjectStream& operator<<(int32 num);
-   ObjectStream& operator<<(int64 num);
-   ObjectStream& operator<<(uint64 num);
-   ObjectStream& operator<<(byte num);
-   ObjectStream& operator<<(float32 flo);
-   ObjectStream& operator<<(float64 flo);
-   ObjectStream& operator<<(std::string str);
+   ObjectStream& operator<<(string_packet& str);
+   ObjectStream& operator<<(string& str);
+   ObjectStream& operator<<(uint16& num);
+   ObjectStream& operator<<(int16& num);
+   ObjectStream& operator<<(uint32& num);
+   ObjectStream& operator<<(int32& num);
+   ObjectStream& operator<<(int64& num);
+   ObjectStream& operator<<(uint64& num);
+   ObjectStream& operator<<(byte& num);
+   ObjectStream& operator<<(float32& flo);
+   ObjectStream& operator<<(float64& flo);
+   ObjectStream& operator<<(std::string& str);
 
-   ObjectStream& operator>>(string_packet str);
-   ObjectStream& operator>>(string str);
-   ObjectStream& operator>>(uint16 num);
-   ObjectStream& operator>>(int16 num);
-   ObjectStream& operator>>(uint32 num);
-   ObjectStream& operator>>(int32 num);
-   ObjectStream& operator>>(int64 num);
-   ObjectStream& operator>>(uint64 num);
-   ObjectStream& operator>>(byte num);
-   ObjectStream& operator>>(float32 flo);
-   ObjectStream& operator>>(float64 flo);
+   ObjectStream& operator>>(string_packet& str);
+   ObjectStream& operator>>(string& str);
+   ObjectStream& operator>>(uint16& num);
+   ObjectStream& operator>>(int16& num);
+   ObjectStream& operator>>(uint32& num);
+   ObjectStream& operator>>(int32& num);
+   ObjectStream& operator>>(int64& num);
+   ObjectStream& operator>>(uint64& num);
+   ObjectStream& operator>>(byte& num);
+   ObjectStream& operator>>(float32& flo);
+   ObjectStream& operator>>(float64& flo);
    ObjectStream& operator>>(std::string& str);
 
    void get_cat(void) { 

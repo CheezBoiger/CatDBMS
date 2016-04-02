@@ -153,6 +153,9 @@
     <ClInclude Include="lib\compression\serialize.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tools\mathematics\mathematics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="architecture\error.cpp">

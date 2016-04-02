@@ -157,6 +157,7 @@
     <ClInclude Include="tools\data_structures\hash_table.h" />
     <ClInclude Include="tools\data_structures\linked_list.h" />
     <ClInclude Include="tools\data_types\String.h" />
+    <ClInclude Include="tools\mathematics\mathematics.h" />
     <ClInclude Include="tools\mathematics\matrix.h" />
     <ClInclude Include="tools\remote\binary_search.h" />
     <ClInclude Include="tools\remote\cat_hashing.h" />
