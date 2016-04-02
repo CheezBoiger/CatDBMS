@@ -194,6 +194,9 @@
     <ClCompile Include="tests\Unit\serialization_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lib\compression\objectstream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="tools\Tools_warning_note.txt" />

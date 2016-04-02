@@ -11,20 +11,23 @@ namespace serialization {
 
 serial pack_string(string str, uint16 len, serial input) {
    memcpy(input, &len, 2);
-   memcpy((input+2), str, len); 
-   return (input+len+1);
+   memcpy((input+2), str, len);
+   return (input+len+2);
 }
 
 string unpack_string(serial input, string str, uint16* len) {
    *len = *((uint16*)input);
    input += 2;
+   if (str == NULL) {
+      str = (string)malloc(*len);
+   }
    memcpy(str, (string)input, *len);
    input += *len;
    return (str);
 }
 
-serial pack_string_packet(string_packet str, serial input) { 
-   return pack_string(str.str, str.len, input);
+serial pack_string_packet(string_packet* str, serial input) { 
+   return pack_string(str->str, str->len, input);
 }
 
 string_packet* unpack_string_packet(serial input, string_packet* str) { 
@@ -195,6 +198,7 @@ serial pack_float32(float32 num, serial input) {
 
 float32 unpack_float32(serial input) {
    uint32 p = unpack_uint32(input);
+   input += 4;
    return unpack754_32(p);
 }
 
@@ -205,6 +209,7 @@ serial pack_float64(float64 num, serial input) {
 
 float64 unpack_float64(serial input) {
    uint64 p = unpack_uint64(input);
+   input += 8;
    return unpack754_64(p);
 }
 } // serialization namespace 

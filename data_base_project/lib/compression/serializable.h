@@ -30,7 +30,7 @@ struct string_packet {
    uint16 len;
 };
 
-serial pack_string_packet(string_packet str, serial input);
+serial pack_string_packet(string_packet* str, serial input);
 string_packet* unpack_string_packet(serial input, string_packet* str);
 
 serial pack_string(string str, uint16 len, serial input);

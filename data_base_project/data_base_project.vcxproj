@@ -178,6 +178,7 @@
     <ClCompile Include="db\base\base64.c" />
     <ClCompile Include="db\hashtable.c" />
     <ClCompile Include="lib\column.cpp" />
+    <ClCompile Include="lib\compression\objectstream.cpp" />
     <ClCompile Include="lib\compression\serializable.cpp" />
     <ClCompile Include="lib\container.cpp" />
     <ClCompile Include="lib\database.cpp" />

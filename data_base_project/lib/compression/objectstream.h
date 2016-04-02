@@ -12,10 +12,10 @@ namespace serialization {
 class ObjectStream {
    typedef serial discrete;
 public:
-   ObjectStream(void) : buff_start(new byte[MAX_BUFFER_SIZE])
-                      , buff_end(buff_start + MAX_BUFFER_SIZE)
-                      , data_buff_start(buff_start)
-                      , data_buff_end(buff_end) { }
+   ObjectStream(void) : buff_start(new byte[MAX_BUFFER_SIZE]) {
+      buff_end = buff_start + MAX_BUFFER_SIZE;
+      data_buff_end = data_buff_start = buff_start;
+   }
    ~ObjectStream(void) {
       if(buff_start) {
          delete[] buff_start;
@@ -49,7 +49,7 @@ public:
    ObjectStream& operator>>(byte num);
    ObjectStream& operator>>(float32 flo);
    ObjectStream& operator>>(float64 flo);
-   ObjectStream& operator>>(std::string str);
+   ObjectStream& operator>>(std::string& str);
 
    void get_cat(void) { 
    }

@@ -1,8 +1,9 @@
 #include <lib/compression/serializable.h>
-
+#include <lib/compression/objectstream.h>
 #include <iostream>
+#include <string>
 
-int main(int c, char** args) { 
+void testPacking(void) { 
    char* test = "I am a cat";
    catdb::serialization::serial input;
    catdb::serialization::serial start;
@@ -25,16 +26,27 @@ int main(int c, char** args) {
    serial star;
    serial ss;
    in = new unsigned char[10];
-   for (int i = 0; i < 10; i++) {
+   for(int i = 0; i < 10; i++) {
       in[i] = 0;
    }
    star = in;
    ss = in;
    in = pack_float64(23.43576, in);
-   std::cout << *(star+2) << std::endl;
+   std::cout << *(star + 2) << std::endl;
    float64 res = unpack_float64(star);
    std::cout << (float64)res << std::endl;
    delete[] ss;
+   std::cin.ignore();
+}
+
+int main(int c, char** args) { 
+   using namespace catdb::serialization;   
+   ObjectStream obj;
+   std::string cat = "cats are the best things to happen since the dawn of spider man!! :o";
+   obj << cat;
+   std::string s;
+   obj >> s;
+   std::cout << s << std::endl;
    std::cin.ignore();
    return 0;
 }
