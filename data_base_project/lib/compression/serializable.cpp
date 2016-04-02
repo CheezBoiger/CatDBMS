@@ -17,12 +17,11 @@ serial pack_string(string str, uint16 len, serial input) {
 
 string unpack_string(serial input, string str, uint16* len) {
    *len = *((uint16*)input);
-   input += 2;
+   input += 2; 
    if (str == NULL) {
       str = (string)malloc(*len);
    }
    memcpy(str, (string)input, *len);
-   input += *len;
    return (str);
 }
 
@@ -42,7 +41,6 @@ serial pack_uint8(uint8 num, serial input) {
 
 uint8 unpack_uint8(serial input) { 
    uint8 result = *(input+0);
-   input += 1;
    return result;
 }
 
@@ -64,7 +62,6 @@ uint16 unpack_uint16(serial input) {
    uint16 result = 0;
    result |= ((uint16)*(input+1) << 8);
    result |= ((uint16) *(input));
-   input += 2;
    return result;
 }
 
@@ -90,7 +87,6 @@ uint32 unpack_uint32(serial input) {
    result |= ((uint32)*(input+2) << 16);
    result |= ((uint32)*(input+1) <<  8);
    result |= ((uint32)*(input));
-   input += 4;
    return result;
 }
 
@@ -124,7 +120,6 @@ uint64 unpack_uint64(serial input) {
    result |= ((uint64)*(input+2) << 16);
    result |= ((uint64)*(input+1) <<  8);
    result |= ((uint64)*(input));
-   result += 8;
    return result;
 }
 
@@ -198,7 +193,6 @@ serial pack_float32(float32 num, serial input) {
 
 float32 unpack_float32(serial input) {
    uint32 p = unpack_uint32(input);
-   input += 4;
    return unpack754_32(p);
 }
 
@@ -209,7 +203,6 @@ serial pack_float64(float64 num, serial input) {
 
 float64 unpack_float64(serial input) {
    uint64 p = unpack_uint64(input);
-   input += 8;
    return unpack754_64(p);
 }
 } // serialization namespace 

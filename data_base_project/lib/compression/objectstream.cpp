@@ -49,5 +49,14 @@ ObjectStream& ObjectStream::operator>>(std::string& str) {
 //   std::cout << "After: " << data_buff_start << std::endl;
    return (*this);
 }
+
+ObjectStream& ObjectStream::operator<<(byte num) { 
+   
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator>>(byte num) { 
+   return (*this);
+}
 } // serialization namespace 
 } // catdb namespace 

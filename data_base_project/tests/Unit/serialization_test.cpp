@@ -39,6 +39,7 @@ void testPacking(void) {
    std::cin.ignore();
 }
 
+
 int main(int c, char** args) { 
    using namespace catdb::serialization;   
    ObjectStream obj;
