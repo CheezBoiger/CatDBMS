@@ -1,3 +1,24 @@
+/*
+* Data type serialization.
+*
+* Copyright (c) 2015 Mario Garcia <alexander.garcia18@yahoo.com>
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
+* USA
+*
+*/
 #include <lib/compression/serializable.h>
 #include <stdio.h>
 #include <string.h>
@@ -135,6 +156,8 @@ int64 unpack_int64(serial input) {
 // Thanks to Beej's Guide for Network Programming, this would have been a bit of a hassle to 
 // figure out on my own. Packs floats and doubles into IEEE 754 format for serialzation.
 //
+// TODO(Garcia): As much as I like this implementation of floating point representation, I am
+// going to reinvent the wheel here and do this myself... for science!!
 #define pack754_32(f) (pack754((f), 32, 8))
 #define pack754_64(f) (pack754((f), 64, 11))
 #define unpack754_32(i) (unpack754((i), 32, 8))

@@ -34,6 +34,7 @@ public:
    ObjectStream& operator<<(int64& num);
    ObjectStream& operator<<(uint64& num);
    ObjectStream& operator<<(byte& num);
+   ObjectStream& operator<<(int8& num);
    ObjectStream& operator<<(float32& flo);
    ObjectStream& operator<<(float64& flo);
    ObjectStream& operator<<(std::string& str);
@@ -47,6 +48,7 @@ public:
    ObjectStream& operator>>(int64& num);
    ObjectStream& operator>>(uint64& num);
    ObjectStream& operator>>(byte& num);
+   ObjectStream& operator>>(int8& num);
    ObjectStream& operator>>(float32& flo);
    ObjectStream& operator>>(float64& flo);
    ObjectStream& operator>>(std::string& str);

@@ -43,14 +43,16 @@ int main(int c, char** args) {
    using namespace catdb::serialization;   
    ObjectStream obj;
    std::string cat = "cats are the best things to happen since the dawn of spider man!! :o";
-   obj << cat;
-   uint8 s = 255;
-   obj << s;
-   uint8 r;
+   int16 s = -1337;
+   uint8 tee = 90;
+   obj << cat << s << tee;
+   int16 r;
+   uint8 by;
    std::string result;
-   obj >> result >> r;
+   obj >> result >> r >> by;
    std::cout << result << std::endl;
-   std::cout << (int)r << std::endl;
+   std::cout << r << std::endl;
+   std::cout << (int)by << std::endl;
    std::cin.ignore();
    return 0;
 }
