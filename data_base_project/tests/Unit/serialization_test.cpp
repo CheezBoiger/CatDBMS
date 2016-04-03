@@ -42,17 +42,17 @@ void testPacking(void) {
 int main(int c, char** args) { 
    using namespace catdb::serialization;   
    ObjectStream obj;
-   std::string cat = "cats are the best things to happen since the dawn of spider man!! :o";
-   int16 s = -1337;
-   uint8 tee = 90;
+   std::string cat = "cats are the best things to happen since the dawn of spider man!! :o342442";
+   uint64 s = 3590345454;
+   int32 tee = -249090;
    obj << cat << s << tee;
-   int16 r;
-   uint8 by;
+   uint64 r;
+   int32 by;
    std::string result;
    obj >> result >> r >> by;
    std::cout << result << std::endl;
    std::cout << r << std::endl;
-   std::cout << (int)by << std::endl;
+   std::cout << by << std::endl;
    std::cin.ignore();
    return 0;
 }

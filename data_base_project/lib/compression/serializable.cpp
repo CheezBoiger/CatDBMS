@@ -1,4 +1,4 @@
-/*
+/**
 * Data type serialization.
 *
 * Copyright (c) 2015 Mario Garcia <alexander.garcia18@yahoo.com>

@@ -115,10 +115,58 @@ ObjectStream& ObjectStream::operator>>(int16& num) {
 }
 
 ObjectStream& ObjectStream::operator<<(uint32& num) { 
+   if ((data_buff_end+4) <= buff_end) { 
+      data_buff_end = pack_uint32(num, data_buff_end);
+   }
    return (*this);
 }
 
 ObjectStream& ObjectStream::operator>>(uint32& num) { 
+   if (data_buff_end > data_buff_start &&
+       ((data_buff_start+4) < buff_end)) {
+      num = unpack_uint32(data_buff_start);
+      data_buff_start += 4; 
+   }
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator<<(int32& num) { 
+   if ((data_buff_end+4) <= buff_end) { 
+      data_buff_end = pack_int32(num, data_buff_end);
+   }   
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator>>(int32& num) { 
+   if (data_buff_end > data_buff_start &&
+       ((data_buff_start+4) < buff_end)) {
+      num = unpack_int32(data_buff_start);
+      data_buff_start += 4;
+   }
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator<<(uint64& num) {
+   if ((data_buff_end+8) <= buff_end) { 
+      data_buff_end = pack_uint64(num, data_buff_end);
+   }
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator>>(uint64& num) { 
+   if (data_buff_end > data_buff_start &&
+       ((data_buff_start+8) < buff_end)) { 
+      num = unpack_uint64(data_buff_start);
+      data_buff_start += 8;
+   }
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator>>(int64& num) { 
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator<<(int64& num) {
    return (*this);
 }
 } // serialization namespace 

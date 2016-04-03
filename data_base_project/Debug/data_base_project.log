@@ -1,11 +1,4 @@
 ﻿  serialization_test.cpp
-  serializable.cpp
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\compression\serializable.cpp(27): warning C4005: 'NULL': macro redefinition
-  d:\alex programs\vc\include\vcruntime.h(224): note: see previous definition of 'NULL'
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\compression\serializable.cpp(183): warning C4244: '=': conversion from 'long double' to '__int64', possible loss of data
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\compression\serializable.cpp(199): warning C4244: '=': conversion from 'catdb::serialization::uint64' to 'long double', possible loss of data
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\compression\serializable.cpp(213): warning C4244: 'initializing': conversion from 'catdb::serialization::uint64' to 'catdb::serialization::uint32', possible loss of data
-c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\compression\serializable.cpp(219): warning C4244: 'return': conversion from 'long double' to 'catdb::serialization::float32', possible loss of data
   objectstream.cpp
   Generating Code...
   data_base_project.vcxproj -> C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\Debug\data_base_project.exe
