@@ -24,7 +24,7 @@ ObjectStream& ObjectStream::operator>>(string& str) {
 
 ObjectStream& ObjectStream::operator<<(std::string& str) {
    int size_check = data_buff_end - data_buff_start;
-   if ((size_check+str.size()) < MAX_BUFFER_SIZE) {
+   if ((data_buff_end+str.size()) < buff_end) {
       string_packet string_p;
       string_p.str = (char*)str.c_str();
       string_p.len = (uint16)str.size();
@@ -47,6 +47,21 @@ ObjectStream& ObjectStream::operator>>(std::string& str) {
       free(p.str);
    }
 //   std::cout << "After: " << data_buff_start << std::endl;
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator<<(string_packet& str) {
+   if ((data_buff_end+str.len) <= buff_end) {
+      data_buff_end = pack_string_packet(&str, data_buff_end);
+   }
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator>>(string_packet& str) {
+   if (data_buff_end > data_buff_start) {
+      unpack_string_packet(data_buff_start, &str);
+      data_buff_start += (str.len+2);
+   }
    return (*this);
 }
 
@@ -162,12 +177,58 @@ ObjectStream& ObjectStream::operator>>(uint64& num) {
    return (*this);
 }
 
-ObjectStream& ObjectStream::operator>>(int64& num) { 
+ObjectStream& ObjectStream::operator<<(int64& num) { 
+   if ((data_buff_end+8) <= buff_end) { 
+      data_buff_end = pack_int64(num, data_buff_end);
+   }
    return (*this);
 }
 
-ObjectStream& ObjectStream::operator<<(int64& num) {
+ObjectStream& ObjectStream::operator>>(int64& num) {
+   if (data_buff_end > data_buff_start &&
+       ((data_buff_start+8) < buff_end)) {
+      num = unpack_int64(data_buff_start);
+      data_buff_start += 8;
+   }
    return (*this);
+}
+
+ObjectStream& ObjectStream::operator<<(float32& flo) {
+   if ((data_buff_end+4) <= buff_end) {
+      data_buff_end = pack_float32(flo, data_buff_end);
+   }
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator>>(float32& flo) {
+   if (data_buff_end > data_buff_start &&
+       ((data_buff_start+4) < buff_end)) {
+      flo = unpack_float32(data_buff_start);
+      data_buff_start += 4;
+   }
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator<<(float64& flo) { 
+   if ((data_buff_end+8) <= buff_end) {
+      data_buff_end = pack_float64(flo, data_buff_end);
+   }
+   return (*this);
+}
+
+ObjectStream& ObjectStream::operator>>(float64& flo) {
+   if (data_buff_end > data_buff_start &&
+       ((data_buff_start+8) <= buff_end)) {
+      flo = unpack_float64(data_buff_start);
+      data_buff_start += 8;
+   }
+   return (*this);
+}
+
+ObjectStream::operator uint32(void) {
+   unsigned seed = 99111;
+   uint32 hash = 0;
+   return (hash);
 }
 } // serialization namespace 
 } // catdb namespace 
