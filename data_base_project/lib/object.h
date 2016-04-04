@@ -60,8 +60,12 @@ public:
    Object(const Object* obj);
    Object(void);
 
-   Object(std::string objname, std::string objowner, int32_t id,
-      int32_t sec_id, security_levels level, object_type type);
+   Object(std::string objname
+        , std::string objowner
+        , int32_t id
+        , int32_t sec_id
+        , security_levels level
+        , object_type type);
 		
    std::string get_filename(void) { return objectname; }
    std::string get_owner_name(void) { return owner; }

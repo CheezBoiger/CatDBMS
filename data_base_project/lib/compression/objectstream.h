@@ -56,7 +56,6 @@ public:
    void get_cat(void) { 
    }
 
-   operator uint32(void);
 private:
    discrete data_buff_start, data_buff_end;
    discrete buff_start, buff_end;

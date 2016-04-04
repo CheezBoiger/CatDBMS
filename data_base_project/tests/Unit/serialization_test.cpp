@@ -1,5 +1,4 @@
-#include <lib/compression/serializable.h>
-#include <lib/compression/objectstream.h>
+#include <lib/element.h>
 #include <iostream>
 #include <string>
 
@@ -39,23 +38,32 @@ void testPacking(void) {
    std::cin.ignore();
 }
 
-int main(int c, char** args) { 
-   using namespace catdb::serialization;   
+void testingSerialization(void) {
+   using namespace catdb::serialization;
    ObjectStream obj;
    std::string cat = "cats are the best things to happen since the dawn of spider man!! :o342442";
-   string_packet strin { "I am a legit cat...\0", 20 };
+   string_packet strin{"I am a legit cat...\0", 20};
    int64 s = -330323534524;
    float64 tee = 3323423422.649999994f;
    obj << cat << s << tee << strin;
    int64 r;
    float64 by;
    std::string result;
-   string_packet res { NULL, 0 };
+   string_packet res{NULL, 0};
    obj >> result >> r >> by >> res;
    std::cout << result << std::endl;
    std::cout << r << std::endl;
    std::cout << by << std::endl;
    std::cout << res.str << std::endl;
+}
+
+int main(int c, char** args) {
+   catdb::serialization::ObjectStream t;
+   catdb::Element test("cat", "gat", "none", 12, 11, security::SECURE_TOP_SECRET);
+   test.serialize(t);
+   catdb::Element result;
+   result.deserialize(t);
+   std::cout << result.get_filename() << std::endl << result.get_owner_name() << std::endl;
    std::cin.ignore();
    return 0;
 }

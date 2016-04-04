@@ -2,22 +2,27 @@
 
 namespace catdb {
 
-Object::Object(std::string objname="object", 
-               std::string objowner="noname",
-               int32_t id=0, 
-               int32_t sec_id=0, 
-               security_levels level=SECURE_DEFAULT, 
-               object_type type=O_TYPE_OBJECT) : id(id),
-                                                 security_id(sec_id), 
-                                                 sec_level(level),
-                                                 objectname(objname), 
-                                                 owner(objowner), 
-                                                 type(type) 
+Object::Object(std::string objname
+             , std::string objowner
+             , int32_t id
+             , int32_t sec_id
+             , security_levels level
+             , object_type type) : id(id)
+                                 , security_id(sec_id)
+                                 , sec_level(level)
+                                 , objectname(objname)
+                                 , owner(objowner)
+                                 , type(type) 
 {
 }
 
-Object::Object(void) : id(0), security_id(0), objectname("object"), sec_level(SECURE_DEFAULT),
-   owner("no name"), type(O_TYPE_OBJECT) {
+Object::Object(void) : id(0)
+                     , security_id(0)
+                     , objectname("object")
+                     , sec_level(SECURE_DEFAULT)
+                     , owner("no name")
+                     , type(O_TYPE_OBJECT) 
+{
 }
 
 Object::Object(const Object &obj) : security_id(obj.security_id), id(obj.id), sec_level(obj.sec_level),
@@ -121,10 +126,28 @@ bool Object::operator>(const Object &obj1) const {
 }
 
 void Object::serialize(serialization::ObjectStream& stream) {
-   stream.get_cat();
+   int32_t sec = sec_level;
+   stream << sec;
+   stream << id << security_id;
+   stream << objectname << owner;
+   sec = type;
+   stream << sec;
 }
 
 void Object::deserialize(serialization::ObjectStream& stream) { 
+   if (objectname.length() > 0) {   
+      objectname.clear();
+   }
+   if (owner.length() > 0) {
+      owner.clear();
+   }
+   int32_t sec;
+   stream >> sec;
+   sec_level = (security::security_levels)sec;
+   stream >> id >> security_id;
+   stream >> objectname >> owner;
+   stream >> sec;
+   type = (object_type)sec;
 }
 
 bool Object::operator!=(const Object &obj1) const {

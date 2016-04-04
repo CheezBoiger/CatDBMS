@@ -1,2 +1,4 @@
-﻿  serialization_test.cpp
+﻿  object.cpp
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\object.cpp(89): warning C4018: '<': signed/unsigned mismatch
+c:\users\cmgarcia\documents\visual studio 2015\projects\data_base_project\data_base_project\lib\object.cpp(113): warning C4018: '<': signed/unsigned mismatch
   data_base_project.vcxproj -> C:\Users\cmgarcia\Documents\Visual Studio 2015\Projects\data_base_project\Debug\data_base_project.exe

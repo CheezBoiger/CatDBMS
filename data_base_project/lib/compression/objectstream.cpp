@@ -225,10 +225,5 @@ ObjectStream& ObjectStream::operator>>(float64& flo) {
    return (*this);
 }
 
-ObjectStream::operator uint32(void) {
-   unsigned seed = 99111;
-   uint32 hash = 0;
-   return (hash);
-}
 } // serialization namespace 
 } // catdb namespace 

@@ -1,5 +1,5 @@
-#ifndef _FILE_H_
-#define _FILE_H_
+#ifndef _ELEMENT_H_
+#define _ELEMENT_H_
 #pragma once
 
 #include "lib/object.h"
@@ -52,4 +52,4 @@ public:
    operator uint32_t(void);
 };
 } /* catdb namespace */
-#endif /* _FILE_H_ */
+#endif // _ELEMENT_H_
