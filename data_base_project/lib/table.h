@@ -2,9 +2,9 @@
 #define _TABLE_H_
 #pragma once
 
-#include "header.h"
-#include "lib/column.h"
-#include "lib/container.h"
+#include <header.h>
+#include <lib/column.h>
+#include <lib/container.h>
 
 #include <vector>
 

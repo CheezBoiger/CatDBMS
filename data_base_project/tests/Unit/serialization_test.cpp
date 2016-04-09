@@ -1,4 +1,5 @@
 #include <lib/element.h>
+#include <lib/table.h>
 #include <iostream>
 #include <string>
 
@@ -59,11 +60,16 @@ void testingSerialization(void) {
 
 int main(int c, char** args) {
    catdb::serialization::ObjectStream t;
-   catdb::Element test("cat", "gat", "none", 12, 11, security::SECURE_TOP_SECRET);
+   catdb::Element test("cat", "5.333", "I am Awkmed", 12, 11, security::SECURE_TOP_SECRET);
    test.serialize(t);
    catdb::Element result;
    result.deserialize(t);
    std::cout << result.get_filename() << std::endl << result.get_owner_name() << std::endl;
+   catdb::DBase::Database billy_database = catdb::DBase::Database("Billy's_data");
+   catdb::Container cont1 = catdb::Container("BroWithaCat");
+   cont1.insert_element(&test);
+   billy_database.add_container(&cont1);
+   billy_database.save_table("BillyIsCool");
    std::cin.ignore();
    return 0;
 }

@@ -2,13 +2,15 @@
 
 namespace catdb {
 
-Container::Container(const Container& container) : _elements(container._elements),
-                                                      Object(container.objectname, 
-                                                      container.owner,
-                                                      0,
-                                                      0,
-                                                      SECURE_DEFAULT, 
-                                                      container.type) {
+Container::Container(const Container& container) 
+                                                 : _elements(container._elements)
+                                                 , Object(container.objectname
+                                                 , container.owner
+                                                 , 0
+                                                 , 0
+                                                 , SECURE_DEFAULT
+                                                 , container.type) 
+{
 }
 
 // Insert a new element into the container.
@@ -46,8 +48,9 @@ bool Container::is_similiar_element(Element* attribute) {
 
    _container_iterator iter = std::find(_elements.begin(), _elements.end(), *attribute);
 
-   if (iter != _elements.end())
+   if (iter != _elements.end()) {
       is_similiar = false;
+   }
 
    return is_similiar;
 }
@@ -67,14 +70,33 @@ bool Container::remove_element(std::string attribute, std::string column_name) {
 
 Element* Container::obtain_element(std::string element_name) {
    Element* element = NULL;
+   
    for (size_t i = 0; i < _elements.size(); ++i) {
-      if (_elements.at(i).get_attribute().compare(element_name) == STR_MATCH) {
+      if (_elements.at(i).get_attribute().compare(element_name) == STR_MATCH) {     
          element = &_elements.at(i);
          break;
       }
    }
 
    return element;
+}
+
+void Container::serialize(serialization::ObjectStream& os) {
+   Object::serialize(os);
+   uint32_t element_size = _elements.size();
+   os << element_size;
+   
+   for (int64_t i = 0; i < _elements.size(); ++i) {
+      _elements.at(i).serialize(os);
+   }
+}
+
+/** 
+ * TODO(Garcia): Work on deserialization!!
+ */
+void Container::deserialize(serialization::ObjectStream& os) {
+   Object::deserialize(os);
+   // problem, how do we know when to stop deserialization?
 }
 
 void Container::update(void) {
@@ -87,7 +109,6 @@ bool Container::check_security(User& user) {
 Element& Container::operator[](uint32_t index) {
    return _elements[index];
 }
-
 
 	// operator overloads for comparator.
 

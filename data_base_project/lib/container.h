@@ -8,15 +8,24 @@
 
 namespace catdb {
 
-/* Class Container intended on holding all attributes in the database it resides in. */
+/** 
+ * Class Container intended on holding all attributes in the database it resides in. 
+ */
 class Container : public Object {
 private:
-   // All elements in this container.
+   /** 
+    * All elements in this container.
+    */
    std::vector<Element> _elements;
 
 protected:
-
+   /**
+    * Update this container if any attributes have been changed.
+    */
    void update(void);
+   /**
+    * Check if user is allowed to see this Container.
+    */
    bool check_security(User& user);
 
 public:
@@ -49,6 +58,9 @@ public:
 
    // Find an element based on its name.
    Element* obtain_element(std::string element_name);
+
+   virtual void serialize(serialization::ObjectStream& os);
+   virtual void deserialize(serialization::ObjectStream& os);
 
    // Operator overloading.
    Element& operator[](uint32_t index);

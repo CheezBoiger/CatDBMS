@@ -1,9 +1,10 @@
-#include "lib/table.h"
-#include "lib/security/user.h"
-#include "architecture/error.h"
-#include "architecture/directory_handler.h"
-#include "tools/remote/linear_search.h"
-#include "architecture/crypto.h"
+#include <lib/table.h>
+#include <lib/security/user.h>
+#include <lib/compression/objectstream.h>
+#include <architecture/error.h>
+#include <architecture/directory_handler.h>
+#include <tools/remote/linear_search.h>
+#include <architecture/crypto.h>
 
 #include <unordered_map>
 #include <algorithm>
@@ -69,20 +70,25 @@ bool Database::is_subset(Database* database) {
    return true;
 }
 
-// Saves the database into its own folder.
-// Still working on this!!!!
+/**
+ * Saves the database into its own folder.
+ * Still working on this!!!!
+ */
 bool Database::save_table(std::string name) {
    folder_create();
    if (db_error.code_number == Errors::error_path_not_found) { 
       return false;  
    }
    if (!containers.empty()) {
-      std::ofstream file; 
+      std::ofstream file;
+      serialization::ObjectStream temp_stream;
       for (int i = 0; i < containers.size(); ++i) {
          Container* container = &containers.at(i); 
-         file.open(directory_path + "/" + container->get_container_name() + ".txt");
+         file.open(directory_path + "/" + container->get_container_name() + ".txt"
+                 , std::fstream::in | std::fstream::out | std::fstream::trunc);
          if (file.is_open()) {
-            file << container->get_container_name() << "\n";
+            container->serialize(temp_stream);
+            temp_stream.write_to_file(file);
             file.close();
          }
       }
@@ -195,11 +201,11 @@ std::string Database::display_all_containers() {
 
 int Database::compare_to(const Database& _right) {
    if (containers.size() == _right.containers.size()) { 
-      return _EQUAL;
+      return (_EQUAL);
    } else if (containers.size() > _right.containers.size()) { 
-      return _GREATER;
+      return (_GREATER);
    } else { 
-      return _LESSER;
+      return (_LESSER);
    } 
 }
 

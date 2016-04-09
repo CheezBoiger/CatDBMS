@@ -2,20 +2,45 @@
 #include "architecture/error.h"
 
 namespace catdb {
-   Element::Element(std::string filename, std::string ownername, std::string column_name, int32_t id, 
-      int32_t sec_id, security_levels level) : attribute(filename), owner_name(ownername), column_name(column_name),
-      Object(filename,
-             ownername,
-             id,
-             sec_id,
-             level,
-             catdb::object_type::O_TYPE_ELEMENT)
+   
+/**
+ * Element Constructor and attributes mang.
+ */
+Element::Element(std::string filename
+, std::string ownername
+, std::string column_name
+, int32_t id
+, int32_t sec_id
+, security_levels level) 
+                         : attribute(filename)
+                         , owner_name(ownername)
+                         , column_name(column_name)
+                         , Object(filename
+                         , ownername
+                         , id
+                         , sec_id
+                         , level
+                         , catdb::object_type::O_TYPE_ELEMENT)
 {
 }
 
-Element::Element(const Element& file) : attribute(file.attribute), owner_name(file.owner_name),
-   column_name(file.column_name), Object(file)
+/**
+ * Element Copy Constructor!!
+ */
+Element::Element(const Element& file) 
+                                      : attribute(file.attribute)
+                                      , owner_name(file.owner_name)
+                                      , column_name(file.column_name)
+                                      , Object(file)
 {
+}
+
+void Element::serialize(serialization::ObjectStream& os) {
+   Object::serialize(os);
+}
+
+void Element::deserialize(serialization::ObjectStream& os) {
+   Object::deserialize(os);
 }
 
 void Element::check_problems(void) {

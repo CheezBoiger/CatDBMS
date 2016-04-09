@@ -6,8 +6,6 @@
 namespace catdb { 
 namespace serialization { 
 
-#define MAX_BUFFER_SIZE    1024
-
 // type defines for this particular namespace.
 typedef char*              string;
 typedef unsigned char*     serial;
