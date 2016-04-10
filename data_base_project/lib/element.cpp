@@ -12,15 +12,15 @@ Element::Element(std::string filename
 , int32_t id
 , int32_t sec_id
 , security_levels level)
-  : attribute(filename)
-  , owner_name(ownername)
-  , column_name(column_name)
-  , Object(filename
-  , ownername
-  , id
-  , sec_id
-  , level
-  , catdb::object_type::O_TYPE_ELEMENT)
+: attribute(filename)
+, owner_name(ownername)
+, column_name(column_name)
+, Object(filename
+, ownername
+, id
+, sec_id
+, level
+, catdb::object_type::O_TYPE_ELEMENT)
 {
 }
 
@@ -28,10 +28,10 @@ Element::Element(std::string filename
  * Element Copy Constructor!!
  */
 Element::Element(const Element& file)
-  : attribute(file.attribute)
-  , owner_name(file.owner_name)
-  , column_name(file.column_name)
-  , Object(file)
+: attribute(file.attribute)
+, owner_name(file.owner_name)
+, column_name(file.column_name)
+, Object(file)
 {
 }
 

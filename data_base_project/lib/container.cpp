@@ -3,13 +3,13 @@
 namespace catdb {
 
 Container::Container(const Container& container)
-  : _elements(container._elements)
-  , Object(container.objectname
-  , container.owner
-  , 0
-  , 0
-  , SECURE_DEFAULT
-  , container.type)
+: _elements(container._elements)
+, Object(container.objectname
+, container.owner
+, 0
+, 0
+, SECURE_DEFAULT
+, container.type)
 {
 }
 

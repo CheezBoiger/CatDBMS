@@ -3,21 +3,22 @@
 namespace catdb {
 
 Object::Object(std::string objname
-             , std::string objowner
-             , int32_t id
-             , int32_t sec_id
-             , security_levels level
-             , object_type type) 
-  : id(id)
-  , security_id(sec_id)
-  , sec_level(level)
-  , objectname(objname)
-  , owner(objowner)
-  , type(type)
+, std::string objowner
+, int32_t id
+, int32_t sec_id
+, security_levels level
+, object_type type) 
+: id(id)
+, security_id(sec_id)
+, sec_level(level)
+, objectname(objname)
+, owner(objowner)
+, type(type)
 {
 }
 
-Object::Object(void) : id(0)
+Object::Object(void) 
+: id(0)
 , security_id(0)
 , objectname("object")
 , sec_level(SECURE_DEFAULT)

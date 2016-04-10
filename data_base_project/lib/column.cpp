@@ -7,19 +7,28 @@
 namespace catdb {
 namespace searching = tools::remote;
 
-Column::Column(void) : size(0), list(new ::doubly_linked_list<Element*>()),
-sorted_format(tools::sorting::SORT_BIG_ENDIAN),
-column_title("no_name"),
-Object("No name", "No name", 0, 0, SECURE_DEFAULT, O_TYPE_COLUMN) {
+Column::Column(void) 
+: size(0)
+, list(new ::doubly_linked_list<Element*>())
+, sorted_format(tools::sorting::SORT_BIG_ENDIAN)
+, column_title("no_name")
+, Object("No name"
+, "No name"
+, 0
+, 0
+, SECURE_DEFAULT
+, O_TYPE_COLUMN) {
 }
 
-Column::Column(std::string column_name) : Column() {
+Column::Column(std::string column_name) 
+: Column() {
   objectname = column_title = column_name;
 }
 
-Column::Column(const Column& column) : list(new ::doubly_linked_list<Element*>()),
-sorted_format(column.sorted_format),
-column_title(column.column_title)
+Column::Column(const Column& column) 
+: list(new ::doubly_linked_list<Element*>())
+, sorted_format(column.sorted_format)
+, column_title(column.column_title)
 {
   for(size_t i = 0; i < column.list->get_size(); ++i) {
     this->insert_element(*(*column.list)[i]);

@@ -34,8 +34,10 @@ Table* add_table(Database& database, std::string password) {
   return NULL; // for now...
 }
 
-Database::Database(void) : containers(), table_name("no name"),
-directory_path(default_path + table_name)
+Database::Database(void) 
+: containers()
+, table_name("no name")
+, directory_path(default_path + table_name)
 {
 }
 
