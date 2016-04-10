@@ -19,59 +19,59 @@ namespace catdb {
 // values for proper storage.
 class Column : public Object {
 private:
-   ::List<catdb::Element*>* list;
-   tools::sorting::sort_format sorted_format;
+  ::List<catdb::Element*>* list;
+  tools::sorting::sort_format sorted_format;
 
-   int32_t size;
+  int32_t size;
 
-   std::string column_title;
+  std::string column_title;
 protected:
-   // TODO(Garcia): Implement check_security and update mang.
-   // this is to be fixed 
-   bool check_security(User& user) { return false; }
+  // TODO(Garcia): Implement check_security and update mang.
+  // this is to be fixed 
+  bool check_security(User& user) { return false; }
 
-   void update(void) { }
+  void update(void) { }
 
 public:
-   Column(void);
-   Column(std::string column_name);
-   Column(const Column& column);
-   virtual ~Column(void);
+  Column(void);
+  Column(std::string column_name);
+  Column(const Column& column);
+  virtual ~Column(void);
 
-   int32_t get_size(void) { return size; }
+  int32_t get_size(void) { return size; }
 
-   inline std::string get_column_name(void) { return column_title; }
-		
-   /* TODO(Garcia): Still need to implement these functions in the cpp file. */
-   /* Allows the container to be sorted with a specified sorting algorithm. */
-   void sort_column(sorting::sort_format sort_t);
-   void sort_column(type_sort_function sorting_function, sorting::sort_format sort_t);
-   void setup_container_folder(User& user);
-   void combine_containers(Column* column);
-   void remove_similarities(Column* column);
+  inline std::string get_column_name(void) { return column_title; }
 
-   bool insert_new_element(std::string objectname, std::string ownername, std::string column_name,
-                           int32_t id = 0, int32_t sec_id=0, security_levels level=SECURE_DEFAULT);
-   bool insert_element(Element& element);
-   bool remove_element_name(std::string objectname, std::string column_name);
-   bool remove_owner_elements(std::string ownername);
+  /* TODO(Garcia): Still need to implement these functions in the cpp file. */
+  /* Allows the container to be sorted with a specified sorting algorithm. */
+  void sort_column(sorting::sort_format sort_t);
+  void sort_column(type_sort_function sorting_function, sorting::sort_format sort_t);
+  void setup_container_folder(User& user);
+  void combine_containers(Column* column);
+  void remove_similarities(Column* column);
 
-   inline bool is_empty(void) const { return size == 0; }
+  bool insert_new_element(std::string objectname, std::string ownername, std::string column_name,
+                          int32_t id = 0, int32_t sec_id = 0, security_levels level = SECURE_DEFAULT);
+  bool insert_element(Element& element);
+  bool remove_element_name(std::string objectname, std::string column_name);
+  bool remove_owner_elements(std::string ownername);
 
-   bool subset(Column* column);
-   
-   Column* intersection(Column* column);
-   
-   catdb::Element* const inspect_element(std::string element_name, std::string column_name);
-   
-   std::string display_list(void);
-   
-   bool operator<(const Column& col);
-   bool operator<=(const Column& col);
-   bool operator>(const Column& col);
-   bool operator>=(const Column& col);
-   bool operator==(const Column& col);
-   bool operator!=(const Column& col);
+  inline bool is_empty(void) const { return size == 0; }
+
+  bool subset(Column* column);
+
+  Column* intersection(Column* column);
+
+  catdb::Element* const inspect_element(std::string element_name, std::string column_name);
+
+  std::string display_list(void);
+
+  bool operator<(const Column& col);
+  bool operator<=(const Column& col);
+  bool operator>(const Column& col);
+  bool operator>=(const Column& col);
+  bool operator==(const Column& col);
+  bool operator!=(const Column& col);
 };
 
 }

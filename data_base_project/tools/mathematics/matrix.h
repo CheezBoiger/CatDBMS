@@ -4,13 +4,13 @@
 
 #include "header.h"
 
-namespace tools { 
-namespace math { 
+namespace tools {
+namespace math {
 
-class Matrix { 
-   typedef unsigned int mx_size_t;
+class Matrix {
+  typedef unsigned int mx_size_t;
 public:
-   mx_size_t row, col;
+  mx_size_t row, col;
 };
 } // math namespace 
 } // tools namespace 

@@ -11,27 +11,27 @@ template<typename V>
 class circularly_linked_list {
 private:
 
-   struct c_node {
-      c_node* previous;
-      c_node* next;
+  struct c_node {
+    c_node* previous;
+    c_node* next;
 
-      V data;
-      int32_t index;
-   };
+    V data;
+    int32_t index;
+  };
 
-   c_node* cursor;
-   c_node* root;
-   c_node* tail;
+  c_node* cursor;
+  c_node* root;
+  c_node* tail;
 
-   int32_t size;
+  int32_t size;
 
 protected:
 
 public:
-   circularly_linked_list(void) : root(NULL), tail(NULL), cursor(NULL), size(0) { }
+  circularly_linked_list(void) : root(NULL), tail(NULL), cursor(NULL), size(0) { }
 
-   ~circularly_linked_list(void) {
-   }
+  ~circularly_linked_list(void) {
+  }
 };
 } /* data_structures namespace */
 } /* tools namespace */

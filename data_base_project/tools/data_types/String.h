@@ -7,7 +7,7 @@ namespace catdb {
 
 class String_interface {
 public:
-   virtual ~String_interface(void) { }
+  virtual ~String_interface(void) { }
 
 
 };

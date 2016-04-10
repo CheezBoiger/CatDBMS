@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-namespace catdb { 
-namespace serialization { 
+namespace catdb {
+namespace serialization {
 
 // type defines for this particular namespace.
 typedef char*              string;
@@ -24,8 +24,8 @@ typedef float              float32;
 
 // String packet used to hold both the string literal and the length.
 struct string_packet {
-   string str;
-   uint16 len;
+  string str;
+  uint16 len;
 };
 
 serial pack_string_packet(string_packet* str, serial input);

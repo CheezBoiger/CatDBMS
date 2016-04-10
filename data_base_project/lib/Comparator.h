@@ -12,35 +12,35 @@ namespace catdb {
 template<typename _Class>
 class Comparator {
 public:
-   Comparator(void) { }
-   virtual ~Comparator(void) { }
+  Comparator(void) { }
+  virtual ~Comparator(void) { }
 
-   virtual int operator()(const _Class& _left, const _Class& _right) {
-      return compare(_left, _right);
-   }
+  virtual int operator()(const _Class& _left, const _Class& _right) {
+    return compare(_left, _right);
+  }
 
-   inline int compare(const _Class& _left, const _Class& _right) { 
-      if (_left == _right) { 
-         return _EQUAL;
-      } else if (_left > _right) { 
-         return _GREATER;
-      } else { 
-         return _LESSER;
-      }
-   }
+  inline int compare(const _Class& _left, const _Class& _right) {
+    if(_left == _right) {
+      return _EQUAL;
+    } else if(_left > _right) {
+      return _GREATER;
+    } else {
+      return _LESSER;
+    }
+  }
 };
 
 template<typename _Class>
 class Comparable {
 public:
-   typedef _Class _Left;
-   typedef _Class _Right;
-   Comparable(void) { } 
-   virtual ~Comparable(void) { }
+  typedef _Class _Left;
+  typedef _Class _Right;
+  Comparable(void) { }
+  virtual ~Comparable(void) { }
 
-   virtual int compare_to(const _Class& _right) = 0;
+  virtual int compare_to(const _Class& _right) = 0;
 
-   virtual bool equals(const _Class& _right) = 0;
+  virtual bool equals(const _Class& _right) = 0;
 };
 } /* catdb comparator */
 
