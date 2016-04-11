@@ -3,3 +3,6 @@
 """
 from pyUI_catdb import main
 main()
+
+if __name__ == "__main__":
+    main()
