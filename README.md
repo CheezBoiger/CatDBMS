@@ -15,4 +15,7 @@ possible!
 
 # Side note
 This would most likely be like no other data base system you've seen. It may have both relational and object database models, but 
-that I am not saying that it will be this exactly. Please, I am a noob, I'm doing this as a hobby ;.;
+that I am not saying that it will be this exactly. Please, I am a noob, I'm doing this as a hobby ;.;  
+cat  
+dog  
+bird.
